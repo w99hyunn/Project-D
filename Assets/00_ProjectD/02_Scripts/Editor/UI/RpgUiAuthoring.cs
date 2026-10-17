@@ -64,11 +64,11 @@ namespace DoHwa.Editor
         private static void Header(Transform parent,string title,string subtitle,UnityAction close)
         {
             var header=Rect("Header",parent,0,0,1760,100);
-            Text("Title",header,title,12,5,400,56,38,White,true);
-            Text("Subtitle",header,subtitle,14,62,1000,28,17,Muted);
+            var heading=Text("Title",header,title,12,5,400,56,38,White,true);
+            heading.font=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/GmarketSansBold SDF.asset");
+            if (subtitle.Length > 0) Text("Subtitle",header,subtitle,14,62,1000,28,17,Muted);
             var b=Button("Close",header,"",1686,8,62,62,new Color(.22f,.28f,.32f),close);
             var icon=Rect("Icon",b.transform,18,18,26,26).gameObject.AddComponent<LoginLineIcon>(); icon.SetSymbol(LoginLineIcon.Symbol.Close); icon.color=White; icon.raycastTarget=false;
-            Rule(header,12,98,1736,new Color(1,1,1,.17f));
         }
         private static RectTransform Screen(string name,Transform root)
         {
@@ -197,7 +197,7 @@ namespace DoHwa.Editor
             Text("Info",mapSpace,"도화림\n\n복숭아꽃이 머무는 숲",1080,186,540,130,30,White,true);
             Text("Legend",mapSpace,"현재 위치를 중심으로 표시합니다.\n\n숲길을 따라 강가와 목교를 찾아보세요.",1080,390,540,160,23,Muted);
             Text("MapKey",mapSpace,"M  지도 닫기",1080,748,500,50,20,Jade); map.gameObject.SetActive(false);
-            var journal=Screen("Journal",root); var journalSpace=Workspace(journal); Header(journalSpace,"탐험 수첩","JOURNAL  /  천천히 채워가는 숲의 기록",controller.Close);
+            var journal=Screen("Journal",root); var journalSpace=Workspace(journal); Header(journalSpace,"탐험 수첩","",controller.Close);
             var page=Plate("Page",journalSpace,240,144,1280,680,Paper);
             Text("Chapter",page,"첫 번째 여정",56,42,700,40,22,new Color(.36f,.45f,.42f),true);
             Text("Title",page,"숲에 머물 준비",56,104,1000,70,42,Ink,true);
@@ -206,7 +206,7 @@ namespace DoHwa.Editor
             Button("OpenBag",page,"배낭 열기",56,570,340,64,new Color(.22f,.38f,.36f),controller.OpenInventory);
             Button("OpenCrafting",page,"제작 확인",420,570,340,64,new Color(.22f,.38f,.36f),controller.OpenCrafting); journal.gameObject.SetActive(false);
 
-            var settings=Screen("Settings",root); var settingsSpace=Workspace(settings); Header(settingsSpace,"설정","SETTINGS  /  나에게 맞는 여정",controller.Close);
+            var settings=Screen("Settings",root); var settingsSpace=Workspace(settings); Header(settingsSpace,"설정","",controller.Close);
             var settingsPanel=Plate("Panel",settingsSpace,390,220,980,420,Paper);
             Text("VolumeTitle",settingsPanel,"전체 음량",48,70,260,50,27,Ink,true);
             var sliderRect=Rect("Volume",settingsPanel,330,72,570,44); var slider=sliderRect.gameObject.AddComponent<UnityEngine.UI.Slider>();

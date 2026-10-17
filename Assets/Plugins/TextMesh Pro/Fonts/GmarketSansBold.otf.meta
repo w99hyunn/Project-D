@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a2d4e5ddddb4954b84661457ea051dc
+guid: 8c43a66309231f94090942bfdf501fca
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - LINE Seed Sans KR
+  - Gmarket Sans
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
