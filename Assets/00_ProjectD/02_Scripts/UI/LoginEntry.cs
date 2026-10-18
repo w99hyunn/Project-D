@@ -13,7 +13,7 @@ namespace DoHwa.UI
             if(!startButton.interactable) return;
             startButton.interactable=false;
             startLabel.text="숲으로 들어가는 중...";
-            try { await Awaitable.FromAsyncOperation(UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Ingame"),destroyCancellationToken); }
+            try { await UiSceneTransition.LoadAsync("Ingame"); }
             catch(OperationCanceledException) { }
             catch(Exception exception) { Debug.LogException(exception); startButton.interactable=true; startLabel.text="다시 시작"; }
         }

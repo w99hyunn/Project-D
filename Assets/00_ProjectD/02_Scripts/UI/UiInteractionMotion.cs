@@ -18,8 +18,8 @@ namespace DoHwa.UI
             bool focused = EventSystem.current && EventSystem.current.currentSelectedGameObject == gameObject;
             float blend = 1 - Mathf.Exp(-22 * Time.unscaledDeltaTime);
             if (feedback) {
-                float alpha = !interactive ? 0 : pressed ? .28f : hover ? .16f : focused ? .10f : 0;
-                feedback.color = Color.Lerp(feedback.color, new Color(.36f, .40f, .44f, alpha), blend);
+                float alpha = !interactive ? 0 : pressed ? .30f : hover ? .26f : focused ? .18f : 0;
+                feedback.color = Color.Lerp(feedback.color, pressed?new Color(.48f,.59f,.72f,alpha):new Color(1,1,1,alpha), blend);
             }
             if (visualGroup) visualGroup.alpha = interactive ? 1 : .42f;
         }

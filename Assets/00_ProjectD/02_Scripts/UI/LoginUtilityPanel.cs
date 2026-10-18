@@ -21,10 +21,16 @@ namespace DoHwa.UI
         public void OpenNotices() => OpenPanel(notices);
         public void OpenLanguage() => OpenPanel(language);
         public void OpenExit() => OpenPanel(exit);
-        private void OpenPanel(GameObject panel)
+        private async void OpenPanel(GameObject panel)
         {
-            transition++;
+            int current = ++transition;
             bool alreadyOpen = panel.activeSelf;
+            GameObject outgoing = settings.activeSelf ? settings : notices.activeSelf ? notices : language.activeSelf ? language : exit.activeSelf ? exit : null;
+            if(outgoing && outgoing != panel && outgoing.TryGetComponent<UiPanelReveal>(out var exitMotion))
+            {
+                await exitMotion.HideAsync();
+                if(!this || current != transition) return;
+            }
             settings.SetActive(panel == settings);
             notices.SetActive(panel == notices);
             language.SetActive(panel == language);

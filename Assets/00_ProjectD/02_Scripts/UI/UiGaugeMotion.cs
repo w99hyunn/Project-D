@@ -9,6 +9,8 @@ namespace DoHwa.UI
         [SerializeField] private bool warnWhenLow;
         private float target;
         private bool initialized;
+        private float resultPulse;
+        public void Pulse() => resultPulse=1;
 
         public void Configure(UnityEngine.UI.Image image, Color color, bool warning)
         { fill = image; normalColor = color; warnWhenLow = warning; }
@@ -27,6 +29,8 @@ namespace DoHwa.UI
             float blend = 1 - Mathf.Exp(-12 * Time.unscaledDeltaTime);
             fill.fillAmount = Mathf.Lerp(fill.fillAmount, target, blend);
             Color color = warnWhenLow && target <= .25f ? new Color(1, .39f, .34f) : normalColor;
+            resultPulse=Mathf.MoveTowards(resultPulse,0,Time.unscaledDeltaTime*1.4f);
+            color=Color.Lerp(color,Color.white,Mathf.Sin(resultPulse*Mathf.PI)*.75f);
             if (warnWhenLow && target <= .25f) color.a = .82f + .18f * Mathf.Sin(Time.unscaledTime * 4);
             fill.color = Color.Lerp(fill.color, color, blend);
         }

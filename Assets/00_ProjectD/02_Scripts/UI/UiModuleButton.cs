@@ -15,6 +15,11 @@ namespace DoHwa.UI
         [SerializeField] private bool primary;
         private Button button;
         private bool hovered, pressed;
+        private Material sheen;
+
+        private Image sheenImage;
+        private float hoverAmount, pressAmount, sweep=1;
+        public UiImageTheme Theme => theme;
 
         public void Configure(UiImageTheme style, Image background, Image outline, Image symbol, TMP_Text text, bool primaryAction)
         {
@@ -63,13 +68,30 @@ namespace DoHwa.UI
             label.alignment = TextAlignmentOptions.Center;
         }
 
-        private void Awake() { TryGetComponent<Button>(out button); ApplyTheme(); }
+        private void Awake()
+        {
+            TryGetComponent<Button>(out button); ApplyTheme();
+            var overlay=new GameObject("InteractionSheen",typeof(RectTransform),typeof(Image));
+            overlay.transform.SetParent(surface.transform,false);
+            var rect=(RectTransform)overlay.transform;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.offsetMin=rect.offsetMax=Vector2.zero;
+            overlay.TryGetComponent<Image>(out sheenImage);sheenImage.sprite=surface.sprite;sheenImage.type=surface.type;sheenImage.pixelsPerUnitMultiplier=surface.pixelsPerUnitMultiplier;sheenImage.raycastTarget=false;
+            overlay.AddComponent<UiSurfaceCoordinates>();
+            sheen=new Material(Resources.Load<Material>("UI/ButtonSheen"));sheenImage.material=sheen;
+            sheen.SetColor("_Tint",primary?new Color(.94f,.98f,1):new Color(.45f,.52f,.61f));
+            sheen.SetFloat("_Edge",primary?.13f:0);
+
+        }
         private void Update()
         {
             bool enabledState = button.IsInteractable();
             bool focused = EventSystem.current && EventSystem.current.currentSelectedGameObject == gameObject;
             bool active = hovered || focused;
             float blend = 1 - Mathf.Exp(-theme.transitionSpeed * Time.unscaledDeltaTime);
+            hoverAmount=Mathf.Lerp(hoverAmount,enabledState && active?1:0,blend);
+            pressAmount=Mathf.Lerp(pressAmount,enabledState && pressed?1:0,1-Mathf.Exp(-35*Time.unscaledDeltaTime));
+            sweep=Mathf.Min(1,sweep+Time.unscaledDeltaTime/ .42f);
+            sheen.SetFloat("_Phase",sweep);sheen.SetFloat("_Strength",hoverAmount*(1-pressAmount*.6f));
+            iconMedallion.rectTransform.localScale=Vector3.one*(1+hoverAmount*.06f-pressAmount*.10f);
             Color face = !enabledState ? new Color(.84f,.85f,.87f,.65f) : pressed ? new Color(.80f,.83f,.87f) : active ? new Color(.94f,.97f,1f) : Color.white;
             Color edge = theme.accent; edge.a = !enabledState ? .12f : pressed ? .75f : active ? .55f : .3f;
             Color text = primary ? theme.ink : theme.primaryInk; text.a = enabledState ? 1 : .6f;
@@ -79,11 +101,12 @@ namespace DoHwa.UI
             label.color = Color.Lerp(label.color, text, blend);
             icon.color = Color.Lerp(icon.color, symbol, blend);
         }
-        public void OnPointerEnter(PointerEventData data) => hovered = true;
+        public void OnPointerEnter(PointerEventData data) {hovered = true;sweep=0;}
         public void OnPointerExit(PointerEventData data) { hovered = false; pressed = false; }
         public void OnPointerDown(PointerEventData data) { if(data.button == PointerEventData.InputButton.Left) pressed = true; }
         public void OnPointerUp(PointerEventData data) => pressed = false;
-        private void OnDisable() { hovered = false; pressed = false; }
+        private void OnDisable() { hovered = false; pressed = false;hoverAmount=pressAmount=0;iconMedallion.rectTransform.localScale=Vector3.one; }
+        private void OnDestroy(){Destroy(sheen);}
     }
 }
 

@@ -15,6 +15,8 @@ namespace DoHwa.UI
         [SerializeField] private bool unframed;
         [SerializeField] private UnityEngine.UI.Image selectionMarker;
         private bool hovered;
+        private float resultPulse;
+        public void PulseItem(int id) { if(id>=0 && index==id) resultPulse=1; }
         private bool chosen, pressed;
         private Vector2 artPosition;
         [SerializeField] private UnityEngine.UI.Image cardFace, quantityBand, equippedBadge;
@@ -25,11 +27,13 @@ namespace DoHwa.UI
         private void Update()
         {
             float blend=1-Mathf.Exp(-24*Time.unscaledDeltaTime);
-            Color target=SurfaceColor();
+            resultPulse=Mathf.MoveTowards(resultPulse,0,Time.unscaledDeltaTime*1.6f);
+            Color target=Color.Lerp(SurfaceColor(),Color.white,Mathf.Sin(resultPulse*Mathf.PI)*.8f);
             if(pressed && button.IsInteractable()) target*=new Color(.90f,.93f,.97f,1);
             border.color=Color.Lerp(border.color,target,blend);
             if(!quick) {
                 Color face=chosen?new Color(.59f,.76f,.90f):hovered?new Color(.86f,.90f,.95f):new Color(.82f,.86f,.92f);
+                face=Color.Lerp(face,Color.white,Mathf.Sin(resultPulse*Mathf.PI)*.7f);
                 cardFace.color=Color.Lerp(cardFace.color,face,blend);
                 quantityBand.color=Color.Lerp(quantityBand.color,chosen?new Color(.90f,.95f,.99f):new Color(.98f,.98f,.97f),blend);
             }
