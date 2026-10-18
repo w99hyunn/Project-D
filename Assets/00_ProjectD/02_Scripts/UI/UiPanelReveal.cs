@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 namespace DoHwa.UI
 {
@@ -14,21 +14,22 @@ namespace DoHwa.UI
         public void Configure(RectTransform[] targets)=>sections=targets;
         private void Awake()=>TryGetComponent<CanvasGroup>(out group);
         private void OnEnable()=>Replay();
-        public void Replay()
+        public void Replay()=>ReplayState("Open");
+        public void ReplayState(string state)
         {
             revision++;leaving=closed=false;entering=true;
             group.interactable=false;group.blocksRaycasts=true;
-            animator.Play("Open",0,0);animator.Update(0);
+            animator.Play(state,0,0);animator.Update(0);
         }
         public void RefreshContent(int index)
         {
             if(!isActiveAndEnabled || entering || leaving)return;
             animator.Play("Refresh"+index,0,0);
         }
-        public async Awaitable HideAsync()
+        public async Awaitable HideAsync(string state="Close")
         {
             int token=++revision;entering=false;leaving=true;closed=false;group.interactable=false;
-            animator.CrossFadeInFixedTime("Close",.04f);
+            animator.CrossFadeInFixedTime(state,.04f);
             try
             {
                 while(!closed)

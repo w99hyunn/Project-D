@@ -39,12 +39,12 @@ namespace DoHwa.UI
             {
                 var pending=new System.Collections.Generic.List<Awaitable>();
                 foreach(var layer in pageLayers)
-                    if(layer.gameObject.activeInHierarchy)pending.Add(layer.HideAsync());
+                    if(layer.gameObject.activeInHierarchy)pending.Add(layer.HideAsync(controller.InLobby&&layer.gameObject==worlds?"RoomClose":"Close"));
                 foreach(var task in pending)await task;
                 if(destroyCancellationToken.IsCancellationRequested)return;
                 selecting=worldPage;joining=joinFriends;Refresh();
                 foreach(var layer in pageLayers)
-                    if(layer.gameObject.activeInHierarchy)layer.Replay();
+                    if(layer.gameObject.activeInHierarchy)layer.ReplayState(controller.InLobby&&layer.gameObject==departure?"RoomOpen":"Open");
             }
             catch(System.OperationCanceledException){}
             finally{transitioning=false;}
@@ -52,7 +52,7 @@ namespace DoHwa.UI
         private void Update()
         {
             if(Keyboard.current!=null&&Keyboard.current.escapeKey.wasPressedThisFrame)HandleEscape();
-            if(!LoginEntry.SignedIn)return;
+            if(!LoginEntry.SignedIn||controller.IsBusy)return;
             if(wasInLobby!=controller.InLobby){wasInLobby=controller.InLobby;Navigate(true,false);}
 
         }

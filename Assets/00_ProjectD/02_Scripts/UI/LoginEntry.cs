@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using DoHwa.World;
 using Steamworks;
 using UnityEngine;
@@ -35,7 +35,7 @@ namespace DoHwa.UI
                 if(parameter.type==AnimatorControllerParameterType.Trigger)startAnimator.ResetTrigger(parameter.nameHash);
             confettiMaterial.SetFloat("_ClickTime",Time.time);
             confettiMaterial.SetFloat("_Clicked",1);
-            startLabel.text="접속…";
+            startLabel.text="접속 중";
             startAnimator.CrossFadeInFixedTime("Commit",.08f,0,0);
             try
             {

@@ -34,6 +34,13 @@ namespace DoHwa.UI
         [SerializeField] private GameObject seedLabel;
         private WorldSlot contextSlot;
         private string editingSlot;
+        [SerializeField] private GameObject roomProgress;
+        [SerializeField] private TMP_Text roomProgressTitle;
+        [SerializeField] private TMP_Text roomProgressMessage;
+        [SerializeField] private GameObject roomProgressConfirm;
+        [SerializeField] private UiPanelReveal roomProgressReveal;
+        public bool IsBusy=>busy;
+        public void DismissRoomProgress(){if(!busy)roomProgress.SetActive(false);}
         private readonly List<WorldSaveRow> rows=new();
         private CSteamID lobby;
         private ulong hostId;
@@ -62,6 +69,7 @@ namespace DoHwa.UI
         {
             if(busy || (InLobby&&!ownLobby))return;
             selected=slot;WorldSelection.Slot=slot.id;selectedTitle.text=slot.title;
+            if(!InLobby)status.text="마지막 저장  "+DateTimeOffset.FromUnixTimeSeconds(slot.savedAt).ToLocalTime().ToString("yyyy.MM.dd  HH:mm")+"\n시드  "+slot.seed;
             foreach(var row in rows)row.Select(row.Slot==slot.id);
             if(InLobby)SteamMatchmaking.SetLobbyData(lobby,"world",slot.title);
             UpdateState();
@@ -86,6 +94,7 @@ namespace DoHwa.UI
         public void CloseContext()=>contextMenu.SetActive(false);
         public bool CloseSavePopup()
         {
+            if(roomProgress.activeSelf){DismissRoomProgress();return true;}
             if(contextMenu.activeSelf){CloseContext();return true;}
             if(deletePanel.activeSelf){CancelDelete();return true;}
             return false;
@@ -119,18 +128,21 @@ namespace DoHwa.UI
         private void UpdateState()
         {
             start.interactable=!busy&&selected!=null&&(!InLobby||ownLobby)&&SteamRuntime.Ready;
+            ((RectTransform)start.transform).anchoredPosition=new Vector2(32,InLobby?-436:-524);
             host.gameObject.SetActive(false);
             members.gameObject.SetActive(InLobby);
             invite.interactable=!busy&&InLobby&&SteamRuntime.Ready;
             leave.interactable=!busy&&InLobby;
-            startLabel.text=busy?"준비 중":InLobby?(ownLobby?"게임 시작":"방장의 시작을 기다리는 중"):"방 입장";
+            startLabel.text=busy?"준비 중":InLobby?(ownLobby?"게임 시작":"방장의 시작을 기다리는 중"):"방 생성";
             foreach(var row in rows){row.TryGetComponent<Button>(out var b);b.interactable=!busy&&(!InLobby||ownLobby)&&row.Valid;}
         }
         public async void HostRoom()
         {
             if(busy||InLobby||selected==null||!SteamRuntime.Ready)return;
             var cancellation=destroyCancellationToken;
-            busy=true;UpdateState();status.text="Steam 방을 여는 중";
+            busy=true;UpdateState();
+            roomProgressTitle.text="방 생성 중";roomProgressMessage.text="Steam에 방을 만들고 있습니다.";
+            roomProgressConfirm.SetActive(false);roomProgress.SetActive(true);roomProgress.transform.SetAsLastSibling();
             try
             {
                 bool done=false,failed=false;LobbyCreated_t result=default;
@@ -143,9 +155,12 @@ namespace DoHwa.UI
                 SteamMatchmaking.SetLobbyData(lobby,"game",SteamRuntime.Settings.lobbyNamespace);SteamMatchmaking.SetLobbyData(lobby,"protocol",SteamRuntime.Settings.protocol);
                 SteamMatchmaking.SetLobbyData(lobby,"host",hostId.ToString());SteamMatchmaking.SetLobbyData(lobby,"ready","0");SteamMatchmaking.SetLobbyData(lobby,"world",selected.title);
                 SteamFriends.SetRichPresence("connect","+connect_lobby "+lobby.m_SteamID);status.text="친구를 초대하거나 바로 시작하세요";
+                roomProgressMessage.text="방이 준비되었습니다.";
+                await roomProgressReveal.HideAsync();
+                roomProgress.SetActive(false);
             }
             catch(OperationCanceledException){}
-            catch(Exception e){LeaveLobby();status.text=e.Message;}
+            catch(Exception e){LeaveLobby();roomProgressTitle.text="방 생성 실패";roomProgressMessage.text=e.Message;roomProgressConfirm.SetActive(true);}
             finally{busy=false;if(!cancellation.IsCancellationRequested)UpdateState();}
         }
         private async void AcceptInvite(CSteamID target)
@@ -180,7 +195,7 @@ namespace DoHwa.UI
         public void LeaveLobby()
         {
             if(InLobby&&SteamRuntime.Ready){if(ownLobby)SteamMatchmaking.SetLobbyJoinable(lobby,false);SteamMatchmaking.LeaveLobby(lobby);SteamFriends.ClearRichPresence();}
-            lobby=default;ownLobby=false;members.text="";UpdateState();
+            lobby=default;ownLobby=false;members.text="";if(selected!=null)Select(selected);UpdateState();
         }
         public async void StartGame()
         {

@@ -19,7 +19,7 @@ namespace DoHwa.UI
         public bool Valid { get; private set; }
         public void Bind(WorldSlot slot, Action<WorldSlot> choose, Action<WorldSlot,Vector2> showContext)
         {
-            data=slot;context=showContext;Slot=slot.id;Valid=slot.valid;title.text=slot.title;detail.text=slot.valid?DateTimeOffset.FromUnixTimeSeconds(slot.savedAt).ToLocalTime().ToString("yyyy.MM.dd  HH:mm")+"     시드 "+slot.seed:"저장 파일을 읽을 수 없습니다";
+            data=slot;context=showContext;Slot=slot.id;Valid=slot.valid;title.text=slot.title;detail.text=slot.valid?DateTimeOffset.FromUnixTimeSeconds(slot.savedAt).ToLocalTime().ToString("yyyy.MM.dd  HH:mm"):"저장 파일을 읽을 수 없습니다";
             button.interactable=slot.valid;button.onClick.AddListener(()=>choose(slot));
         }
         public void OnPointerClick(UnityEngine.EventSystems.PointerEventData e)
