@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/00_ProjectD/01_Scenes/Production/Splash.unity
     guid: e315c2d4e2303684e88e371f025543de
   - enabled: 1
-    path: Assets/00_ProjectD/01_Scenes/Production/Login.unity
-    guid: a3a51599427919741acb6aa2bcab64dd
+    path: Assets/00_ProjectD/01_Scenes/Production/Main.unity
+    guid: ea989d17491335343af72bce7ef2d7bb
   - enabled: 1
     path: Assets/00_ProjectD/01_Scenes/Production/Ingame.unity
     guid: 1d1a5bf0a205a394e8f654f9c4e01fce

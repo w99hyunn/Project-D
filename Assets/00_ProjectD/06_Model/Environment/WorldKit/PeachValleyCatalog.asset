@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1916cd324580d944cba0de43e04b4158, type: 3}
+  m_Name: PeachValleyCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.World.GameCatalog
+  itemCount: 12
+  stackLimit: 999
+  inventorySlots: 36
+  starterItems:
+  - item: 0
+    amount: 1
+  - item: 1
+    amount: 1
+  - item: 2
+    amount: 8
+  - item: 3
+    amount: 3
+  - item: 4
+    amount: 24
+  - item: 5
+    amount: 12
+  - item: 6
+    amount: 15
+  - item: 7
+    amount: 4
+  - item: 8
+    amount: 6
+  - item: 9
+    amount: 10
+  - item: 10
+    amount: 1
+  - item: 11
+    amount: 2
+  equipmentParts: 0000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff05000000ffffffffi
+  recipes:
+  - id: healing-draught
+    title: "\uD68C\uBCF5\uC57D"
+    station: 0
+    ingredients:
+    - item: 6
+      amount: 3
+    - item: 2
+      amount: 1
+    result:
+      item: 3
+      amount: 1
+  - id: iron-ingot
+    title: "\uAE08\uC18D \uC8FC\uAD34"
+    station: 3
+    ingredients:
+    - item: 5
+      amount: 3
+    result:
+      item: 11
+      amount: 1
+  - id: jade-blade
+    title: "\uCCAD\uC625 \uB2E8\uAC80"
+    station: 1
+    ingredients:
+    - item: 11
+      amount: 3
+    - item: 4
+      amount: 4
+    result:
+      item: 0
+      amount: 1
+  - id: jade-charm
+    title: "\uCCAD\uC625 \uB178\uB9AC\uAC1C"
+    station: 1
+    ingredients:
+    - item: 11
+      amount: 2
+    - item: 8
+      amount: 2
+    result:
+      item: 10
+      amount: 1
+  buildings:
+  - id: workbench
+    title: "\uBAA9\uACF5 \uC791\uC5C5\uB300"
+    prefab: {fileID: 351959824254979104, guid: 5823e054678a07e45a9cac8a45711220, type: 3}
+    footprint: {x: 2, y: 1}
+    station: 1
+    cost:
+    - item: 4
+      amount: 8
+  - id: forge
+    title: "\uC0B0\uACE8 \uB300\uC7A5\uAC04"
+    prefab: {fileID: 4154466674613596393, guid: ffde799b940cc6a4e86b2f3a1bf9e87e, type: 3}
+    footprint: {x: 3, y: 2}
+    station: 3
+    cost:
+    - item: 4
+      amount: 12
+    - item: 5
+      amount: 6
+  - id: fence
+    title: "\uC0BC\uB098\uBB34 \uC6B8\uD0C0\uB9AC"
+    prefab: {fileID: 1526489081826330313, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+    footprint: {x: 2, y: 1}
+    station: 0
+    cost:
+    - item: 4
+      amount: 2
+  woodItem: 4
+  oreItem: 5
+  ingotItem: 11
+  upgradeLimit: 5
+  spawnPoint: {x: 1.5, y: 0.5, z: 18}

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace DoHwa.UI
@@ -11,7 +11,16 @@ namespace DoHwa.UI
         [SerializeField] private GameObject exit;
         [SerializeField] private Slider volume;
         private int transition;
+        private bool returnToSettings;
 
+        public bool CloseTopPopup()
+        {
+            if(exit.activeSelf){CloseExit();return true;}
+            if(language.activeSelf){CloseLanguage();return true;}
+            if(notices.activeSelf){CloseNotices();return true;}
+            if(settings.activeSelf){CloseSettings();return true;}
+            return false;
+        }
         public void OpenSettings()
         {
             volume.SetValueWithoutNotify(AudioListener.volume);
@@ -19,7 +28,8 @@ namespace DoHwa.UI
         }
 
         public void OpenNotices() => OpenPanel(notices);
-        public void OpenLanguage() => OpenPanel(language);
+        public void OpenLanguage(){returnToSettings=false;OpenPanel(language);}
+        public void OpenLanguageFromSettings(){returnToSettings=true;OpenPanel(language);}
         public void OpenExit() => OpenPanel(exit);
         private async void OpenPanel(GameObject panel)
         {
@@ -39,7 +49,7 @@ namespace DoHwa.UI
         }
         public void CloseSettings() => ClosePanel(settings);
         public void CloseNotices() => ClosePanel(notices);
-        public void CloseLanguage() => ClosePanel(language);
+        public void CloseLanguage(){if(returnToSettings){returnToSettings=false;OpenSettings();}else ClosePanel(language);}
         public void CloseExit() => ClosePanel(exit);
         private async void ClosePanel(GameObject panel)
         {
@@ -59,3 +69,4 @@ namespace DoHwa.UI
         }
     }
 }
+

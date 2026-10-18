@@ -46,6 +46,30 @@ namespace DoHwa.UI
         private EquipmentPanel equipmentPanel;
         private readonly int[] loadout={0,-1,-1,-1,-1,-1,-1,-1,-1};
         public Item[] Catalog => items;
+        public bool IsModalOpen => modal;
+        public int SelectedQuickItem => quickItems[quickSelected];
+        private DoHwa.World.WorldRuntime world;
+
+        public void BindWorld(DoHwa.World.WorldRuntime runtime) { world = runtime; }
+
+        public void ApplyWorldState(DoHwa.World.SurvivorState player)
+        {
+            for (int i = 0; i < items.Length; i++) items[i].quantity = player.items[i];
+            Array.Copy(player.equipment, loadout, loadout.Length);
+            equipped = loadout[0]; health = player.health; food = player.food;
+            Refresh();
+        }
+
+        public void ShowWorldResult(DoHwa.World.WorldCommand command, bool success, string reason)
+        {
+            if (!success) { ShowCondition(reason); return; }
+            MarkItemChanged();
+            if (command.action == DoHwa.World.WorldAction.Craft)
+            {
+                var recipe = world.Catalog.Recipe(command.target);
+                craftResult.Show(items[recipe.result.item].icon, items[recipe.result.item].title, recipe.result.amount);
+            }
+        }
         public int EquippedAt(int part) => loadout[part];
         private bool IsEquipped(int id) => Array.IndexOf(loadout,id)>=0;
         private void Equip(int id) { loadout[(int)items[id].equipmentPart]=id; if(items[id].equipmentPart==EquipmentPart.Weapon)equipped=id; }
@@ -261,6 +285,16 @@ namespace DoHwa.UI
         public void UseSelected()
         {
             if(craftResult.IsOpen) return;
+            if (world)
+            {
+                var command = new DoHwa.World.WorldCommand { item = selected };
+                if (crafting) { command.action = DoHwa.World.WorldAction.Craft; command.target = Array.Find(world.Catalog.recipes, r => r.result.item == selected).id; }
+                else if (items[selected].equipmentPart != EquipmentPart.None)
+                { command.action = DoHwa.World.WorldAction.Equip; command.part = (int)items[selected].equipmentPart; }
+                else command.action = DoHwa.World.WorldAction.Consume;
+                world.Submit(command);
+                return;
+            }
             if(equipmentMode && selected==loadout[selectedPart]) { loadout[selectedPart]=-1;Refresh();MarkItemChanged();return; }
             if(crafting)
             {
@@ -285,6 +319,7 @@ namespace DoHwa.UI
 
         private bool Visible(int index)
         {
+            if (crafting && world) return Array.Exists(world.Catalog.recipes, r => r.result.item == index);
             if(crafting) return index==3 || index==11;
             if(filter==0) return true;
             return filter==1 ? items[index].category=="장비" : filter==2 ? items[index].category=="소모품" : items[index].category=="재료";
@@ -314,8 +349,14 @@ namespace DoHwa.UI
             detailArt.sprite=item.icon; detailArt.preserveAspect=true;
             description.text=item.description;
             count.text=crafting ? selected==3?$"필요 재료\n\n약초<pos=240>{items[6].quantity} / 3\n복숭아<pos=240>{items[2].quantity} / 1":$"필요 재료\n\n철광석<pos=240>{items[5].quantity} / 3" : $"보유 수량<pos=240>{item.quantity}";
+            if (crafting && world)
+            {
+                var recipe = Array.Find(world.Catalog.recipes, r => r.result.item == selected);
+                count.text = string.Join("\n", recipe.ingredients.Select(cost => items[cost.item].title + "<pos=240>" + items[cost.item].quantity + " / " + cost.amount));
+            }
             actionLabel.text=crafting?"제작하기":item.category=="장비"?(selected==equipped?"장착 중":"장착하기"):item.category=="소모품"?"사용하기":"제작 재료";
             action.interactable=crafting ? selected==3?items[6].quantity>=3&&items[2].quantity>=1:items[5].quantity>=3 : item.quantity>0 && item.category!="재료" && selected!=equipped;
+            if (crafting && world) action.interactable = Array.Find(world.Catalog.recipes, r => r.result.item == selected).ingredients.All(cost => items[cost.item].quantity >= cost.amount);
             if(crafting && !action.interactable) actionLabel.text="재료 부족";
             Component<TMP_Text>("Inventory/Header/Title").text=crafting?"제작":"배낭";
             Component<TMP_Text>("Inventory/InventoryHeading").text=crafting?"제작법":"소지품";
