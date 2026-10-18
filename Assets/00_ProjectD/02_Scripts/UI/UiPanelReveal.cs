@@ -7,6 +7,8 @@ namespace DoHwa.UI
     public sealed class UiPanelReveal : MonoBehaviour
     {
         [SerializeField] private RectTransform[] sections = Array.Empty<RectTransform>();
+        [SerializeField] private Animator animator;
+        [SerializeField] private AnimationClip closeClip;
         private CanvasGroup group;
         private CanvasGroup[] sectionGroups;
         private Vector2[] rest;
@@ -31,6 +33,7 @@ namespace DoHwa.UI
         private void Awake()
         {
             TryGetComponent<CanvasGroup>(out group);
+            if(animator) return;
             rest = new Vector2[sections.Length];
             started = new float[sections.Length];
             moving = new bool[sections.Length];
@@ -59,6 +62,12 @@ namespace DoHwa.UI
         private void OnEnable() => Replay();
         public void Replay()
         {
+            if(animator)
+            {
+                revision++; leaving=false; entering=true;
+                group.interactable=false;group.blocksRaycasts=true;
+                animator.Play("Open",0,0);animator.Update(0);return;
+            }
             revision++;
             leaving = false;
             entering = true;
@@ -91,10 +100,12 @@ namespace DoHwa.UI
         public void RefreshContent(int index)
         {
             if (!isActiveAndEnabled || entering || leaving) return;
+            if(animator) { animator.Play("Refresh"+index,0,0); return; }
             StartSection(index, 0);
         }
         private void Update()
         {
+            if(animator) return;
             float elapsed = Time.unscaledTime - began;
             if (leaving)
             {
@@ -124,6 +135,15 @@ namespace DoHwa.UI
         }
         public async Awaitable HideAsync()
         {
+            if(animator)
+            {
+                int token=++revision;entering=false;leaving=true;group.interactable=false;
+                animator.CrossFadeInFixedTime("Close",.04f);
+                float end=Time.unscaledTime+closeClip.length+.04f;
+                try { while(Time.unscaledTime<end) { await Awaitable.NextFrameAsync(destroyCancellationToken);if(token!=revision)return; } }
+                catch(OperationCanceledException) { }
+                return;
+            }
             int current = ++revision;
             entering = false;
             leaving = true;
@@ -145,6 +165,7 @@ namespace DoHwa.UI
         {
             revision++;
             entering = leaving = false;
+            if(animator) return;
             for (int i = 0; i < sections.Length; i++)
             {
                 moving[i] = false;
@@ -158,5 +179,6 @@ namespace DoHwa.UI
                 }
             }
         }
+        public void OnOpened() { if(!leaving) { entering=false;group.interactable=true; } }
     }
 }

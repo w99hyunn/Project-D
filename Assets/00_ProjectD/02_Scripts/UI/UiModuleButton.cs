@@ -13,6 +13,7 @@ namespace DoHwa.UI
         [SerializeField] private Image iconMedallion;
         [SerializeField] private TMP_Text label;
         [SerializeField] private bool primary;
+        [SerializeField] private bool authoredMotion;
         private Button button;
         private bool hovered, pressed;
         private Material sheen;
@@ -70,6 +71,7 @@ namespace DoHwa.UI
 
         private void Awake()
         {
+            if(authoredMotion) return;
             TryGetComponent<Button>(out button); ApplyTheme();
             var overlay=new GameObject("InteractionSheen",typeof(RectTransform),typeof(Image));
             overlay.transform.SetParent(surface.transform,false);
@@ -83,6 +85,7 @@ namespace DoHwa.UI
         }
         private void Update()
         {
+            if(authoredMotion) return;
             bool enabledState = button.IsInteractable();
             bool focused = EventSystem.current && EventSystem.current.currentSelectedGameObject == gameObject;
             bool active = hovered || focused;

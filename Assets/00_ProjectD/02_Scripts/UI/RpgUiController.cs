@@ -92,13 +92,8 @@ namespace DoHwa.UI
         {
             TryGetComponent<UiBackdropBlur>(out backdropBlur);
             Bind();
-            sortMenu = inventory.AddComponent<InventorySortMenu>();
-            sortMenu.Initialize(this, (RectTransform)transform.Find("Inventory/Sort"));
-            var resultObject = new GameObject("CraftResult", typeof(RectTransform));
-            resultObject.transform.SetParent(transform, false);
-            craftResult = resultObject.AddComponent<CraftResultDialog>();
-            transform.Find("Inventory/Detail/Action").TryGetComponent<UiModuleButton>(out var resultTemplate);
-            craftResult.Initialize(resultTemplate, actionLabel);
+            inventory.TryGetComponent<InventorySortMenu>(out sortMenu);
+            transform.Find("CraftResult").TryGetComponent<CraftResultDialog>(out craftResult);
             bagKey=new InputAction("Bag",InputActionType.Button,"<Keyboard>/b");
             craftKey=new InputAction("Craft",InputActionType.Button,"<Keyboard>/c");
             mapKey=new InputAction("Map",InputActionType.Button,"<Keyboard>/m");
@@ -209,8 +204,8 @@ namespace DoHwa.UI
             if(modal) RestoreMovement();
         }
 
-        public void OpenInventory() { equipmentMode=false; crafting=false; filter=0; Show(inventory); Select(0); }
-        public void OpenCrafting() { equipmentMode=false; crafting=true; filter=0; Show(inventory); Select(3); }
+        public void OpenInventory() { equipmentMode=false; crafting=false; filter=0; Show(inventory); Select(0); ResetInventoryScroll(); }
+        public void OpenCrafting() { equipmentMode=false; crafting=true; filter=0; Show(inventory); Select(3); ResetInventoryScroll(); }
         public void OpenEquipment() { equipmentMode=true;crafting=false;filter=0;selectedPart=0;selected=loadout[0]>=0?loadout[0]:0;Show(character);Refresh(); }
         public void SelectEquipmentPart(int part) { bool changed=selectedPart!=part;selectedPart=part;if(loadout[part]>=0)selected=loadout[part];Refresh();if(changed && character.TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(2); }
         public void OpenMap() => Show(map);
@@ -221,7 +216,7 @@ namespace DoHwa.UI
             Show(settings);
         }
         public void SetVolume(float value) => AudioListener.volume=value;
-        public void SetFilter(int value) { bool changed=filter!=value || crafting;equipmentMode=false;filter=value; crafting=false; Refresh();if(changed && inventory.TryGetComponent<UiPanelReveal>(out var reveal)){reveal.RefreshContent(1);reveal.RefreshContent(2);} }
+        public void SetFilter(int value) { bool changed=filter!=value || crafting;equipmentMode=false;filter=value; crafting=false; Refresh(); ResetInventoryScroll();if(changed && inventory.TryGetComponent<UiPanelReveal>(out var reveal)){reveal.RefreshContent(1);reveal.RefreshContent(2);} }
         public void Select(int index) { bool changed=selected!=index;selected=index;if(equipmentMode)selectedPart=(int)items[index].equipmentPart; Refresh();var panel=equipmentMode?character:inventory;if(changed && panel.TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(2); }
         public void ShowQuickTooltip(int index)
         {
@@ -231,8 +226,13 @@ namespace DoHwa.UI
             Component<TMP_Text>("HUD/QuickTooltip/Label").text=item.title+"   /   "+item.quantity+"개";
         }
         public void HideQuickTooltip() => transform.Find("HUD/QuickTooltip").gameObject.SetActive(false);
+        private void ResetInventoryScroll()
+        {
+            var scroll=Component<UnityEngine.UI.ScrollRect>("Inventory/Grid");
+            scroll.StopMovement(); scroll.verticalNormalizedPosition=1;
+        }
         public void Sort() => sortMenu.Toggle();
-        public void SetSort(int order) { sortOrder=order; Refresh(); }
+        public void SetSort(int order) { sortOrder=order; Refresh(); ResetInventoryScroll(); }
 
         public void UseQuick(int index)
         {
