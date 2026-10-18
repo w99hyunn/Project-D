@@ -15,6 +15,7 @@ namespace DoHwa.UI
         [SerializeField] private TMP_Text selectedTitle;
         [SerializeField] private TMP_Text status;
         [SerializeField] private TMP_Text members;
+        [SerializeField] private RoomRoster roster;
         [SerializeField] private TMP_Text empty;
         [SerializeField] private TMP_Text startLabel;
         [SerializeField] private TMP_Text createStatus;
@@ -130,7 +131,7 @@ namespace DoHwa.UI
             start.interactable=!busy&&selected!=null&&(!InLobby||ownLobby)&&SteamRuntime.Ready;
             ((RectTransform)start.transform).anchoredPosition=new Vector2(32,InLobby?-436:-524);
             host.gameObject.SetActive(false);
-            members.gameObject.SetActive(InLobby);
+            members.gameObject.SetActive(false);
             invite.interactable=!busy&&InLobby&&SteamRuntime.Ready;
             leave.interactable=!busy&&InLobby;
             startLabel.text=busy?"준비 중":InLobby?(ownLobby?"게임 시작":"방장의 시작을 기다리는 중"):"방 생성";
@@ -186,8 +187,7 @@ namespace DoHwa.UI
         {
             if(!InLobby||busy||Time.unscaledTime<nextPoll)return;nextPoll=Time.unscaledTime+.5f;
             if(SteamMatchmaking.GetLobbyOwner(lobby).m_SteamID!=hostId){LeaveLobby();status.text="방장이 방을 종료했습니다";return;}
-            var names=new List<string>();for(int i=0;i<SteamMatchmaking.GetNumLobbyMembers(lobby);i++)names.Add(SteamFriends.GetFriendPersonaName(SteamMatchmaking.GetLobbyMemberByIndex(lobby,i))+(SteamMatchmaking.GetLobbyMemberByIndex(lobby,i).m_SteamID==hostId?"   방장":""));
-            members.text=string.Join("\n\n",names);
+            roster.Refresh(lobby,hostId);
             if(!ownLobby&&SteamMatchmaking.GetLobbyData(lobby,"ready")=="1")StartGame();
         }
         public void InviteFriends(){if(InLobby)SteamFriends.ActivateGameOverlayInviteDialog(lobby);}
