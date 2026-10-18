@@ -15,30 +15,27 @@ namespace DoHwa.UI
         [SerializeField] private bool unframed;
         [SerializeField] private UnityEngine.UI.Image selectionMarker;
         private bool hovered;
-        private float resultPulse;
-        public void PulseItem(int id) { if(id>=0 && index==id) resultPulse=1; }
+        [SerializeField] private Animator animator;
+        private bool pendingPulse;
+        public void PulseItem(int id) { if(id>=0 && index==id) { if(isActiveAndEnabled)animator.SetTrigger("ItemChanged");else pendingPulse=true; } }
         private bool chosen, pressed;
         private Vector2 artPosition;
         [SerializeField] private UnityEngine.UI.Image cardFace, quantityBand, equippedBadge;
         public void ConfigureCard(UnityEngine.UI.Image face, UnityEngine.UI.Image band, UnityEngine.UI.Image badge) { cardFace=face; quantityBand=band; equippedBadge=badge; }
 
         private void Awake() => artPosition=art.rectTransform.anchoredPosition;
-        private Color SurfaceColor() => chosen ? new Color(.68f,.82f,.94f) : hovered ? new Color(.89f,.94f,.98f) : Color.white;
-        private void Update()
+        private void OnEnable()
         {
-            float blend=1-Mathf.Exp(-24*Time.unscaledDeltaTime);
-            resultPulse=Mathf.MoveTowards(resultPulse,0,Time.unscaledDeltaTime*1.6f);
-            Color target=Color.Lerp(SurfaceColor(),Color.white,Mathf.Sin(resultPulse*Mathf.PI)*.8f);
-            if(pressed && button.IsInteractable()) target*=new Color(.90f,.93f,.97f,1);
-            border.color=Color.Lerp(border.color,target,blend);
-            if(!quick) {
-                Color face=chosen?new Color(.59f,.76f,.90f):hovered?new Color(.86f,.90f,.95f):new Color(.82f,.86f,.92f);
-                face=Color.Lerp(face,Color.white,Mathf.Sin(resultPulse*Mathf.PI)*.7f);
-                cardFace.color=Color.Lerp(cardFace.color,face,blend);
-                quantityBand.color=Color.Lerp(quantityBand.color,chosen?new Color(.90f,.95f,.99f):new Color(.98f,.98f,.97f),blend);
-            }
-            var offset=pressed && button.IsInteractable()?Vector2.down*2:Vector2.zero;
-            art.rectTransform.anchoredPosition=Vector2.Lerp(art.rectTransform.anchoredPosition,artPosition+offset,blend);
+            animator.Update(0);
+            SyncAnimation();
+            if(pendingPulse){animator.SetTrigger("ItemChanged");pendingPulse=false;}
+        }
+        private void SyncAnimation()
+        {
+            if(!isActiveAndEnabled)return;
+            animator.SetBool("ItemSelected",chosen);
+            animator.SetBool("ItemHovered",hovered && button.IsInteractable());
+            animator.SetBool("ItemPressed",pressed && button.IsInteractable());
         }
 
         public void ConfigureSkin(Sprite normal, Sprite selected) { normalFrame=normal; selectedFrame=selected; }
@@ -50,6 +47,12 @@ namespace DoHwa.UI
 
         public void Show(int id,Sprite sprite,int quantity,bool selected,bool worn,bool showEmpty=false)
         {
+            if(index!=id)pendingPulse=false;
+            if(index!=id && animator.isActiveAndEnabled)
+            {
+                animator.ResetTrigger("ItemChanged");
+                animator.Play("Idle",animator.GetLayerIndex("Result emphasis"),0);
+            }
             index=id; art.sprite=sprite; art.enabled=sprite; amount.text=id>=0 && (!quick || quantity>1)?quantity.ToString():"";
             border.enabled=!unframed || selected;
             chosen=selected;
@@ -67,13 +70,14 @@ namespace DoHwa.UI
             }
             equipped.gameObject.SetActive(quick && worn);
             equipped.text=worn?"장착":""; button.interactable=id>=0 && (!quick || quantity>0);
+            SyncAnimation();
             if(quick && hovered) owner.ShowQuickTooltip(index);
         }
         public void Click() { if(quick) owner.UseQuick(index); else owner.Select(index); }
-        public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData) { hovered=true; if(quick) owner.ShowQuickTooltip(index); }
-        public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData) { hovered=pressed=false; if(quick) owner.HideQuickTooltip(); }
-        public void OnPointerDown(UnityEngine.EventSystems.PointerEventData data) { if(data.button==UnityEngine.EventSystems.PointerEventData.InputButton.Left) pressed=true; }
-        public void OnPointerUp(UnityEngine.EventSystems.PointerEventData data) => pressed=false;
+        public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData) { hovered=true; SyncAnimation(); if(quick) owner.ShowQuickTooltip(index); }
+        public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData) { hovered=pressed=false; SyncAnimation(); if(quick) owner.HideQuickTooltip(); }
+        public void OnPointerDown(UnityEngine.EventSystems.PointerEventData data) { if(data.button==UnityEngine.EventSystems.PointerEventData.InputButton.Left) pressed=true; SyncAnimation(); }
+        public void OnPointerUp(UnityEngine.EventSystems.PointerEventData data) { pressed=false; SyncAnimation(); }
         private void OnDisable() { hovered=pressed=false; art.rectTransform.anchoredPosition=artPosition; }
     }
 }

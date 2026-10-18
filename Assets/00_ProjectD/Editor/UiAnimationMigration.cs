@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace DoHwa.UI.Editor
 {
     // One-time authoring utility. Generated clips/controllers are the editable source of motion.
-    public static class UiAnimationMigration
+    public static partial class UiAnimationMigration
     {
         private static string folder = "Assets/00_ProjectD/04_UI/Animations";
         private static AnimationClip Clip(string name)
@@ -117,6 +117,7 @@ namespace DoHwa.UI.Editor
                 }
             }
             AnimationUtility.SetAnimationEvents(open,new[]{new AnimationEvent {time=open.length,functionName="OnOpened"}});
+            AnimationUtility.SetAnimationEvents(close,new[]{new AnimationEvent {time=close.length,functionName="OnClosed"}});
             var states=new Dictionary<string,AnimationClip>{{"Open",open},{"Close",close}};
             for(int i=0;i<sections.Length;i++)
             {
@@ -132,9 +133,9 @@ namespace DoHwa.UI.Editor
             var animator=Controller(reveal.gameObject,reveal.name+"_Panel",states);
             Ref(reveal,"animator",animator);Ref(reveal,"closeClip",close);
         }
-        public static string FinishInteractions()
+        public static string FinishInteractions(GameObject root=null)
         {
-            var root=GameObject.Find("RpgCanvas");var shared=new Dictionary<string,RuntimeAnimatorController>();int count=0;
+            if(!root)root=GameObject.Find("RpgCanvas");var shared=new Dictionary<string,RuntimeAnimatorController>();int count=0;
             foreach(var legacy in root.GetComponentsInChildren<UiInteractionMotion>(true))
             {
                 var face=Field<Image>(legacy,"feedback");if(!face)continue;
