@@ -10,6 +10,7 @@ namespace DoHwa.UI
     {
         [SerializeField] private UiImageTheme theme;
         [SerializeField] private Image surface, frame, icon;
+        [SerializeField] private Image iconMedallion;
         [SerializeField] private TMP_Text label;
         [SerializeField] private bool primary;
         private Button button;
@@ -40,19 +41,24 @@ namespace DoHwa.UI
             surface.color = Color.white;
             icon.preserveAspect = true;
             label.color = primary ? theme.ink : theme.primaryInk;
-            icon.color = label.color;
+            icon.color = new Color(.96f,.95f,.91f);
             ApplyLayout();
         }
 
         private void ApplyLayout()
         {
+            float diameter = Mathf.Min(((RectTransform)transform).rect.height * .58f, 32f);
+            float sideInset = (((RectTransform)transform).rect.height - diameter) * .5f;
             var rt = icon.rectTransform;
             rt.anchorMin = rt.anchorMax = new Vector2(0, .5f); rt.pivot = new Vector2(.5f, .5f);
-            rt.anchoredPosition = new Vector2(theme.iconInset + theme.iconSize * .5f, 0);
-            rt.sizeDelta = Vector2.one * theme.iconSize;
+            rt.anchoredPosition = new Vector2(sideInset + diameter * .5f, 0);
+            rt.sizeDelta = Vector2.one * (diameter * .65f);
+            var disk = iconMedallion.rectTransform;
+            disk.anchorMin = disk.anchorMax = new Vector2(0,.5f); disk.pivot = new Vector2(.5f,.5f);
+            disk.anchoredPosition = rt.anchoredPosition; disk.sizeDelta = Vector2.one * diameter;
             var text = label.rectTransform;
             text.anchorMin = Vector2.zero; text.anchorMax = Vector2.one;
-            float inset = theme.iconInset * 2 + (icon.enabled ? theme.iconSize : 0);
+            float inset = sideInset + (icon.enabled ? diameter + 10 : 0);
             text.offsetMin = new Vector2(inset, 0); text.offsetMax = new Vector2(-theme.iconInset, 0);
             label.alignment = TextAlignmentOptions.Center;
         }
@@ -67,7 +73,7 @@ namespace DoHwa.UI
             Color face = !enabledState ? new Color(.84f,.85f,.87f,.65f) : pressed ? new Color(.80f,.83f,.87f) : active ? new Color(.94f,.97f,1f) : Color.white;
             Color edge = theme.accent; edge.a = !enabledState ? .12f : pressed ? .75f : active ? .55f : .3f;
             Color text = primary ? theme.ink : theme.primaryInk; text.a = enabledState ? 1 : .6f;
-            Color symbol = text;
+            Color symbol = new Color(.96f,.95f,.91f,enabledState ? 1 : .6f);
             surface.color = Color.Lerp(surface.color, face, blend);
             frame.color = Color.Lerp(frame.color, edge, blend);
             label.color = Color.Lerp(label.color, text, blend);
@@ -80,3 +86,6 @@ namespace DoHwa.UI
         private void OnDisable() { hovered = false; pressed = false; }
     }
 }
+
+
+

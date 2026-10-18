@@ -10,10 +10,10 @@ Sprite:
   m_Name: CancelIcon
   m_Rect:
     serializedVersion: 2
-    x: 995
-    y: 86
-    width: 671
-    height: 668
+    x: 983
+    y: 74
+    width: 695
+    height: 692
   m_Offset: {x: 0, y: 0}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 100
@@ -102,7 +102,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 52b856c08fc255400000000052b856408fc255400000000052b856c08fc255c00000000052b856408fc255c0000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 66665ec0a4705d400000000066665e40a4705d400000000066665ec0a4705dc00000000066665e40a4705dc0000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     m_BlendShapes:
       vertices: []
@@ -111,10 +111,10 @@ Sprite:
       fullWeights: []
     textureRect:
       serializedVersion: 2
-      x: 995
-      y: 86
-      width: 671
-      height: 668
+      x: 983
+      y: 74
+      width: 695
+      height: 692
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 3072
@@ -198,7 +198,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 52b856c08fc255400000000052b856408fc255400000000052b856c08fc255c00000000052b856408fc255c0000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 66665ec0a4705d400000000066665e40a4705d400000000066665ec0a4705dc00000000066665e40a4705dc0000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     m_BlendShapes:
       vertices: []
@@ -207,10 +207,10 @@ Sprite:
       fullWeights: []
     textureRect:
       serializedVersion: 2
-      x: 995
-      y: 86
-      width: 671
-      height: 668
+      x: 983
+      y: 74
+      width: 695
+      height: 692
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 3072
