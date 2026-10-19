@@ -39372,6 +39372,7 @@ MonoBehaviour:
   - {fileID: 497299070}
   - {fileID: 1287404730}
   - {fileID: 1680247478}
+  heroCamera: {fileID: 1092012533}
 --- !u!1 &391783469
 GameObject:
   m_ObjectHideFlags: 0

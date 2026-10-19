@@ -18,11 +18,8 @@ namespace DoHwa.World
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics() { Ready = false; Error = ""; PendingLobby = default; JoinRequested = null; }
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void Boot() => new GameObject("Steam Runtime").AddComponent<SteamRuntime>();
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
             Settings = Resources.Load<SteamSettings>("SteamSettings");
             try
             {
@@ -55,7 +52,7 @@ namespace DoHwa.World
         {
             PendingLobby = lobby;
             if (JoinRequested != null) JoinRequested.Invoke(lobby);
-            else if (SceneManager.GetActiveScene().name != "Main") SceneManager.LoadSceneAsync("Main");
+            else if (SceneManager.GetActiveScene().name != "Main") _ = DoHwa.UI.UiSceneTransition.LoadAsync("Main");
         }
         public static void ClearPending() => PendingLobby = default;
         public static void SetPending(CSteamID lobby) => PendingLobby = lobby;

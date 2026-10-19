@@ -8,7 +8,7 @@ namespace DoHwa
         [SerializeField] private SpriteRenderer[] sources;
         [SerializeField] private SpriteRenderer[] shadows;
         private MaterialPropertyBlock properties;
-        private HeroCamera heroCamera;
+        [SerializeField] private HeroCamera heroCamera;
         private static readonly int GroundPlane = Shader.PropertyToID("_GroundPlane");
 
         public void Configure(SpriteRenderer[] sourceLayers, SpriteRenderer[] shadowLayers)
@@ -20,7 +20,6 @@ namespace DoHwa
         private void Awake()
         {
             properties = new MaterialPropertyBlock();
-            Camera.main.TryGetComponent<HeroCamera>(out heroCamera);
         }
 
         private void LateUpdate()
