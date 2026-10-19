@@ -2,6 +2,7 @@ Shader "DoHwa/UI/Menu Edge Shade"
 {
     Properties
     {
+        [PerRendererData] _MainTex("Sprite Texture",2D)="white" {}
         _Color("Shade",Color)=(0.07,0.10,0.16,0.62)
         [Toggle] _LeftEdge("Left edge",Float)=0
     }
