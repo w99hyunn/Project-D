@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using DoHwa.World;
 using Steamworks;
@@ -129,7 +129,8 @@ namespace DoHwa.UI
         private void UpdateState()
         {
             start.interactable=!busy&&selected!=null&&(!InLobby||ownLobby)&&SteamRuntime.Ready;
-            ((RectTransform)start.transform).anchoredPosition=new Vector2(32,InLobby?-436:-524);
+            start.TryGetComponent<UiVisualState>(out var startState);
+            startState.SetActiveState(InLobby);
             host.gameObject.SetActive(false);
             members.gameObject.SetActive(false);
             invite.interactable=!busy&&InLobby&&SteamRuntime.Ready;

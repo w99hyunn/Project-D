@@ -361,18 +361,9 @@ namespace DoHwa.UI
             Component<TMP_Text>("Inventory/Header/Title").text=crafting?"제작":"배낭";
             Component<TMP_Text>("Inventory/InventoryHeading").text=crafting?"제작법":"소지품";
             Component<TMP_Text>("Inventory/InventorySubheading").text=crafting?"숲에서 모은 재료로 여정을 준비하세요":"여정에서 모은 도구와 작은 발견들";
-            for(int i=0;i<4;i++) {
-                bool active=!equipmentMode&&!crafting&&filter==i;
-                Component<UnityEngine.UI.Image>("Inventory/Filters/Filter"+i).color=active?new Color(.29f,.32f,.39f):Color.clear;
-                transform.Find("Inventory/Filters/Filter"+i+"/SelectionLine").gameObject.SetActive(false);
-                Component<TMP_Text>("Inventory/Filters/Filter"+i+"/Label").color=active?new Color(.97f,.96f,.93f):new Color(.94f,.96f,.98f);
-                var glyph=transform.Find("Inventory/Filters/Filter"+i+"/Glyph");
-                if(glyph && glyph.TryGetComponent<UnityEngine.UI.Image>(out var graphic)) graphic.color=active?new Color(.97f,.96f,.93f):new Color(.94f,.96f,.98f);
-            }
-            Component<UnityEngine.UI.Image>("Inventory/Filters/Craft").color=crafting?new Color(.29f,.32f,.39f):Color.clear;
-            transform.Find("Inventory/Filters/Craft/SelectionLine").gameObject.SetActive(false);
-            Component<TMP_Text>("Inventory/Filters/Craft/Label").color=crafting?new Color(.97f,.96f,.93f):new Color(.94f,.96f,.98f);
-            Component<UnityEngine.UI.Image>("Inventory/Filters/Craft/Glyph").color=crafting?new Color(.97f,.96f,.93f):new Color(.94f,.96f,.98f);
+            for(int i=0;i<4;i++)
+                Component<UiVisualState>("Inventory/Filters/Filter"+i).SetActiveState(!equipmentMode&&!crafting&&filter==i);
+            Component<UiVisualState>("Inventory/Filters/Craft").SetActiveState(crafting);
             healthLabel.text=$"{health:0} / 100"; foodLabel.text=$"{food:0} / 100";
             healthMotion.SetValue(health/100); foodMotion.SetValue(food/100);
             Component<TMP_Text>("Inventory/Equipment/Equipped").text="무기\n"+(loadout[0]>=0?items[loadout[0]].title:"미착용");
@@ -381,8 +372,7 @@ namespace DoHwa.UI
             transform.Find("Inventory/Sort").gameObject.SetActive(!equipmentMode);
             equipmentPanel.gameObject.SetActive(equipmentMode);
             transform.Find("Inventory/Equipment").gameObject.SetActive(false);
-            Component<UnityEngine.UI.Image>("Inventory/EquipmentTab").color=equipmentMode?new Color(.29f,.32f,.39f):Color.clear;
-            Component<TMP_Text>("Inventory/EquipmentTab/Label").color=equipmentMode?new Color(.97f,.96f,.93f):new Color(.94f,.96f,.98f);
+            Component<UiVisualState>("Inventory/EquipmentTab").SetActiveState(equipmentMode);
             if(!crafting) {
                 actionLabel.text=item.category=="장비"?(IsEquipped(selected)?"장착 중":"장착하기"):actionLabel.text;
                 if(item.category=="장비") action.interactable=item.quantity>0&&!IsEquipped(selected);

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace DoHwa.UI
@@ -69,7 +69,8 @@ namespace DoHwa.UI
             login.SetActive(!LoginEntry.SignedIn);
             home.SetActive(LoginEntry.SignedIn&&!selecting&&!joining&&!lobby);
             joinPage.SetActive(false);
-            shade.color=new Color(.025f,.055f,.07f,selecting||joining||lobby?.25f:.20f);
+            shade.TryGetComponent<UiVisualState>(out var shadeState);
+            shadeState.SetActiveState(selecting||joining||lobby);
             worlds.SetActive(selecting&&!lobby);
             room.SetActive(lobby);
             departure.SetActive(selecting||lobby);

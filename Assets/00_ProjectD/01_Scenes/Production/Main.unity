@@ -510,14 +510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1179899122}
-  frame: {fileID: 511900056}
   icon: {fileID: 1442516115}
-  iconMedallion: {fileID: 906416175}
   label: {fileID: 1374760722}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &10057085
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1022,7 +1016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52188969
@@ -1038,7 +1032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1369,14 +1363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1599094251}
-  frame: {fileID: 395281516}
   icon: {fileID: 2038415720}
-  iconMedallion: {fileID: 1315649765}
   label: {fileID: 1114721501}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &100498539
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2162,7 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3339,8 +3327,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.999998, y: 0}
-  m_SizeDelta: {x: -82, y: 0}
+  m_AnchoredPosition: {x: 14.999998, y: 0}
+  m_SizeDelta: {x: -78, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224201283
 MonoBehaviour:
@@ -3864,7 +3852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 20.8, y: 20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249867752
@@ -3880,7 +3868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4045,7 +4033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4313,14 +4301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1421119876}
-  frame: {fileID: 959761320}
   icon: {fileID: 2065846731}
-  iconMedallion: {fileID: 1137034513}
   label: {fileID: 107389057}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &260552118
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5440,7 +5422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313231801
@@ -5456,7 +5438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6088,7 +6070,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 5.4098363
+  m_PixelsPerUnitMultiplier: 6.226415
 --- !u!222 &368821752
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6206,8 +6188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.999998, y: 0}
-  m_SizeDelta: {x: -82, y: 0}
+  m_AnchoredPosition: {x: 14.999998, y: 0}
+  m_SizeDelta: {x: -78, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &373946967
 MonoBehaviour:
@@ -7227,8 +7209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.999998, y: 0}
-  m_SizeDelta: {x: -82, y: 0}
+  m_AnchoredPosition: {x: 14.999998, y: 0}
+  m_SizeDelta: {x: -78, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427917582
 MonoBehaviour:
@@ -7895,7 +7877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8101,14 +8083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1940585334}
-  frame: {fileID: 718962431}
   icon: {fileID: 694046194}
-  iconMedallion: {fileID: 121356880}
   label: {fileID: 1152534434}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &450169022
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8281,7 +8257,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 5.4098363
+  m_PixelsPerUnitMultiplier: 6.226415
 --- !u!222 &461128212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8735,14 +8711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 554527732}
-  frame: {fileID: 1515469211}
   icon: {fileID: 720882606}
-  iconMedallion: {fileID: 1669534768}
   label: {fileID: 1269665396}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &496594954
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9098,7 +9068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10733,14 +10703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 2008195610}
-  frame: {fileID: 764366845}
   icon: {fileID: 1376461176}
-  iconMedallion: {fileID: 1720159251}
   label: {fileID: 119791563}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &591038839
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -12357,7 +12321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13217,7 +13181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13351,7 +13315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 20.8, y: 20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701305339
@@ -13367,7 +13331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15010,7 +14974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16019,14 +15983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 890324306}
-  frame: {fileID: 2056954437}
   icon: {fileID: 1418187614}
-  iconMedallion: {fileID: 199787926}
   label: {fileID: 1411480617}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &901559925
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16164,7 +16122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16328,14 +16286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 2066014805}
-  frame: {fileID: 527447686}
   icon: {fileID: 725255440}
-  iconMedallion: {fileID: 300854234}
   label: {fileID: 1820768569}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &942347594
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17009,7 +16961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963562087
@@ -17025,7 +16977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17459,14 +17411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 134004194}
-  frame: {fileID: 1250296912}
   icon: {fileID: 1179974583}
-  iconMedallion: {fileID: 1107420881}
   label: {fileID: 1262936179}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &980047727
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -18063,7 +18009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21922,7 +21868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22206,6 +22152,8 @@ GameObject:
   - component: {fileID: 1134414493}
   - component: {fileID: 1134414495}
   - component: {fileID: 1134414494}
+  - component: {fileID: 1134414497}
+  - component: {fileID: 1134414496}
   m_Layer: 0
   m_Name: MenuReadability
   m_TagString: Untagged
@@ -22270,6 +22218,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134414492}
   m_CullTransparentMesh: 1
+--- !u!114 &1134414496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134414492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0979b0185c795543ae45d6863c3df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiVisualState
+--- !u!95 &1134414497
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134414492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fb101da3a2978c4f8ff1b044cf5d188, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1137034511
 GameObject:
   m_ObjectHideFlags: 0
@@ -25346,7 +25328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -27243,14 +27225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1528906503}
-  frame: {fileID: 8905556}
   icon: {fileID: 507709612}
-  iconMedallion: {fileID: 2098462068}
   label: {fileID: 1460768137}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1263186456
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -27788,14 +27764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 426998654}
-  frame: {fileID: 1983971160}
   icon: {fileID: 371652495}
-  iconMedallion: {fileID: 2118263777}
   label: {fileID: 2064080087}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &1281969486
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -28256,7 +28226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -30471,6 +30441,7 @@ GameObject:
   - component: {fileID: 1414171233}
   - component: {fileID: 1414171232}
   - component: {fileID: 1414171231}
+  - component: {fileID: 1414171238}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -30514,7 +30485,7 @@ Animator:
   m_GameObject: {fileID: 1414171229}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8e2847ed5de0622489497c292c86cc72, type: 2}
+  m_Controller: {fileID: 9100000, guid: a57dd3022f38d4844a3273a0be41b39e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 2
   m_ApplyRootMotion: 0
@@ -30561,14 +30532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1922263219}
-  frame: {fileID: 1601561017}
   icon: {fileID: 1829006883}
-  iconMedallion: {fileID: 1965759498}
   label: {fileID: 259382751}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &1414171234
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30675,6 +30640,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1414171238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414171229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0979b0185c795543ae45d6863c3df64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiVisualState
 --- !u!1 &1418187612
 GameObject:
   m_ObjectHideFlags: 0
@@ -31068,7 +31045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -31634,14 +31611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1911598619}
-  frame: {fileID: 1040347042}
   icon: {fileID: 701305339}
-  iconMedallion: {fileID: 963562087}
   label: {fileID: 373946967}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1484090879
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -32325,14 +32296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1607014251}
-  frame: {fileID: 382835403}
   icon: {fileID: 1164677197}
-  iconMedallion: {fileID: 611166096}
   label: {fileID: 1617882734}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &1520409784
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -33455,14 +33420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 461128211}
-  frame: {fileID: 2058918712}
   icon: {fileID: 249867752}
-  iconMedallion: {fileID: 52188969}
   label: {fileID: 427917582}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1586735672
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -36025,14 +35984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1152358148}
-  frame: {fileID: 733484093}
   icon: {fileID: 639835795}
-  iconMedallion: {fileID: 2074254161}
   label: {fileID: 49684604}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1691711455
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -36985,14 +36938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 368821751}
-  frame: {fileID: 1532170446}
   icon: {fileID: 2106965234}
-  iconMedallion: {fileID: 313231801}
   label: {fileID: 224201283}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1740580649
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -37609,14 +37556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 318885473}
-  frame: {fileID: 1850607574}
   icon: {fileID: 439510101}
-  iconMedallion: {fileID: 779774228}
   label: {fileID: 270658272}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &1774845185
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -40357,7 +40298,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 5.4098363
+  m_PixelsPerUnitMultiplier: 6.226415
 --- !u!222 &1911598620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41597,7 +41538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -41951,14 +41892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1455547591}
-  frame: {fileID: 614672807}
   icon: {fileID: 1041524431}
-  iconMedallion: {fileID: 258981889}
   label: {fileID: 1955383304}
-  primary: 0
-  authoredMotion: 1
 --- !u!225 &2049433838
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -42719,14 +42654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89efc36adc7fd47bd3d5b6bde7842f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.UI.UiModuleButton
-  theme: {fileID: 11400000, guid: 8fe071fa33aa9e641a2ce15a9abcafd8, type: 2}
-  surface: {fileID: 1806141297}
-  frame: {fileID: 1184110174}
   icon: {fileID: 1426443243}
-  iconMedallion: {fileID: 1825061591}
   label: {fileID: 1863908062}
-  primary: 1
-  authoredMotion: 1
 --- !u!225 &2061856281
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -43326,7 +43255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -43776,7 +43705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
+  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -43942,7 +43871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 0}
+  m_AnchoredPosition: {x: 28, y: 0}
   m_SizeDelta: {x: 20.8, y: 20.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106965234
@@ -43958,7 +43887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.96, g: 0.95, b: 0.91, a: 1}
+  m_Color: {r: 0.2, g: 0.24, b: 0.28, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

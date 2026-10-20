@@ -19,11 +19,11 @@ namespace DoHwa.UI
         private bool pendingPulse;
         public void PulseItem(int id) { if(id>=0 && index==id) { if(isActiveAndEnabled)animator.SetTrigger("ItemChanged");else pendingPulse=true; } }
         private bool chosen, pressed;
-        private Vector2 artPosition;
+
         [SerializeField] private UnityEngine.UI.Image cardFace, quantityBand, equippedBadge;
         public void ConfigureCard(UnityEngine.UI.Image face, UnityEngine.UI.Image band, UnityEngine.UI.Image badge) { cardFace=face; quantityBand=band; equippedBadge=badge; }
 
-        private void Awake() => artPosition=art.rectTransform.anchoredPosition;
+
         private void OnEnable()
         {
             animator.Update(0);
@@ -57,12 +57,6 @@ namespace DoHwa.UI
             border.enabled=!unframed || selected;
             chosen=selected;
             selectionMarker.enabled=false;
-            if(normalFrame) { border.sprite=normalFrame; }
-            else border.color=selected?new Color(.97f,.96f,.89f):new Color(.75f,.82f,.86f,.10f);
-            if(quick) {
-                transform.Find("Key").TryGetComponent<TMP_Text>(out var key);
-                key.color=amount.color=new Color(.22f,.25f,.28f);
-            }
             if(!quick) {
                 gameObject.SetActive(id>=0 || showEmpty);
                 cardFace.enabled=quantityBand.enabled=id>=0;
@@ -78,7 +72,7 @@ namespace DoHwa.UI
         public void OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData) { hovered=pressed=false; SyncAnimation(); if(quick) owner.HideQuickTooltip(); }
         public void OnPointerDown(UnityEngine.EventSystems.PointerEventData data) { if(data.button==UnityEngine.EventSystems.PointerEventData.InputButton.Left) pressed=true; SyncAnimation(); }
         public void OnPointerUp(UnityEngine.EventSystems.PointerEventData data) { pressed=false; SyncAnimation(); }
-        private void OnDisable() { hovered=pressed=false; art.rectTransform.anchoredPosition=artPosition; }
+        private void OnDisable() { hovered=pressed=false; }
     }
 }
 
