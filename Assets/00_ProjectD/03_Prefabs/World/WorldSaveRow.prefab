@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7665492926754088128}
   - component: {fileID: 5415799086695065082}
   - component: {fileID: 2391631342006238346}
+  - component: {fileID: 5042047341007626114}
   m_Layer: 0
   m_Name: Detail
   m_TagString: Untagged
@@ -153,6 +154,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0.07, g: 0.1, b: 0.12, a: 0.6}
   m_EffectDistance: {x: 0, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!225 &5042047341007626114
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081107043399303914}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2919264341023988139
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +180,8 @@ GameObject:
   - component: {fileID: 1864164348988009725}
   - component: {fileID: 3497358327953753637}
   - component: {fileID: 8862355218226951675}
+  - component: {fileID: 3170598070547900600}
+  - component: {fileID: 2431877642876818104}
   m_Layer: 0
   m_Name: WorldSaveRow
   m_TagString: Untagged
@@ -316,6 +331,40 @@ MonoBehaviour:
   detail: {fileID: 5415799086695065082}
   selected: {fileID: 3985439219745755424}
   button: {fileID: 1864164348988009725}
+--- !u!225 &3170598070547900600
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919264341023988139}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &2431877642876818104
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2919264341023988139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 413399f1dc4b71f4aa4eb57585477af5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3096000607226855746
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +377,7 @@ GameObject:
   - component: {fileID: 6976614349266442240}
   - component: {fileID: 6647653542300445633}
   - component: {fileID: 7340679362332080927}
+  - component: {fileID: 5557386496878981792}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -469,6 +519,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0.07, g: 0.1, b: 0.12, a: 0.6}
   m_EffectDistance: {x: 0, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!225 &5557386496878981792
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096000607226855746}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5163554263971681984
 GameObject:
   m_ObjectHideFlags: 0

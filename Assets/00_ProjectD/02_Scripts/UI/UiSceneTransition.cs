@@ -71,6 +71,9 @@ namespace DoHwa.UI
                 }
                 if(previous.name!="System")
                     await Awaitable.FromAsyncOperation(SceneManager.UnloadSceneAsync(previous),curtain.destroyCancellationToken);
+                foreach(var root in SceneManager.GetActiveScene().GetRootGameObjects())
+                    foreach(var ui in root.GetComponentsInChildren<RpgUiController>(true))
+                        await ui.PrepareMenusAsync();
                 await Awaitable.NextFrameAsync(curtain.destroyCancellationToken);
                 await curtain.PlayAsync("Reveal");
             }

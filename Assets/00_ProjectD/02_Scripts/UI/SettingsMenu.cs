@@ -23,8 +23,20 @@ namespace DoHwa.UI
             coopPanel.ShowSettings();
             settingsSelection.isOn=true;
         }
-        public void ShowSettings(){if(ExitOpen)CloseExit();coopPanel.ShowSettings();settingsSelection.isOn=true;}
-        public void ShowCoop(){if(ExitOpen)CloseExit();coopPanel.ShowRoom();coopSelection.isOn=true;}
+        public void ShowSettings()
+        {
+            if(ExitOpen)CloseExit();
+            bool changed=!preferences.activeSelf;
+            coopPanel.ShowSettings();settingsSelection.isOn=true;
+            if(changed && TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(0);
+        }
+        public void ShowCoop()
+        {
+            if(ExitOpen)CloseExit();
+            bool changed=!coopPanel.gameObject.activeSelf;
+            coopPanel.ShowRoom();coopSelection.isOn=true;
+            if(changed && TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(1);
+        }
         public void ShowExit()
         {
             returningToMain=false;

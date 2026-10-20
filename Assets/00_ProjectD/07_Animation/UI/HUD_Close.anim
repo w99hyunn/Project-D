@@ -31,7 +31,25 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.12
+        time: 0.0528
+        value: 0.68
+        inSlope: -8.333334
+        outSlope: -8.333334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.1488
+        value: 0.089999974
+        inSlope: -2.2916667
+        outSlope: -2.2916667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.24
         value: 0
         inSlope: 0
         outSlope: 0
@@ -71,7 +89,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.12
+    m_StopTime: 0.24
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -101,7 +119,25 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.12
+        time: 0.0528
+        value: 0.68
+        inSlope: -8.333334
+        outSlope: -8.333334
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.1488
+        value: 0.089999974
+        inSlope: -2.2916667
+        outSlope: -2.2916667
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.24
         value: 0
         inSlope: 0
         outSlope: 0
@@ -121,7 +157,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.12
+  - time: 0.24
     functionName: OnClosed
     data: 
     objectReferenceParameter: {fileID: 0}

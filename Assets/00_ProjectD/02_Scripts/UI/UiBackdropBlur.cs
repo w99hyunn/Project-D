@@ -8,6 +8,18 @@ namespace DoHwa.UI
         [SerializeField] private Animator animator;
         public static bool IsVisible {get;private set;}
         private bool shown;
+        public async Awaitable PrepareAsync()
+        {
+            if(IsVisible)return;
+            IsVisible=true;
+            try
+            {
+                // Let the renderer allocate its targets before the first menu opens.
+                await Awaitable.NextFrameAsync(destroyCancellationToken);
+                await Awaitable.NextFrameAsync(destroyCancellationToken);
+            }
+            finally { IsVisible=shown; }
+        }
         public async Awaitable CaptureAsync()
         {
             IsVisible=true;shown=true;

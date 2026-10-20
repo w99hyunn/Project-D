@@ -41,6 +41,7 @@ namespace DoHwa.UI
         private CraftResultDialog craftResult;
         private UiBackdropBlur backdropBlur;
         private bool capturingBackdrop;
+        private bool preparingMenus, menusReady;
         private bool equipmentMode;
         private int selectedPart;
         private EquipmentPanel equipmentPanel;
@@ -133,6 +134,44 @@ namespace DoHwa.UI
             foreach(var key in quickKeys) key.Enable();
         }
 
+        private async void Start()
+        {
+            try { await PrepareMenusAsync(); }
+            catch(OperationCanceledException) { }
+        }
+
+        public async Awaitable PrepareMenusAsync()
+        {
+            while(preparingMenus)await Awaitable.NextFrameAsync(destroyCancellationToken);
+            if(menusReady)return;
+            preparingMenus=true;
+            TryGetComponent<Canvas>(out var canvas);
+            bool wasVisible=canvas.enabled;
+            canvas.enabled=false;
+            var panels=new[]{inventory,character,map,journal,settings};
+            try
+            {
+                await backdropBlur.PrepareAsync();
+                foreach(var panel in panels)
+                {
+                    bool wasActive=panel.activeSelf;
+                    panel.SetActive(true);
+                    try
+                    {
+                        Canvas.ForceUpdateCanvases();
+                        await Awaitable.NextFrameAsync(destroyCancellationToken);
+                    }
+                    finally { if(panel)panel.SetActive(wasActive); }
+                }
+                menusReady=true;
+            }
+            finally
+            {
+                preparingMenus=false;
+                if(canvas)canvas.enabled=wasVisible;
+            }
+        }
+
         private void OnDisable()
         {
             bagKey.Disable(); craftKey.Disable(); mapKey.Disable(); journalKey.Disable(); escapeKey.Disable(); equipmentKey.Disable();
@@ -148,6 +187,7 @@ namespace DoHwa.UI
 
         private void Update()
         {
+            if(preparingMenus)return;
             if(craftResult.IsOpen)
             {
                 if(escapeKey.WasPressedThisFrame()) craftResult.Close();
@@ -174,9 +214,11 @@ namespace DoHwa.UI
 
         private async void Show(GameObject panel)
         {
+            if(!menusReady)await PrepareMenusAsync();
+            bool alreadyOpen = panel.activeSelf;
+            if(alreadyOpen && modal && panel.TryGetComponent<UiPanelReveal>(out var panelMotion) && !panelMotion.IsLeaving)return;
             int current=++transition;
             if(craftResult.IsOpen) craftResult.Close();
-            bool alreadyOpen = panel.activeSelf;
             HideQuickTooltip();
             if(!modal) {
                 wasMotorEnabled=motor.enabled; wasViewEnabled=view.enabled; motor.enabled=false; view.enabled=false; modal=true;
@@ -198,7 +240,7 @@ namespace DoHwa.UI
             inventory.SetActive(panel==inventory); map.SetActive(panel==map); journal.SetActive(panel==journal); settings.SetActive(panel==settings);
             character.SetActive(panel==character);
             transform.Find("HUD").gameObject.SetActive(false);
-            if(alreadyOpen && panel.TryGetComponent<UiPanelReveal>(out var reveal)) reveal.Replay();
+            if(alreadyOpen && panel.TryGetComponent<UiPanelReveal>(out var reveal))reveal.Replay();
         }
 
         private void RestoreMovement()
@@ -240,7 +282,7 @@ namespace DoHwa.UI
             Show(settings);
         }
         public void SetVolume(float value) => AudioListener.volume=value;
-        public void SetFilter(int value) { bool changed=filter!=value || crafting;equipmentMode=false;filter=value; crafting=false; Refresh(); ResetInventoryScroll();if(changed && inventory.TryGetComponent<UiPanelReveal>(out var reveal)){reveal.RefreshContent(1);reveal.RefreshContent(2);} }
+        public void SetFilter(int value) { bool changed=filter!=value || crafting;equipmentMode=false;filter=value; crafting=false; Refresh(); ResetInventoryScroll();if(changed && inventory.TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(1); }
         public void Select(int index) { bool changed=selected!=index;selected=index;if(equipmentMode)selectedPart=(int)items[index].equipmentPart; Refresh();var panel=equipmentMode?character:inventory;if(changed && panel.TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(2); }
         public void ShowQuickTooltip(int index)
         {
@@ -342,7 +384,6 @@ namespace DoHwa.UI
             {
                 int id=i<visible.Length?visible[i]:-1;
                 slots[i].Show(id,id>=0?items[id].icon:null,id>=0?items[id].quantity:0,id==selected,id>=0&&IsEquipped(id),!crafting&&filter==0);
-                slots[i].transform.SetSiblingIndex(i);
             }
             for(int i=0;i<quickSlots.Length;i++) { int id=quickItems[i]; quickSlots[i].Show(i,items[id].icon,items[id].quantity,i==quickSelected,false); }
             var item=items[selected]; title.text=item.title; category.text=crafting?"제작법":item.category;

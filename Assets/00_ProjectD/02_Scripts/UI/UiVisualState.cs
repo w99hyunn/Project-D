@@ -7,9 +7,10 @@ namespace DoHwa.UI
         private Animator animator;
         private bool activeState;
         private void Awake() => TryGetComponent<Animator>(out animator);
-        private void OnEnable() { animator.Update(0); animator.SetBool("StyleActive", activeState); }
+        private void OnEnable() => animator.SetBool("StyleActive", activeState);
         public void SetActiveState(bool value)
         {
+            if(activeState==value)return;
             activeState = value;
             if (isActiveAndEnabled) animator.SetBool("StyleActive", value);
         }

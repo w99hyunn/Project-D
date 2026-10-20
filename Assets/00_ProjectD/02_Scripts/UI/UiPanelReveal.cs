@@ -11,6 +11,7 @@ namespace DoHwa.UI
         private CanvasGroup group;
         private int revision;
         private bool entering,leaving,closed;
+        public bool IsLeaving => leaving;
         public void Configure(RectTransform[] targets)=>sections=targets;
         private void Awake()=>TryGetComponent<CanvasGroup>(out group);
         private void OnEnable()=>Replay();
@@ -18,18 +19,22 @@ namespace DoHwa.UI
         public void ReplayState(string state)
         {
             revision++;leaving=closed=false;entering=true;
-            group.interactable=false;group.blocksRaycasts=true;
+            group.interactable=true;group.blocksRaycasts=true;
             animator.Play(state,0,0);animator.Update(0);
         }
         public void RefreshContent(int index)
         {
             if(!isActiveAndEnabled || entering || leaving)return;
-            animator.Play("Refresh"+index,0,0);
+            animator.CrossFadeInFixedTime("Refresh"+index,.08f,0,0);
         }
         public async Awaitable HideAsync(string state="Close")
         {
-            int token=++revision;entering=false;leaving=true;closed=false;group.interactable=false;
-            animator.CrossFadeInFixedTime(state,.04f);
+            if(!leaving)
+            {
+                revision++;entering=false;leaving=true;closed=false;
+                animator.CrossFadeInFixedTime(state,.04f);
+            }
+            int token=revision;
             try
             {
                 while(!closed)

@@ -19,6 +19,8 @@ namespace DoHwa.UI
         private bool pendingPulse;
         public void PulseItem(int id) { if(id>=0 && index==id) { if(isActiveAndEnabled)animator.SetTrigger("ItemChanged");else pendingPulse=true; } }
         private bool chosen, pressed;
+        private bool hasContent, displayedWorn, displayedEmpty;
+        private int displayedQuantity;
 
         [SerializeField] private UnityEngine.UI.Image cardFace, quantityBand, equippedBadge;
         public void ConfigureCard(UnityEngine.UI.Image face, UnityEngine.UI.Image band, UnityEngine.UI.Image badge) { cardFace=face; quantityBand=band; equippedBadge=badge; }
@@ -26,7 +28,6 @@ namespace DoHwa.UI
 
         private void OnEnable()
         {
-            animator.Update(0);
             SyncAnimation();
             if(pendingPulse){animator.SetTrigger("ItemChanged");pendingPulse=false;}
         }
@@ -47,6 +48,9 @@ namespace DoHwa.UI
 
         public void Show(int id,Sprite sprite,int quantity,bool selected,bool worn,bool showEmpty=false)
         {
+            if(hasContent && index==id && art.sprite==sprite && displayedQuantity==quantity &&
+               chosen==selected && displayedWorn==worn && displayedEmpty==showEmpty)return;
+            hasContent=true;displayedQuantity=quantity;displayedWorn=worn;displayedEmpty=showEmpty;
             if(index!=id)pendingPulse=false;
             if(index!=id && animator.isActiveAndEnabled)
             {

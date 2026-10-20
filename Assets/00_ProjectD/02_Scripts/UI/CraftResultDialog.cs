@@ -20,7 +20,7 @@ namespace DoHwa.UI
         {
             returnFocus=EventSystem.current.currentSelectedGameObject;
             art.sprite=sprite; art.enabled=true; itemName.text=title; quantity.text=amount.ToString();
-            closing=false; group.interactable=false; group.blocksRaycasts=true;
+            closing=false; group.interactable=true; group.blocksRaycasts=true;
             gameObject.SetActive(true); transform.SetAsLastSibling();
             animator.Play("Open",0,0); animator.Update(0);
             EventSystem.current.SetSelectedGameObject(null);
@@ -29,7 +29,7 @@ namespace DoHwa.UI
         public void Close()
         {
             if(closing || !IsOpen) return;
-            closing=true; group.interactable=false;
+            closing=true;
             EventSystem.current.SetSelectedGameObject(null);
             animator.CrossFadeInFixedTime("Close",.06f);
         }
