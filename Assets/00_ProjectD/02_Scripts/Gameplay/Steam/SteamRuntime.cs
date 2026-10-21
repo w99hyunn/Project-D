@@ -24,14 +24,24 @@ namespace DoHwa.World
             try
             {
 #if UNITY_EDITOR
-                Environment.SetEnvironmentVariable("SteamAppId", Settings.appId.ToString());
-                Environment.SetEnvironmentVariable("SteamGameId", Settings.appId.ToString());
+                SetDevelopmentAppId();
 #else
-                if (SteamAPI.RestartAppIfNecessary(new AppId_t(Settings.appId))) { Application.Quit(); return; }
+                // Spacewar 테스트는 Steam에 등록된 다른 실행 파일로 재실행하지 않는다.
+                if (Settings.appId == 480) SetDevelopmentAppId();
+                else if (SteamAPI.RestartAppIfNecessary(new AppId_t(Settings.appId)))
+                {
+                    Debug.Log($"Steam 실행으로 전환합니다. App ID: {Settings.appId}");
+                    Application.Quit();
+                    return;
+                }
 #endif
                 Ready = SteamAPI.InitEx(out var error) == ESteamAPIInitResult.k_ESteamAPIInitResult_OK;
                 Error = error;
-                if (!Ready) return;
+                if (!Ready)
+                {
+                    Debug.LogError($"Steam 초기화 실패 (App ID: {Settings.appId}): {Error}");
+                    return;
+                }
                 SteamNetworkingUtils.InitRelayNetworkAccess();
                 invite = Callback<GameLobbyJoinRequested_t>.Create(e => RequestJoin(e.m_steamIDLobby));
                 friendJoin = Callback<GameRichPresenceJoinRequested_t>.Create(e =>
@@ -41,7 +51,12 @@ namespace DoHwa.World
                 var args = Environment.GetCommandLineArgs();
                 if (TryParseLobby(args, out var pending)) PendingLobby = pending;
             }
-            catch (Exception error) { Error = error.Message; Ready = false; }
+            catch (Exception error) { Error = error.Message; Ready = false; Debug.LogException(error); }
+        }
+        private static void SetDevelopmentAppId()
+        {
+            Environment.SetEnvironmentVariable("SteamAppId", Settings.appId.ToString());
+            Environment.SetEnvironmentVariable("SteamGameId", Settings.appId.ToString());
         }
         private void Start()
         {

@@ -22,12 +22,14 @@ namespace DoHwa.UI
             exitPanel.SetActive(false);
             coopPanel.ShowSettings();
             settingsSelection.isOn=true;
+            coopSelection.SetIsOnWithoutNotify(false);
         }
         public void ShowSettings()
         {
             if(ExitOpen)CloseExit();
             bool changed=!preferences.activeSelf;
             coopPanel.ShowSettings();settingsSelection.isOn=true;
+            coopSelection.SetIsOnWithoutNotify(false);
             if(changed && TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(0);
         }
         public void ShowCoop()
@@ -35,6 +37,7 @@ namespace DoHwa.UI
             if(ExitOpen)CloseExit();
             bool changed=!coopPanel.gameObject.activeSelf;
             coopPanel.ShowRoom();coopSelection.isOn=true;
+            settingsSelection.SetIsOnWithoutNotify(false);
             if(changed && TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(1);
         }
         public void ShowExit()

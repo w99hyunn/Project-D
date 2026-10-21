@@ -10,6 +10,7 @@ namespace DoHwa.UI
         [SerializeField] private GameObject language;
         [SerializeField] private GameObject exit;
         [SerializeField] private Slider volume;
+        [SerializeField] private Canvas[] underlayCanvases;
         private int transition;
         private bool returnToSettings;
 
@@ -33,6 +34,7 @@ namespace DoHwa.UI
         public void OpenExit() => OpenPanel(exit);
         private async void OpenPanel(GameObject panel)
         {
+            foreach(var canvas in underlayCanvases)canvas.enabled=false;
             int current = ++transition;
             bool alreadyOpen = panel.activeSelf;
             GameObject outgoing = settings.activeSelf ? settings : notices.activeSelf ? notices : language.activeSelf ? language : exit.activeSelf ? exit : null;
@@ -55,7 +57,11 @@ namespace DoHwa.UI
         {
             int current = ++transition;
             if(panel.TryGetComponent<UiPanelReveal>(out var reveal)) await reveal.HideAsync();
-            if(panel && current == transition) panel.SetActive(false);
+            if(panel && current == transition)
+            {
+                panel.SetActive(false);
+                foreach(var canvas in underlayCanvases)canvas.enabled=true;
+            }
         }
         public void SetVolume(float value) => AudioListener.volume = value;
 
