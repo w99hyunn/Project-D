@@ -23,6 +23,7 @@ namespace DoHwa.UI
         [SerializeField] private TMP_InputField seed;
         [SerializeField] private GameObject createPanel;
         [SerializeField] private Button start;
+        [SerializeField] private Button deleteSelected;
         [SerializeField] private Button host;
         [SerializeField] private Button invite;
         [SerializeField] private Button leave;
@@ -109,8 +110,15 @@ namespace DoHwa.UI
         }
         public void AskDeleteWorld()
         {
-            CloseContext();deleteMessage.text="〈"+contextSlot.title+"〉 월드를 삭제할까요?\n삭제한 저장 파일은 복구할 수 없습니다.";
+            CloseContext();deleteMessage.text="'"+contextSlot.title+"' 월드를 삭제할까요?\n삭제한 저장 파일은 복구할 수 없습니다.";
             deletePanel.SetActive(true);
+        }
+        public void AskDeleteSelectedWorld()
+        {
+            if(busy||InLobby||selected==null)return;
+            contextSlot=selected;
+            AskDeleteWorld();
+            deletePanel.transform.SetAsLastSibling();
         }
         public void CancelDelete()=>deletePanel.SetActive(false);
         public void DeleteContextWorld()
@@ -129,6 +137,8 @@ namespace DoHwa.UI
         private void UpdateState()
         {
             start.interactable=!busy&&selected!=null&&(!InLobby||ownLobby)&&SteamRuntime.Ready;
+            deleteSelected.gameObject.SetActive(!InLobby);
+            deleteSelected.interactable=!busy&&selected!=null;
             start.TryGetComponent<UiVisualState>(out var startState);
             startState.SetActiveState(InLobby);
             host.gameObject.SetActive(false);
