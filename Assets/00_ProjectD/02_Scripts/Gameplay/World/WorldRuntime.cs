@@ -14,6 +14,7 @@ namespace DoHwa.World
         public int part;
         public Vector3 position;
         public int rotation;
+        public int quantity;
     }
 
     public sealed class WorldRuntime : MonoBehaviour
@@ -103,7 +104,8 @@ namespace DoHwa.World
                     break;
                 case WorldAction.Craft:
                     var recipe = catalog.Recipe(command.target);
-                    success = WorldRules.Craft(player, catalog, recipe, NearestStation(player.position), out reason);
+                    var station = recipe != null && HasStation(player.position, recipe.station) ? recipe.station : StationKind.Hand;
+                    success = WorldRules.Craft(player, catalog, recipe, station, command.quantity == 0 ? 1 : command.quantity, out reason);
                     break;
                 case WorldAction.Build:
                     if (!CanPlace(command.target, command.position, command.rotation, out reason)) return false;
@@ -113,7 +115,8 @@ namespace DoHwa.World
                     success = WorldRules.Dismantle(State, player, catalog, command.target, out reason);
                     break;
                 case WorldAction.Upgrade:
-                    success = WorldRules.Upgrade(player, catalog, command.item, NearestStation(player.position), out reason);
+                    success = WorldRules.Upgrade(player, catalog, command.item,
+                        HasStation(player.position, StationKind.Forge) ? StationKind.Forge : StationKind.Hand, out reason);
                     break;
                 case WorldAction.Consume:
                     success = Consume(player, command.item, out reason);
@@ -153,6 +156,18 @@ namespace DoHwa.World
             }
             return station;
         }
+
+        public bool HasStation(Vector3 position, StationKind station)
+        {
+            if (station == StationKind.Hand) return true;
+            foreach (var building in State.buildings)
+                if ((building.position - position).sqrMagnitude < 16f && catalog.Building(building.definition).station == station)
+                    return true;
+            return false;
+        }
+
+        public int MaxCraftCount(CraftRecipe recipe) => WorldRules.MaxCraftCount(LocalPlayer, catalog, recipe,
+            HasStation(LocalPlayer.position, recipe.station) ? recipe.station : StationKind.Hand);
 
         public bool CanPlace(string definition, Vector3 position, int turns, out string reason)
         {

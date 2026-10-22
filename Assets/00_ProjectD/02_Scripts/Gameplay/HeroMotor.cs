@@ -16,6 +16,9 @@ namespace DoHwa
         [SerializeField] private float walkSpeed = 2.3f;
         [SerializeField] private float runSpeed = 4.8f;
         [SerializeField] private float acceleration = 24f;
+        [SerializeField, Min(1f)] private float braking = 40f;
+        [SerializeField, Min(1f)] private float turnAcceleration = 48f;
+        [SerializeField, Range(0f, .2f)] private float dashInputBuffer = .1f;
         [SerializeField] private float dashSpeed = 12f;
         [SerializeField] private float dashDuration = 0.28f;
         [SerializeField] private float dashCooldown = 0.65f;
@@ -32,6 +35,9 @@ namespace DoHwa
         private float verticalSpeed;
         private float dashRemaining;
         private float cooldownRemaining;
+        private float bufferedDashUntil = float.NegativeInfinity;
+        public Vector3 PlanarVelocity => velocity;
+        public bool IsDashing => dashRemaining > 0f;
         private int currentState;
         private int facingRow;
         private bool flip;
@@ -90,6 +96,8 @@ namespace DoHwa
             dashRemaining = 0f;
             wasDashing = false;
             currentState = 0;
+            verticalSpeed = 0f;
+            bufferedDashUntil = float.NegativeInfinity;
         }
 
         private void OnDestroy()
@@ -111,11 +119,13 @@ namespace DoHwa
             if (dashRemaining <= 0f && desired.sqrMagnitude > 0.01f)
                 facing = desired.normalized;
 
-            if (dash.WasPressedThisFrame() && cooldownRemaining <= 0f && dashRemaining <= 0f)
+            if (dash.WasPressedThisFrame()) bufferedDashUntil = Time.time + dashInputBuffer;
+            if (Time.time <= bufferedDashUntil && cooldownRemaining <= 0f && dashRemaining <= 0f && controller.isGrounded)
             {
                 dashDirection = facing;
                 dashRemaining = dashDuration;
                 cooldownRemaining = dashDuration + dashCooldown;
+                bufferedDashUntil = float.NegativeInfinity;
             }
 
             bool dashing = dashRemaining > 0f;
@@ -128,13 +138,18 @@ namespace DoHwa
             else
             {
                 if (wasDashing) velocity = desired * (run.IsPressed() ? runSpeed : walkSpeed);
-                velocity = Vector3.MoveTowards(velocity, desired * (run.IsPressed() ? runSpeed : walkSpeed), acceleration * dt);
+                float response = desired.sqrMagnitude < .0001f ? braking
+                    : Vector3.Dot(velocity, desired) < 0f ? turnAcceleration : acceleration;
+                velocity = Vector3.MoveTowards(velocity, desired * (run.IsPressed() ? runSpeed : walkSpeed), response * dt);
             }
 
-            verticalSpeed = controller.isGrounded ? -2f : verticalSpeed - 25f * dt;
+            verticalSpeed = controller.isGrounded ? -2f : Mathf.Max(-35f, verticalSpeed - 25f * dt);
             var before = transform.position;
             controller.Move(velocity * (dashing ? dashStep : dt) + Vector3.up * (verticalSpeed * dt));
             var displacement = Vector3.ProjectOnPlane(transform.position - before, Vector3.up);
+            // A wall must end the dodge instead of retaining full dash velocity against it.
+            if (dashing && dashStep > 0f && displacement.magnitude < dashSpeed * dashStep * .15f)
+            { dashRemaining = 0f; velocity = Vector3.zero; }
             bool moving = displacement.sqrMagnitude > 0.000001f;
 
             if (!dashing || !wasDashing)

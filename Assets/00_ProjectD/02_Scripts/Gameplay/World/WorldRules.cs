@@ -33,10 +33,48 @@ namespace DoHwa.World
 
         public static bool Craft(SurvivorState player, GameCatalog catalog, CraftRecipe recipe,
             StationKind station, out string reason)
+            => Craft(player, catalog, recipe, station, 1, out reason);
+
+        public static bool Craft(SurvivorState player, GameCatalog catalog, CraftRecipe recipe,
+            StationKind station, int quantity, out string reason)
         {
             if (recipe == null || (recipe.station != StationKind.Hand && recipe.station != station))
             { reason = "맞는 제작 시설이 필요합니다"; return false; }
-            return Transact(player, catalog, recipe.ingredients, new[] { recipe.result }, out reason);
+            if (quantity < 1 || quantity > catalog.stackLimit || recipe.result.amount <= 0
+                || (long)recipe.result.amount * quantity > catalog.stackLimit)
+            { reason = "제작 수량이 올바르지 않습니다"; return false; }
+            var costs = new ItemAmount[recipe.ingredients.Length];
+            for (int i = 0; i < costs.Length; i++)
+            {
+                long amount = (long)recipe.ingredients[i].amount * quantity;
+                if (amount <= 0 || amount > int.MaxValue)
+                { reason = "제작 수량이 올바르지 않습니다"; return false; }
+                costs[i] = new ItemAmount(recipe.ingredients[i].item, (int)amount);
+            }
+            return Transact(player, catalog, costs,
+                new[] { new ItemAmount(recipe.result.item, recipe.result.amount * quantity) }, out reason);
+        }
+
+        public static int MaxCraftCount(SurvivorState player, GameCatalog catalog, CraftRecipe recipe, StationKind station)
+        {
+            if (recipe == null || recipe.result.amount <= 0 || !catalog.ValidItem(recipe.result.item)
+                || (recipe.station != StationKind.Hand && recipe.station != station)) return 0;
+            var totals = new long[catalog.itemCount];
+            foreach (var cost in recipe.ingredients)
+            {
+                if (!catalog.ValidItem(cost.item) || cost.amount <= 0) return 0;
+                totals[cost.item] += cost.amount;
+            }
+            int maximum = catalog.stackLimit / recipe.result.amount;
+            for (int i = 0; i < totals.Length; i++)
+                if (totals[i] > 0) maximum = Math.Min(maximum, (int)(player.items[i] / totals[i]));
+            long netGain = recipe.result.amount - totals[recipe.result.item];
+            if (netGain > 0) maximum = Math.Min(maximum, (int)((catalog.stackLimit - player.items[recipe.result.item]) / netGain));
+            // Test the final transaction too: consuming ingredients can free a full inventory slot.
+            var preview = new SurvivorState { items = player.items };
+            for (int quantity = maximum; quantity > 0; quantity--)
+                if (Craft(preview, catalog, recipe, station, quantity, out _)) return quantity;
+            return 0;
         }
 
         public static bool Upgrade(SurvivorState player, GameCatalog catalog, int item, StationKind station, out string reason)

@@ -21,7 +21,7 @@ namespace DoHwa.World
         private Vector3 home;
         private float health;
         private float attackAt;
-        private float hitAt;
+        private readonly System.Collections.Generic.Dictionary<string, float> hitAt = new();
         private float strikeAt;
         private Vector3 strikePoint;
         private bool windingUp;
@@ -123,10 +123,11 @@ namespace DoHwa.World
 
         public bool TryHit(string playerId)
         {
-            if (!world.IsAuthority || health <= 0 || Time.time < hitAt) return false;
+            if (!world.IsAuthority || health <= 0 || !world.ActivePlayers.Contains(playerId)
+                || (hitAt.TryGetValue(playerId, out float nextHit) && Time.time < nextHit)) return false;
             var player = world.State.Player(playerId);
             if (player == null || Vector3.Distance(player.position, transform.position) > 2.8f) return false;
-            hitAt = Time.time + .35f;
+            hitAt[playerId] = Time.time + .35f;
             int weapon = player.equipment[0];
             health -= 15 + (weapon >= 0 ? player.upgrades[weapon] * 5 : 0);
             state.health = health;

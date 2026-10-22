@@ -68,7 +68,8 @@ namespace DoHwa.UI
             if (command.action == DoHwa.World.WorldAction.Craft)
             {
                 var recipe = world.Catalog.Recipe(command.target);
-                craftResult.Show(items[recipe.result.item].icon, items[recipe.result.item].title, recipe.result.amount);
+                craftResult.Show(items[recipe.result.item].icon, items[recipe.result.item].title,
+                    recipe.result.amount * Math.Max(1, command.quantity));
             }
         }
         public int EquippedAt(int part) => loadout[part];
@@ -330,7 +331,13 @@ namespace DoHwa.UI
             if (world)
             {
                 var command = new DoHwa.World.WorldCommand { item = selected };
-                if (crafting) { command.action = DoHwa.World.WorldAction.Craft; command.target = Array.Find(world.Catalog.recipes, r => r.result.item == selected).id; }
+                if (crafting)
+                {
+                    var recipe = Array.Find(world.Catalog.recipes, r => r.result.item == selected);
+                    command.action = DoHwa.World.WorldAction.Craft; command.target = recipe.id;
+                    command.quantity = Keyboard.current != null && Keyboard.current.shiftKey.isPressed ? world.MaxCraftCount(recipe) : 1;
+                    if (command.quantity < 1) { ShowCondition("재료와 제작 시설을 확인하세요"); return; }
+                }
                 else if (items[selected].equipmentPart != EquipmentPart.None)
                 { command.action = DoHwa.World.WorldAction.Equip; command.part = (int)items[selected].equipmentPart; }
                 else command.action = DoHwa.World.WorldAction.Consume;
@@ -397,8 +404,26 @@ namespace DoHwa.UI
             }
             actionLabel.text=crafting?"제작하기":item.category=="장비"?(selected==equipped?"장착 중":"장착하기"):item.category=="소모품"?"사용하기":"제작 재료";
             action.interactable=crafting ? selected==3?items[6].quantity>=3&&items[2].quantity>=1:items[5].quantity>=3 : item.quantity>0 && item.category!="재료" && selected!=equipped;
-            if (crafting && world) action.interactable = Array.Find(world.Catalog.recipes, r => r.result.item == selected).ingredients.All(cost => items[cost.item].quantity >= cost.amount);
             if(crafting && !action.interactable) actionLabel.text="재료 부족";
+            if (crafting && world)
+            {
+                var recipe = Array.Find(world.Catalog.recipes, r => r.result.item == selected);
+                bool hasStation = world.HasStation(world.LocalPlayer.position, recipe.station);
+                int maximum = world.MaxCraftCount(recipe);
+                string stationName = recipe.station switch
+                {
+                    DoHwa.World.StationKind.Workbench => "작업대",
+                    DoHwa.World.StationKind.Furnace => "용광로",
+                    DoHwa.World.StationKind.Forge => "대장간",
+                    DoHwa.World.StationKind.Alchemy => "연금대",
+                    _ => "손 제작"
+                };
+                category.text = stationName + (hasStation ? "" : " 필요");
+                description.text = item.description + $"\n\n한 번에 {recipe.result.amount}개 제작\n최대 {maximum}회 제작 가능";
+                if (maximum > 1) description.text += "\nShift + 클릭으로 최대 제작";
+                action.interactable = maximum > 0;
+                actionLabel.text = !hasStation ? "시설 필요" : maximum > 0 ? "제작하기" : "제작 불가";
+            }
             Component<TMP_Text>("Inventory/Header/Title").text=crafting?"제작":"배낭";
             Component<TMP_Text>("Inventory/InventoryHeading").text=crafting?"제작법":"소지품";
             Component<TMP_Text>("Inventory/InventorySubheading").text=crafting?"숲에서 모은 재료로 여정을 준비하세요":"여정에서 모은 도구와 작은 발견들";
