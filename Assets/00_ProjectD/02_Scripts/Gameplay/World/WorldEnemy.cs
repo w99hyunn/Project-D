@@ -88,10 +88,9 @@ namespace DoHwa.World
                 if (Time.time < strikeAt) return;
                 windingUp = false; telegraph.gameObject.SetActive(false);
                 foreach (var player in world.State.players)
-                    if (Vector3.Distance(player.position, strikePoint) < (boss ? 3f : 1.5f))
+                    if (world.ActivePlayers.Contains(player.id) && Vector3.Distance(player.position, strikePoint) < (boss ? 3f : 1.5f))
                     {
-                        player.health = Mathf.Max(0, player.health - damage);
-                        if (player.health <= 0) { player.health = 100; player.position = world.Catalog.spawnPoint; player.respawns++; }
+                        SettlementRules.Damage(world.State, player, world.Catalog, damage);
                     }
                 animator.SetTrigger("Attack"); world.Commit(); return;
             }
@@ -133,7 +132,7 @@ namespace DoHwa.World
             state.health = health;
             animator.SetTrigger("Hit");
             if (health > 0) return true;
-            WorldRules.Transact(player, world.Catalog, Array.Empty<ItemAmount>(), new[] { reward }, out _);
+            SettlementRules.Grant(player, world.Catalog, reward);
             if (boss) world.State.defeatedBosses.Add(enemyId);
             world.Commit(); Defeated?.Invoke(this);
             gameObject.SetActive(false);

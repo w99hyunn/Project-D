@@ -1,0 +1,35 @@
+{
+  "dimensions": [
+    2.25,
+    2.249575138092041,
+    1.0278067588806152
+  ],
+  "vertices": 16672,
+  "triangles": 12048,
+  "textures": [
+    {
+      "material": "CourtyardWell_0",
+      "file": "Well_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    },
+    {
+      "material": "CourtyardWell_0",
+      "file": "Well_0_1.png",
+      "role": "METALLIC ROUGHNESS",
+      "outputs": [
+        "Color"
+      ]
+    },
+    {
+      "material": "CourtyardWell_0",
+      "file": "Well_0_2.png",
+      "role": "NORMAL MAP",
+      "outputs": [
+        "Color"
+      ]
+    }
+  ]
+}

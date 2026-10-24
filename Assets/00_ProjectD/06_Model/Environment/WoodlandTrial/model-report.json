@@ -1,0 +1,32 @@
+[
+  {
+    "name": "WoodlandRock1",
+    "vertices": 388,
+    "faces": 448
+  },
+  {
+    "name": "WoodlandRock2",
+    "vertices": 279,
+    "faces": 328
+  },
+  {
+    "name": "WoodlandShrub",
+    "vertices": 320,
+    "faces": 270
+  },
+  {
+    "name": "WoodlandBamboo",
+    "vertices": 2550,
+    "faces": 1870
+  },
+  {
+    "name": "WoodlandRootBase",
+    "vertices": 228,
+    "faces": 183
+  },
+  {
+    "name": "WoodlandPathEdge",
+    "vertices": 662,
+    "faces": 724
+  }
+]

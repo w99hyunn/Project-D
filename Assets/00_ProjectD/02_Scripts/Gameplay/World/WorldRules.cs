@@ -7,6 +7,16 @@ namespace DoHwa.World
     // Every economic operation is validated before committing; callers cannot spend partial costs.
     public static class WorldRules
     {
+        public static bool OpenCache(WorldState world, SurvivorState player, GameCatalog catalog,
+            string id, SupplyCacheDefinition definition, out string reason)
+        {
+            if (world.openedCaches.Contains(id)) { reason = "이미 열린 상자입니다"; return false; }
+            if (!string.IsNullOrEmpty(definition.requiredBoss) && !world.defeatedBosses.Contains(definition.requiredBoss))
+            { reason = definition.lockedHint; return false; }
+            if (!Transact(player, catalog, Array.Empty<ItemAmount>(), definition.rewards, out reason)) return false;
+            world.openedCaches.Add(id);
+            return true;
+        }
         public static bool Transact(SurvivorState player, GameCatalog catalog,
             IReadOnlyList<ItemAmount> costs, IReadOnlyList<ItemAmount> gains, out string reason)
         {
@@ -118,6 +128,8 @@ namespace DoHwa.World
             var building = world.buildings.Find(b => b.id == id);
             if (building == null || building.owner != player.id || Vector3.Distance(player.position, building.position) > 4f)
             { reason = "가까운 내 건물만 회수할 수 있습니다"; return false; }
+            if (catalog.Building(building.definition).use == BuildingUse.Garden && building.plantedAt >= 0)
+            { reason = "작물을 수확한 뒤 회수하세요"; return false; }
             if (!Transact(player, catalog, Array.Empty<ItemAmount>(), catalog.Building(building.definition).cost, out reason)) return false;
             world.buildings.Remove(building);
             return true;

@@ -11,6 +11,7 @@ namespace DoHwa.World
     }
 
     public enum StationKind { Hand, Workbench, Furnace, Forge, Alchemy }
+    public enum BuildingUse { Crafting, Camp, Garden }
 
     [Serializable] public sealed class CraftRecipe
     {
@@ -29,6 +30,9 @@ namespace DoHwa.World
         public Vector2Int footprint = Vector2Int.one;
         public StationKind station;
         public ItemAmount[] cost;
+        public BuildingUse use;
+        public CropDefinition crop;
+        public CampDefinition camp;
     }
 
     [CreateAssetMenu(menuName = "DoHwa/World/Game Catalog")]
@@ -46,6 +50,7 @@ namespace DoHwa.World
         public int ingotItem = 11;
         [Min(1)] public int upgradeLimit = 5;
         public Vector3 spawnPoint;
+        public SurvivalDefinition survival;
 
         public bool ValidItem(int id) => id >= 0 && id < itemCount;
         public CraftRecipe Recipe(string id) => Array.Find(recipes, r => r.id == id);

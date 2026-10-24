@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173d03d25330f7145a7f854462dca980, type: 3}
+  m_Name: HearthAndPact
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.World.JourneyDefinition
+  title: "\uBD88\uC528\uC640 \uB3C4\uAE68\uBE44\uC758 \uC57D\uC18D"
+  tasks:
+  - title: "\uB3CC\uBAA8\uB2E5\uBD88 \uC138\uC6B0\uAE30"
+    icon: {fileID: 21300000, guid: 555f8cc5dbd17214187c5be9d5e5f176, type: 2}
+    hint: "G\uB97C \uB204\uB974\uACE0 Tab\uC73C\uB85C \uB3CC\uBAA8\uB2E5\uBD88\uC744 \uC120\uD0DD\uD558\uC138\uC694\n\uAC00\uAE4C\uC774\uC5D0\uC11C E\uB85C \uBD80\uD65C \uAC70\uC810\uC744 \uB4F1\uB85D\uD558\uC138\uC694"
+    kind: 1
+    target: hearth
+    item: 0
+    amount: 1
+  - title: "\uC57D\uCD08\uBC2D \uB9C8\uB828\uD558\uAE30"
+    icon: {fileID: 21300000, guid: 0d66b0859a653a74da6e6171f56cc70c, type: 2}
+    hint: "\uBAA9\uC7AC 4\uAC1C\uB85C \uC57D\uCD08\uBC2D\uC744 \uAC74\uC124\uD558\uC138\uC694"
+    kind: 1
+    target: herb-garden
+    item: 0
+    amount: 1
+  - title: "\uCCAB \uC57D\uCD08 \uC218\uD655"
+    icon: {fileID: 21300000, guid: 4dc5c9c937f5c584db4afa05c1def10c, type: 2}
+    hint: "\uBC2D\uC5D0\uC11C E\uB85C \uC528\uC557\uC744 \uC2EC\uC73C\uC138\uC694\n\uD50C\uB808\uC774 \uC2DC\uAC04 3\uBD84 \uB4A4 \uC218\uD655\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4"
+    kind: 5
+    target: herb-garden
+    item: 6
+    amount: 6
+  - title: "\uBCF5\uC22D\uC544 \uC138 \uC54C\uC758 \uC57D\uC18D"
+    icon: {fileID: 21300000, guid: 787bd395e37d09d4db5c40264336613f, type: 2}
+    hint: "\uAC70\uC810 \uBD81\uB3D9\uCABD \uCCAD\uB85D \uB3C4\uAE68\uBE44\uBD88\uC5D0 \uBCF5\uC22D\uC544 3\uAC1C\uB97C \uBC14\uCE58\uC138\uC694"
+    kind: 6
+    target: three-peaches
+    item: 0
+    amount: 1
+  - title: "\uB2EC\uADF8\uB298 \uD30C\uC218\uAFBC \uD1A0\uBC8C"
+    icon: {fileID: 21300000, guid: 5f9a46769d314a9499b31c9a44db6024, type: 2}
+    hint: "\uC5F4\uB9B0 \uB3C4\uAE68\uBE44\uBD88\uC5D0\uC11C E\uB97C \uB20C\uB7EC \uB2EC\uADF8\uB298 \uAE38\uB85C \uB4E4\uC5B4\uAC00\uC138\uC694"
+    kind: 4
+    target: moonshadow-warden
+    item: 0
+    amount: 1
+  - title: "\uB3C4\uAE68\uBE44\uC758 \uB2F5\uB840"
+    icon: {fileID: 21300000, guid: 31590703e567bdd44888c8c3c624df7d, type: 2}
+    hint: "\uD30C\uC218\uAFBC\uC774 \uC9C0\uD0A4\uB358 \uC0C1\uC790\uB97C \uC5F4\uACE0 \uADC0\uD658 \uB3C4\uAE68\uBE44\uBD88\uB85C \uB3CC\uC544\uC624\uC138\uC694"
+    kind: 7
+    target: moonshadow-reward
+    item: 0
+    amount: 1
+  completionTitle: "\uB2EC\uADF8\uB298 \uAE38\uC758 \uC57D\uC18D\uC744 \uC9C0\uCF30\uC2B5\uB2C8\uB2E4"
+  completionHint: "\uBAA8\uB2E5\uBD88\uB85C \uB3CC\uC544\uAC00 \uB2E4\uC74C \uD0D0\uD5D8\uC744 \uC900\uBE44\uD558\uC138\uC694"

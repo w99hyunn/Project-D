@@ -1,5 +1,6 @@
 using DoHwa.UI;
 using TMPro;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -16,6 +17,9 @@ namespace DoHwa.World
         [SerializeField] private Transform placementMarker;
         private WorldResource target;
         private WorldBuilding building;
+        private WorldSupplyCache cache;
+        private DokkaebiGate gate;
+        private int travelRevision;
         private int buildingIndex = -1;
         private int turns;
         private Vector3 placement;
@@ -42,8 +46,9 @@ namespace DoHwa.World
             if (world.LocalPlayer == null) return;
             buildings = FindObjectsByType<WorldBuilding>(FindObjectsSortMode.None);
             ui.ApplyWorldState(world.LocalPlayer);
-            if (respawns != world.LocalPlayer.respawns)
+            if (respawns != world.LocalPlayer.respawns || travelRevision != world.LocalPlayer.travelRevision)
             {
+                travelRevision = world.LocalPlayer.travelRevision;
                 respawns = world.LocalPlayer.respawns;
                 hero.TryGetComponent<CharacterController>(out var body);
                 body.enabled = false; hero.transform.position = world.LocalPlayer.position; body.enabled = true;
@@ -60,9 +65,18 @@ namespace DoHwa.World
                 WorldAction.Build => "설치 완료",
                 WorldAction.Dismantle => "건물을 회수했습니다",
                 WorldAction.Upgrade => "강화 완료",
+                WorldAction.UseGate => reason,
+                WorldAction.UseBuilding => reason,
+                WorldAction.ClaimRewards => reason,
+                WorldAction.Attack => reason,
                 _ => ""
             } : reason;
-            resultUntil = Time.unscaledTime + 1.5f;
+            if (success && command.action == WorldAction.OpenCache)
+            {
+                var opened = world.Caches.First(c => c.Id == command.target);
+                result = string.Join("\n", opened.Definition.rewards.Select(r => ui.Catalog[r.item].title + " ×" + r.amount));
+            }
+            resultUntil = Time.unscaledTime + (command.action == WorldAction.OpenCache || command.action == WorldAction.UseGate ? 3.5f : 1.5f);
         }
 
         private void Update()
@@ -77,7 +91,7 @@ namespace DoHwa.World
             if (keyboard.gKey.wasPressedThisFrame) buildingIndex = buildingIndex < 0 ? 0 : -1;
             if (buildingIndex >= 0) { Placement(keyboard, mouse); return; }
             placementMarker.gameObject.SetActive(false);
-            target = null; building = null;
+            target = null; building = null; cache = null; gate = null;
             float closest = 2.8f;
             foreach (var resource in world.Resources)
             {
@@ -89,13 +103,35 @@ namespace DoHwa.World
                 if (candidate &&
                     Vector3.Distance(hero.transform.position, candidate.transform.position) < closest)
                 { closest = Vector3.Distance(hero.transform.position, candidate.transform.position); building = candidate; target = null; }
-            interactionLabel.text = Time.unscaledTime < resultUntil ? result : target ? "[E] " + target.Title : building ? "[E] " + building.Spec.title + (building.Spec.station == StationKind.Forge ? "    [U] 강화" : "") : "";
+            foreach (var candidate in world.Caches)
+            {
+                if (!candidate.isActiveAndEnabled || candidate.Opened) continue;
+                float distance = Vector3.Distance(hero.transform.position, candidate.transform.position);
+                if (distance < closest) { closest = distance; cache = candidate; target = null; building = null; }
+            }
+            foreach (var candidate in world.Gates)
+            {
+                if (!candidate.isActiveAndEnabled) continue;
+                float distance = Vector3.Distance(hero.transform.position, candidate.transform.position);
+                if (distance < closest) { closest = distance; gate = candidate; cache = null; target = null; building = null; }
+            }
+            interactionLabel.text = Time.unscaledTime < resultUntil ? result : gate ? gate.Hint : cache
+                ? cache.Unlocked ? "[E] " + cache.Definition.title : cache.Definition.lockedHint
+                : target ? "[E] " + target.Title : building ? BuildingHint(building) : "";
             if (keyboard.eKey.wasPressedThisFrame)
             {
-                if (target) world.Submit(new WorldCommand { action = WorldAction.Gather, target = target.Id });
-                else if (building) ui.OpenCrafting();
+                if (gate) world.Submit(new WorldCommand { action = WorldAction.UseGate, target = gate.Id });
+                else if (cache) world.Submit(new WorldCommand { action = WorldAction.OpenCache, target = cache.Id });
+                else if (target) world.Submit(new WorldCommand { action = WorldAction.Gather, target = target.Id });
+                else if (building)
+                {
+                    if (building.Spec.use == BuildingUse.Crafting) ui.OpenCrafting();
+                    else world.Submit(new WorldCommand { action = WorldAction.UseBuilding, target = building.InstanceId });
+                }
             }
-            if (building && keyboard.uKey.wasPressedThisFrame)
+            if (building && building.Spec.use == BuildingUse.Camp && keyboard.rKey.wasPressedThisFrame)
+                world.Submit(new WorldCommand { action = WorldAction.ClaimRewards, target = building.InstanceId });
+            if (building && building.Spec.station == StationKind.Forge && keyboard.uKey.wasPressedThisFrame)
                 world.Submit(new WorldCommand { action = WorldAction.Upgrade, item = world.LocalPlayer.equipment[0] });
             if (building && keyboard.deleteKey.wasPressedThisFrame)
                 world.Submit(new WorldCommand { action = WorldAction.Dismantle, target = building.InstanceId });
@@ -128,5 +164,20 @@ namespace DoHwa.World
         }
 
         private void OnDestroy() { world.Changed -= Refresh; world.Result -= OnResult; }
+
+        private string BuildingHint(WorldBuilding view)
+        {
+            if (view.Spec.use == BuildingUse.Camp)
+                return "[E] 모닥불에서 휴식" + (world.LocalPlayer.pendingRewards.Count > 0 ? "    [R] 보관 전리품 받기" : "");
+            if (view.Spec.use == BuildingUse.Garden)
+            {
+                var state = world.State.buildings.Find(b => b.id == view.InstanceId);
+                if (state.plantedAt < 0) return "[E] " + view.Spec.crop.title + " 심기";
+                float growth = SettlementRules.Growth(world.State, state, view.Spec.crop);
+                if (growth >= 1) return "[E] " + view.Spec.crop.title + " 수확";
+                return view.Spec.crop.title + " 성장 중  " + Mathf.CeilToInt((1 - growth) * view.Spec.crop.growthSeconds) + "초";
+            }
+            return "[E] " + view.Spec.title + (view.Spec.station == StationKind.Forge ? "    [U] 강화" : "");
+        }
     }
 }

@@ -34,6 +34,13 @@ namespace DoHwa.World
         public float food = 100;
         public Vector3 position;
         public int respawns;
+        public int travelRevision;
+        public string campId;
+        public Vector3 campPosition;
+        public double lastDamageAt = -100;
+        public double lastRestAt = -100;
+        public double protectedUntil;
+        public List<ItemAmount> pendingRewards = new();
     }
 
     [Serializable] public sealed class PlacedBuilding
@@ -43,6 +50,7 @@ namespace DoHwa.World
         public string owner;
         public Vector3 position;
         public int quarterTurns;
+        public double plantedAt = -1;
     }
 
     [Serializable] public sealed class ResourceState
@@ -59,11 +67,15 @@ namespace DoHwa.World
         public string id = "peach-valley";
         public string title = "도화림";
         public long createdAt;
+        public double elapsedSeconds;
         public List<SurvivorState> players = new();
         public List<PlacedBuilding> buildings = new();
         public List<ResourceState> resources = new();
         public List<string> defeatedBosses = new();
         public List<EnemyState> enemies = new();
+        public List<JourneyCounter> journey = new();
+        public List<string> openedCaches = new();
+        public List<string> pacts = new();
 
         public SurvivorState Player(string id) => players.Find(p => p.id == id);
         public SurvivorState GetOrCreatePlayer(string id, GameCatalog catalog)

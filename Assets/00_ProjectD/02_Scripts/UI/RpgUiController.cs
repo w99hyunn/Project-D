@@ -17,7 +17,8 @@ namespace DoHwa.UI
             public EquipmentPart equipmentPart=EquipmentPart.None;
         }
 
-        [SerializeField] private Item[] items;
+        [SerializeField] private DoHwa.World.ItemCatalog itemCatalog;
+        private Item[] items;
         [SerializeField] private HeroMotor motor;
         [SerializeField] private HeroCamera view;
         [SerializeField] private Transform hero;
@@ -46,7 +47,7 @@ namespace DoHwa.UI
         private int selectedPart;
         private EquipmentPanel equipmentPanel;
         private readonly int[] loadout={0,-1,-1,-1,-1,-1,-1,-1,-1};
-        public Item[] Catalog => items;
+        public Item[] Catalog => items ??= CreateItemViews();
         public bool IsModalOpen => modal;
         public int SelectedQuickItem => quickItems[quickSelected];
         private DoHwa.World.WorldRuntime world;
@@ -76,9 +77,16 @@ namespace DoHwa.UI
         private bool IsEquipped(int id) => Array.IndexOf(loadout,id)>=0;
         private void Equip(int id) { loadout[(int)items[id].equipmentPart]=id; if(items[id].equipmentPart==EquipmentPart.Weapon)equipped=id; }
 
-        public void Configure(Item[] catalog, HeroMotor movement, HeroCamera cameraView, Camera mini)
+        private Item[] CreateItemViews() => itemCatalog.items.Select(item => new Item
         {
-            items = catalog; motor = movement; view = cameraView; hero = movement.transform; minimapCamera = mini;
+            title = item.title, category = item.category, description = item.description,
+            icon = item.icon, equipmentPart = item.equipmentPart
+        }).ToArray();
+
+        public void Configure(DoHwa.World.ItemCatalog catalog, HeroMotor movement, HeroCamera cameraView, Camera mini)
+        {
+            itemCatalog = catalog; items = CreateItemViews();
+            motor = movement; view = cameraView; hero = movement.transform; minimapCamera = mini;
         }
 
         private T Component<T>(string path) where T : Component
@@ -116,6 +124,7 @@ namespace DoHwa.UI
 
         private void Awake()
         {
+            items = CreateItemViews();
             TryGetComponent<UiBackdropBlur>(out backdropBlur);
             Bind();
             inventory.TryGetComponent<InventorySortMenu>(out sortMenu);

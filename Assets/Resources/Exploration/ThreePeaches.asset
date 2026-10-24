@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4283a0108aee53f4e89c45521450e5c9, type: 3}
+  m_Name: ThreePeaches
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.World.DokkaebiPactDefinition
+  id: three-peaches
+  title: "\uBCF5\uC22D\uC544 \uC138 \uC54C\uC758 \uC57D\uC18D"
+  offeringHint: "\uBCF5\uC22D\uC544 3\uAC1C\uB97C \uBC14\uCCD0 \uAC70\uB798\uD558\uAE30"
+  offering:
+  - item: 2
+    amount: 3

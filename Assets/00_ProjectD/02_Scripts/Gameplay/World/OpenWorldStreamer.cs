@@ -10,6 +10,7 @@ namespace DoHwa.World
         [SerializeField] private WorldRuntime world;
         [SerializeField] private HeroMotor hero;
         [SerializeField] private OpenWorldDefinition definition;
+        [SerializeField] private bool landmarksAuthoredInScene;
         private readonly Dictionary<Vector2Int,GameObject> chunks=new();
         private readonly Dictionary<Vector2Int,Mesh> meshes=new();
         private readonly Dictionary<Vector2Int,List<Mesh>> detailMeshes=new();
@@ -70,17 +71,53 @@ namespace DoHwa.World
             var random=new System.Random(unchecked(activeSeed^(cell.x*73856093)^(cell.y*19349663)));
             for(int i=0;i<48;i++){
                 float x=go.transform.position.x+(float)random.NextDouble()*definition.chunkSize,z=go.transform.position.z+(float)random.NextDouble()*definition.chunkSize;
-                if(definition.starter.Contains(new Vector2(x,z)))continue;
-                float road=Mathf.Min(Mathf.Abs(x-9*Mathf.Sin(z*.006f)),Mathf.Abs(z-20-8*Mathf.Sin(x*.007f)));if(road<5)continue;
+                if(definition.starter.Contains(new Vector2(x,z))||definition.IsAuthoredPlace(x,z,3))continue;
+                float road=definition.RoadDistance(x,z,out _);if(road<5)continue;
                 bool reserved=false;foreach(var p in definition.landmarks)if(Vector2.Distance(new Vector2(x,z),p)<14){reserved=true;break;}if(reserved)continue;
-                int biome=definition.Biome(x,z,activeSeed);bool ore=i%7==0;var prefab=ore?definition.boulder:biome==1?definition.bamboo:biome==2?definition.pine:definition.peachTree;
+                int biome=definition.VegetationBiome(x,z,activeSeed);var region=definition.regions[biome];if(i>=region.vegetationCount)continue;bool ore=i%7==0;var prefab=ore?definition.boulder:region.vegetation;
                 var art=Instantiate(prefab,new Vector3(x,definition.Height(x,z,activeSeed),z),Quaternion.Euler(0,random.Next(360),0),go.transform);art.transform.localScale*=.8f+(float)random.NextDouble()*.6f;
-                if(i%3==0||ore){var node=new GameObject("Gatherable");node.transform.SetParent(go.transform,false);node.transform.position=art.transform.position;art.transform.SetParent(node.transform,true);var resource=node.AddComponent<WorldResource>();resource.Configure($"chunk:{cell.x}:{cell.y}:{i}",ore?"철광석":"목재",new ItemAmount(ore?5:4,ore?2:3),art);world.RegisterResource(resource);}
+                if((region.timber&&i%3==0)||ore){var node=new GameObject("Gatherable");node.transform.SetParent(go.transform,false);node.transform.position=art.transform.position;art.transform.SetParent(node.transform,true);var resource=node.AddComponent<WorldResource>();resource.Configure($"chunk:{cell.x}:{cell.y}:{i}",ore?"철광석":"목재",new ItemAmount(ore?5:4,ore?2:3),art);world.RegisterResource(resource);}
             }
             detailMeshes[cell]=new List<Mesh>();
+            AddWater(cell,go);
+            AddRoadsideProps(go,random);
+            for(int i=0;i<3;i++){
+                float x=go.transform.position.x+(float)random.NextDouble()*definition.chunkSize,z=go.transform.position.z+(float)random.NextDouble()*definition.chunkSize;
+                if(definition.starter.Contains(new Vector2(x,z))||definition.IsAuthoredPlace(x,z,8)||definition.RoadDistance(x,z,out _)<18)continue;
+                var region=definition.regions[definition.Biome(x,z,activeSeed)];
+                if(region.scenery){var art=Instantiate(region.scenery,new Vector3(x,definition.Height(x,z,activeSeed),z),Quaternion.Euler(0,random.Next(360),0),go.transform);art.transform.localScale*=.7f+(float)random.NextDouble()*.6f;}
+            }
+
             AddGroundCover(cell,go,random,definition.grass,240,false);
             AddGroundCover(cell,go,random,definition.petals,60,true);
-            for(int i=0;i<definition.landmarks.Length;i++){var p=definition.landmarks[i];if(Cell(new Vector3(p.x,0,p.y))!=cell)continue;Instantiate(definition.shrine,new Vector3(p.x,definition.Height(p.x,p.y,activeSeed),p.y),Quaternion.Euler(0,i*90,0),go.transform);}
+            if(!landmarksAuthoredInScene)for(int i=0;i<definition.landmarks.Length;i++){var p=definition.landmarks[i];if(Cell(new Vector3(p.x,0,p.y))!=cell)continue;var region=definition.regions[definition.Biome(p.x,p.y,activeSeed)];Instantiate(region.landmark?region.landmark:definition.shrine,new Vector3(p.x,definition.Height(p.x,p.y,activeSeed),p.y),Quaternion.identity,go.transform);}
+        }
+        private void AddRoadsideProps(GameObject chunk,System.Random random)
+        {
+            for(int i=0;i<10;i++){
+                float x=chunk.transform.position.x+(float)random.NextDouble()*definition.chunkSize,z=chunk.transform.position.z+(float)random.NextDouble()*definition.chunkSize;
+                if(definition.starter.Contains(new Vector2(x,z))||definition.IsAuthoredPlace(x,z,3))continue;
+                float distance=definition.RoadDistance(x,z,out _);if(distance<9||distance>14)continue;
+                var region=definition.regions[definition.Biome(x,z,activeSeed)];if(region.roadsideProps.Length==0)continue;
+                float h=definition.Height(x,z,activeSeed);
+                if(Mathf.Abs(definition.Height(x+1,z,activeSeed)-h)>.2f||Mathf.Abs(definition.Height(x,z+1,activeSeed)-h)>.2f)continue;
+                Instantiate(region.roadsideProps[random.Next(region.roadsideProps.Length)],new Vector3(x,h,z),Quaternion.Euler(0,random.Next(4)*90,0),chunk.transform);
+            }
+        }
+        private void AddWater(Vector2Int cell,GameObject chunk)
+        {
+            foreach(var region in definition.regions){
+                if(region.lakeRadius<=0)continue;
+                var center=region.center+new Vector2(160,80);
+                if(Cell(new Vector3(center.x,0,center.y))!=cell)continue;
+                if(!landmarksAuthoredInScene&&region.pier)Instantiate(region.pier,new Vector3(center.x,region.elevation+.15f,center.y-region.lakeRadius*.91f),Quaternion.Euler(0,180,0),chunk.transform);
+                var vertices=new Vector3[65];var triangles=new int[63*3];
+                vertices[0]=Vector3.zero;
+                for(int i=0;i<64;i++){float angle=i/63f*Mathf.PI*2;vertices[i+1]=new Vector3(Mathf.Cos(angle),0,Mathf.Sin(angle))*region.lakeRadius*.92f;if(i<63){triangles[i*3]=0;triangles[i*3+1]=i+2;triangles[i*3+2]=i+1;}}
+                var mesh=new Mesh{name="Reed lake"};mesh.vertices=vertices;mesh.triangles=triangles;mesh.RecalculateNormals();mesh.RecalculateBounds();detailMeshes[cell].Add(mesh);
+                var lake=new GameObject("옥빛 여울",typeof(MeshFilter),typeof(MeshRenderer));lake.transform.SetParent(chunk.transform,false);lake.transform.position=new Vector3(center.x,region.elevation-.08f,center.y);
+                lake.TryGetComponent<MeshFilter>(out var filter);filter.sharedMesh=mesh;lake.TryGetComponent<MeshRenderer>(out var renderer);renderer.sharedMaterial=definition.water;renderer.shadowCastingMode=ShadowCastingMode.Off;
+            }
         }
         private void AddGroundCover(Vector2Int cell,GameObject chunk,System.Random random,GameObject prefab,int count,bool onlyPeach)
         {
@@ -89,8 +126,8 @@ namespace DoHwa.World
             for(int i=0;i<count;i++)
             {
                 float x=chunk.transform.position.x+(float)random.NextDouble()*definition.chunkSize,z=chunk.transform.position.z+(float)random.NextDouble()*definition.chunkSize;
-                if(definition.starter.Contains(new Vector2(x,z))||(onlyPeach&&definition.Biome(x,z,activeSeed)!=0))continue;
-                float road=Mathf.Min(Mathf.Abs(x-9*Mathf.Sin(z*.006f)),Mathf.Abs(z-20-8*Mathf.Sin(x*.007f)));
+                if(!definition.regions[definition.Biome(x,z,activeSeed)].groundCover||definition.starter.Contains(new Vector2(x,z))||definition.IsAuthoredPlace(x,z)||(onlyPeach&&!definition.regions[definition.Biome(x,z,activeSeed)].blossoms))continue;
+                float road=definition.RoadDistance(x,z,out _);
                 if(!onlyPeach&&road<3)continue;
                 float h=definition.Height(x,z,activeSeed);
                 var position=new Vector3(x-chunk.transform.position.x,h+.025f,z-chunk.transform.position.z);
@@ -112,4 +149,12 @@ namespace DoHwa.World
         private void OnDestroy(){world.Changed-=StateChanged;foreach(var mesh in meshes.Values)Destroy(mesh);foreach(var list in detailMeshes.Values)foreach(var mesh in list)Destroy(mesh);}
     }
 }
+
+
+
+
+
+
+
+
 

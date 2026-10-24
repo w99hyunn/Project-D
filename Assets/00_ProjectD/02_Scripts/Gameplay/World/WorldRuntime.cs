@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DoHwa.World
 {
-    public enum WorldAction { Gather, Craft, Build, Dismantle, Upgrade, Consume, Equip, Attack }
+    public enum WorldAction { Gather, Craft, Build, Dismantle, Upgrade, Consume, Equip, Attack, OpenCache, UseGate, UseBuilding, ClaimRewards }
 
     [Serializable] public struct WorldCommand
     {
@@ -25,6 +25,9 @@ namespace DoHwa.World
         private readonly Dictionary<string, GameObject> buildingViews = new();
         private readonly List<WorldResource> resources = new();
         public IReadOnlyList<WorldResource> Resources => resources;
+        private WorldSupplyCache[] caches;
+        public DokkaebiGate[] Gates { get; private set; }
+        public System.Collections.Generic.IReadOnlyList<WorldSupplyCache> Caches => caches;
         public void RegisterResource(WorldResource node)
         {
             resources.Add(node);
@@ -32,6 +35,7 @@ namespace DoHwa.World
         }
         public void UnregisterResource(WorldResource node) => resources.Remove(node);
         private float saveAt;
+        private float survivalElapsed;
 
         public GameCatalog Catalog => catalog;
         public WorldState State { get; private set; }
@@ -46,6 +50,8 @@ namespace DoHwa.World
         private void Awake()
         {
             saveSlot = WorldSelection.Slot;
+            Gates = FindObjectsByType<DokkaebiGate>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            caches = FindObjectsByType<WorldSupplyCache>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             resources.AddRange(FindObjectsByType<WorldResource>(FindObjectsInactive.Include, FindObjectsSortMode.None));
             State = WorldSave.Read(saveSlot);
             LocalPlayerId = PlayerIdentity.Get();
@@ -64,6 +70,16 @@ namespace DoHwa.World
         private void Update()
         {
             if (!IsAuthority) return;
+            State.elapsedSeconds += Time.deltaTime;
+            survivalElapsed += Time.deltaTime;
+            if (survivalElapsed >= 5)
+            {
+                bool changed = false;
+                foreach (var player in State.players)
+                    if (ActivePlayers.Contains(player.id)) changed |= SurvivalRules.Tick(State, player, catalog.survival, survivalElapsed);
+                survivalElapsed = 0;
+                if (changed) Commit();
+            }
             long now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             bool respawned = State.resources.RemoveAll(r => r.availableAt <= now) > 0;
             if (respawned) Commit();
@@ -90,26 +106,52 @@ namespace DoHwa.World
             bool success;
             switch (command.action)
             {
+                case WorldAction.UseBuilding:
+                    success = SettlementRules.Use(State, player, catalog, command.target, out reason);
+                    break;
+                case WorldAction.ClaimRewards:
+                    success = SettlementRules.Claim(State, player, catalog, command.target, out reason);
+                    break;
+                case WorldAction.UseGate:
+                    var gate = Array.Find(Gates, g => g.Id == command.target);
+                    if (!gate || !gate.isActiveAndEnabled || Vector3.Distance(player.position, gate.transform.position) > 3f)
+                    { reason = "도깨비불 가까이에서 거래하세요"; return false; }
+                    success = gate.Interact(player, out reason);
+                    break;
+                case WorldAction.OpenCache:
+                    var cache = Array.Find(caches, c => c.Id == command.target);
+                    if (!cache || !cache.isActiveAndEnabled || Vector3.Distance(player.position, cache.transform.position) > 3f)
+                    { reason = "상자 가까이에서 열어 주세요"; return false; }
+                    success = WorldRules.OpenCache(State, player, catalog, cache.Id, cache.Definition, out reason);
+                    break;
                 case WorldAction.Attack:
                     var enemy = Array.Find(FindObjectsByType<WorldEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None), e => e.Id == command.target);
-                    success = enemy && enemy.TryHit(playerId);
-                    reason = success ? "" : "공격할 수 없습니다";
+                    int pendingBefore = player.pendingRewards.Count;
+                    success = enemy && enemy.isActiveAndEnabled && enemy.TryHit(playerId);
+                    reason = success ? player.pendingRewards.Count > pendingBefore ? "전리품을 보관했습니다. 모닥불에서 받으세요" : "" : "공격할 수 없습니다";
                     break;
                 case WorldAction.Gather:
                     var node = resources.Find(r => r.Id == command.target);
                     if (node == null || Vector3.Distance(player.position, node.transform.position) > 3f || State.resources.Exists(r => r.id == node.Id))
                     { reason = "가까운 채집물을 선택하세요"; return false; }
                     success = WorldRules.Transact(player, catalog, Array.Empty<ItemAmount>(), new[] { node.Yield }, out reason);
-                    if (success) State.resources.Add(new ResourceState { id = node.Id, availableAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + node.RespawnSeconds });
+                    if (success)
+                    {
+                        State.resources.Add(new ResourceState { id = node.Id, availableAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + node.RespawnSeconds });
+                        JourneyDefinition.Record(State, WorldAction.Gather, "", node.Yield.item, node.Yield.amount);
+                    }
                     break;
                 case WorldAction.Craft:
                     var recipe = catalog.Recipe(command.target);
                     var station = recipe != null && HasStation(player.position, recipe.station) ? recipe.station : StationKind.Hand;
                     success = WorldRules.Craft(player, catalog, recipe, station, command.quantity == 0 ? 1 : command.quantity, out reason);
+                    if (success) JourneyDefinition.Record(State, WorldAction.Craft, recipe.id,
+                        recipe.result.item, recipe.result.amount * (command.quantity == 0 ? 1 : command.quantity));
                     break;
                 case WorldAction.Build:
                     if (!CanPlace(command.target, command.position, command.rotation, out reason)) return false;
                     success = WorldRules.Place(State, player, catalog, command.target, command.position, command.rotation, out reason);
+                    if (success) JourneyDefinition.Record(State, WorldAction.Build, command.target, 0, 1);
                     break;
                 case WorldAction.Dismantle:
                     success = WorldRules.Dismantle(State, player, catalog, command.target, out reason);
@@ -119,7 +161,7 @@ namespace DoHwa.World
                         HasStation(player.position, StationKind.Forge) ? StationKind.Forge : StationKind.Hand, out reason);
                     break;
                 case WorldAction.Consume:
-                    success = Consume(player, command.item, out reason);
+                    success = SurvivalRules.Consume(player, catalog, command.item, out reason);
                     break;
                 case WorldAction.Equip:
                     if (command.part < 0 || command.part >= 9 || !catalog.ValidItem(command.item) || player.items[command.item] <= 0
@@ -132,16 +174,6 @@ namespace DoHwa.World
             }
             if (success) Commit();
             return success;
-        }
-
-        private bool Consume(SurvivorState player, int item, out string reason)
-        {
-            if ((item != 2 && item != 3 && item != 7) || (item == 3 ? player.health >= 100 : player.food >= 100))
-            { reason = "지금은 사용할 수 없습니다"; return false; }
-            if (!WorldRules.Transact(player, catalog, new[] { new ItemAmount(item, 1) }, Array.Empty<ItemAmount>(), out reason)) return false;
-            player.health = Mathf.Min(100, player.health + (item == 3 ? 35 : 5));
-            if (item != 3) player.food = Mathf.Min(100, player.food + 20);
-            return true;
         }
 
         public StationKind NearestStation(Vector3 position)

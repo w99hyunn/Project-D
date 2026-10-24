@@ -1,0 +1,44 @@
+using UnityEngine;
+
+namespace DoHwa.World
+{
+    public sealed class DokkaebiGate : MonoBehaviour
+    {
+        [SerializeField] private WorldRuntime world;
+        [SerializeField] private DokkaebiPactDefinition pact;
+        [SerializeField] private string gateId;
+        [SerializeField] private bool returnGate;
+        [SerializeField] private Transform arrival;
+        [SerializeField] private GameObject revealedWorld;
+        [SerializeField] private ParticleSystem flames;
+        public string Id => gateId;
+        public bool Open => world.State.pacts.Contains(pact.id);
+        public string Hint => returnGate ? "[E] 도화림으로 돌아가기" : Open
+            ? "[E] 달그늘 길로 들어가기" : "[E] " + pact.offeringHint;
+
+        private void Start() { world.Changed += Refresh; Refresh(); }
+        private void OnDestroy() { world.Changed -= Refresh; }
+        private void Refresh()
+        {
+            if (!returnGate) revealedWorld.SetActive(Open);
+            var emission = flames.emission;
+            emission.rateOverTime = Open ? 28 : 5;
+        }
+        public bool Interact(SurvivorState player, out string reason)
+        {
+            if (!returnGate && !Open)
+            {
+                if (!WorldRules.Transact(player, world.Catalog, pact.offering,
+                    System.Array.Empty<ItemAmount>(), out reason)) return false;
+                world.State.pacts.Add(pact.id);
+                reason = "약속이 맺어졌습니다. 달그늘 길이 열렸습니다";
+                return true;
+            }
+            if (!Open) { reason = "아직 열리지 않은 길입니다"; return false; }
+            player.position = arrival.position;
+            player.travelRevision++;
+            reason = returnGate ? "도화림으로 돌아왔습니다" : "달그늘 길 — 파수꾼의 봉인을 풀어 주세요";
+            return true;
+        }
+    }
+}
