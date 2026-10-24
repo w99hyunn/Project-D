@@ -115,11 +115,11 @@ namespace DoHwa.World
             turns = ((turns % 4) + 4) % 4;
             position.x = Mathf.Round(position.x); position.z = Mathf.Round(position.z);
             foreach (var existing in world.buildings)
-                if (Overlaps(position, Footprint(spec, turns), existing.position, Footprint(catalog.Building(existing.definition), existing.quarterTurns)))
+                if (existing.mapScene == player.mapScene && Overlaps(position, Footprint(spec, turns), existing.position, Footprint(catalog.Building(existing.definition), existing.quarterTurns)))
                 { reason = "다른 건물과 겹칩니다"; return false; }
             if (!Transact(player, catalog, spec.cost, Array.Empty<ItemAmount>(), out reason)) return false;
             world.buildings.Add(new PlacedBuilding { id = Guid.NewGuid().ToString("N"), definition = definition,
-                owner = player.id, position = position, quarterTurns = turns });
+                owner = player.id, position = position, quarterTurns = turns, mapScene = player.mapScene });
             return true;
         }
 

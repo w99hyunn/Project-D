@@ -69,6 +69,8 @@ namespace DoHwa.UI
                     if(loaded.name==scene && loaded.handle!=previous.handle)
                     { SceneManager.SetActiveScene(loaded); break; }
                 }
+                if(previous.name=="Ingame" && DoHwa.World.WorldMapSession.Instance)
+                    await DoHwa.World.WorldMapSession.Instance.UnloadMapsAsync();
                 if(previous.name!="System")
                     await Awaitable.FromAsyncOperation(SceneManager.UnloadSceneAsync(previous),curtain.destroyCancellationToken);
                 foreach(var root in SceneManager.GetActiveScene().GetRootGameObjects())

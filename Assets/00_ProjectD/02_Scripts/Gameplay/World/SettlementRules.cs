@@ -75,6 +75,7 @@ namespace DoHwa.World
             if (player.health > 0) return;
             var camp = world.buildings.Find(b => b.id == player.campId && catalog.Building(b.definition).use == BuildingUse.Camp);
             player.position = camp == null ? catalog.spawnPoint : player.campPosition;
+            player.mapScene = WorldMapSession.LegacyMap(player.position);
             player.health = 100;
             player.protectedUntil = world.elapsedSeconds + (camp == null ? 3 : catalog.Building(camp.definition).camp.respawnProtection);
             player.respawns++;

@@ -7,8 +7,8 @@ namespace DoHwa.World
 {
     public sealed class OpenWorldStreamer : MonoBehaviour
     {
-        [SerializeField] private WorldRuntime world;
-        [SerializeField] private HeroMotor hero;
+        private WorldRuntime world;
+        private HeroMotor hero;
         [SerializeField] private OpenWorldDefinition definition;
         [SerializeField] private bool landmarksAuthoredInScene;
         private readonly Dictionary<Vector2Int,GameObject> chunks=new();
@@ -20,6 +20,7 @@ namespace DoHwa.World
         private float nextRefresh;
         public int LoadedChunks=>chunks.Count;
         public OpenWorldDefinition Definition=>definition;
+        private void Awake() { world = WorldRuntime.Instance; hero = world.Hero; }
         private void Start()
         {
             activeSeed=world.State.seed;world.Changed+=StateChanged;
@@ -37,8 +38,8 @@ namespace DoHwa.World
         {
             wanted.Clear();int limit=definition.worldSize/definition.chunkSize/2;
             void Include(Vector3 position){var center=Cell(position);for(int z=-definition.viewRadius;z<=definition.viewRadius;z++)for(int x=-definition.viewRadius;x<=definition.viewRadius;x++){var p=center+new Vector2Int(x,z);if(p.x>=-limit&&p.x<limit&&p.y>=-limit&&p.y<limit)wanted.Add(p);}}
-            Include(hero.transform.position);
-            if(world.IsAuthority)foreach(var player in world.State.players)if(world.ActivePlayers.Contains(player.id))Include(player.position);
+            if (world.LocalPlayer.mapScene == gameObject.scene.name) Include(hero.transform.position);
+            if(world.IsAuthority)foreach(var player in world.State.players)if(world.ActivePlayers.Contains(player.id) && player.mapScene == gameObject.scene.name)Include(player.position);
             var remove=new List<Vector2Int>();foreach(var pair in chunks)if(!wanted.Contains(pair.Key))remove.Add(pair.Key);
             foreach(var cell in remove)Unload(cell);
             pending.Clear();foreach(var cell in wanted)if(!chunks.ContainsKey(cell))pending.Add(cell);
@@ -47,6 +48,7 @@ namespace DoHwa.World
         private void LateUpdate()
         {
             Shader.SetGlobalVector("_WorldHero",new Vector4(hero.transform.position.x,hero.transform.position.y+1,hero.transform.position.z,1));
+            if(world.LocalPlayer.mapScene != gameObject.scene.name)return;
             float edge=definition.worldSize*.5f-3;
             var position=hero.transform.position;
             var bounded=new Vector3(Mathf.Clamp(position.x,-edge,edge),position.y,Mathf.Clamp(position.z,-edge,edge));

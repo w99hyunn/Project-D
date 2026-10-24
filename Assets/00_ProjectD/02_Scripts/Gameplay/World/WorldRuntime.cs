@@ -17,16 +17,20 @@ namespace DoHwa.World
         public int quantity;
     }
 
+    [DefaultExecutionOrder(-1000)]
     public sealed class WorldRuntime : MonoBehaviour
     {
         [SerializeField] private GameCatalog catalog;
+        [SerializeField] private HeroMotor hero;
+        public HeroMotor Hero => hero;
+        public static WorldRuntime Instance { get; private set; }
+        public WorldEnemy[] Enemies { get; private set; } = Array.Empty<WorldEnemy>();
         [SerializeField] private string saveSlot = "peach-valley";
-        [SerializeField] private Transform buildingRoot;
         private readonly Dictionary<string, GameObject> buildingViews = new();
         private readonly List<WorldResource> resources = new();
         public IReadOnlyList<WorldResource> Resources => resources;
-        private WorldSupplyCache[] caches;
-        public DokkaebiGate[] Gates { get; private set; }
+        private WorldSupplyCache[] caches = Array.Empty<WorldSupplyCache>();
+        public DokkaebiGate[] Gates { get; private set; } = Array.Empty<DokkaebiGate>();
         public System.Collections.Generic.IReadOnlyList<WorldSupplyCache> Caches => caches;
         public void RegisterResource(WorldResource node)
         {
@@ -49,11 +53,13 @@ namespace DoHwa.World
 
         private void Awake()
         {
+            Instance = this;
             saveSlot = WorldSelection.Slot;
-            Gates = FindObjectsByType<DokkaebiGate>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            caches = FindObjectsByType<WorldSupplyCache>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-            resources.AddRange(FindObjectsByType<WorldResource>(FindObjectsInactive.Include, FindObjectsSortMode.None));
             State = WorldSave.Read(saveSlot);
+            foreach (var player in State.players)
+                if (string.IsNullOrEmpty(player.mapScene)) player.mapScene = WorldMapSession.LegacyMap(player.position);
+            foreach (var building in State.buildings)
+                if (string.IsNullOrEmpty(building.mapScene)) building.mapScene = WorldMapSession.LegacyMap(building.position);
             LocalPlayerId = PlayerIdentity.Get();
             var legacy = State.Player(PlayerPrefs.GetString("WorldPlayerIdentity", "local")) ?? State.Player("local");
             if (State.Player(LocalPlayerId) == null && legacy != null)
@@ -67,6 +73,15 @@ namespace DoHwa.World
             Reconcile();
         }
 
+        public void RefreshMapObjects()
+        {
+            Gates = FindObjectsByType<DokkaebiGate>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            caches = FindObjectsByType<WorldSupplyCache>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            Enemies = FindObjectsByType<WorldEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            resources.Clear();
+            resources.AddRange(FindObjectsByType<WorldResource>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+            Reconcile(); Changed?.Invoke();
+        }
         private void Update()
         {
             if (!IsAuthority) return;
@@ -125,7 +140,7 @@ namespace DoHwa.World
                     success = WorldRules.OpenCache(State, player, catalog, cache.Id, cache.Definition, out reason);
                     break;
                 case WorldAction.Attack:
-                    var enemy = Array.Find(FindObjectsByType<WorldEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None), e => e.Id == command.target);
+                    var enemy = Array.Find(Enemies, e => e.Id == command.target);
                     int pendingBefore = player.pendingRewards.Count;
                     success = enemy && enemy.isActiveAndEnabled && enemy.TryHit(playerId);
                     reason = success ? player.pendingRewards.Count > pendingBefore ? "전리품을 보관했습니다. 모닥불에서 받으세요" : "" : "공격할 수 없습니다";
@@ -239,16 +254,20 @@ namespace DoHwa.World
 
         private void Reconcile()
         {
-            foreach (var node in resources) node.SetAvailable(!State.resources.Exists(r => r.id == node.Id));
+            foreach (var node in resources)
+                if (node) node.SetAvailable(!State.resources.Exists(r => r.id == node.Id));
             var removed = new List<string>();
             foreach (var view in buildingViews)
-                if (!State.buildings.Exists(b => b.id == view.Key)) { Destroy(view.Value); removed.Add(view.Key); }
+                if (!view.Value || !State.buildings.Exists(b => b.id == view.Key)) { Destroy(view.Value); removed.Add(view.Key); }
             foreach (string id in removed) buildingViews.Remove(id);
             foreach (var state in State.buildings)
             {
                 if (buildingViews.ContainsKey(state.id)) continue;
+                var map = UnityEngine.SceneManagement.SceneManager.GetSceneByName(state.mapScene);
+                if (!map.IsValid() || !map.isLoaded) continue;
                 var spec = catalog.Building(state.definition);
-                var instance = Instantiate(spec.prefab, state.position, Quaternion.Euler(0, state.quarterTurns * 90, 0), buildingRoot);
+                var instance = Instantiate(spec.prefab, state.position, Quaternion.Euler(0, state.quarterTurns * 90, 0));
+                UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(instance, map);
                 instance.AddComponent<WorldBuilding>().Bind(state, spec);
                 buildingViews.Add(state.id, instance);
             }

@@ -4,10 +4,11 @@ namespace DoHwa
 {
     public sealed class BlossomDrift : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        private Transform target;
         [SerializeField] private float height = 6f;
 
         public void Configure(Transform followTarget) => target = followTarget;
+        private void Start() => target = World.WorldRuntime.Instance.Hero.transform;
 
         private void LateUpdate()
         {

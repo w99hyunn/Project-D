@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_ProjectD/01_Scenes/Production/System.unity
     guid: b2ba427d631acaa4da2168173bc7dd18
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/PeachValley.unity
+    guid: 13b3e00b147aa6647912616573a414b7
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/Moonshadow.unity
+    guid: f198c61d2e1925a47b110b1e8964ed99
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

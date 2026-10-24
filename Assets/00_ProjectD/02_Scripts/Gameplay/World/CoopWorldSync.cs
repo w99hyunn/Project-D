@@ -121,7 +121,7 @@ namespace DoHwa.World
 
         private void Update()
         {
-            if (!network.IsListening || !network.IsConnectedClient || Time.unscaledTime < nextPose) return;
+            if (!WorldMapSession.Instance.LocalMapReady || !network.IsListening || !network.IsConnectedClient || Time.unscaledTime < nextPose) return;
             nextPose = Time.unscaledTime + .1f;
             if (network.IsServer)
             {
@@ -181,7 +181,7 @@ namespace DoHwa.World
 
         private void Broadcast()
         {
-            if (!network.IsListening || !network.IsServer || !registered) return;
+            if (!WorldMapSession.Instance.LocalMapReady || !network.IsListening || !network.IsServer || !registered) return;
             var active = new string[world.ActivePlayers.Count]; world.ActivePlayers.CopyTo(active);
             var packet = new CoopPacket { snapshot = JsonUtility.ToJson(world.State), activePlayers = active };
             foreach (ulong client in network.ConnectedClientsIds)
@@ -194,7 +194,7 @@ namespace DoHwa.World
             foreach (var player in world.State.players)
             {
                 if (player.id == world.LocalPlayerId || player.id == "local") continue;
-                if (!world.ActivePlayers.Contains(player.id))
+                if (!world.ActivePlayers.Contains(player.id) || player.mapScene != world.LocalPlayer.mapScene)
                 { if (avatars.TryGetValue(player.id, out var stale)) stale.gameObject.SetActive(false); continue; }
                 if (!avatars.TryGetValue(player.id, out var avatar))
                 {

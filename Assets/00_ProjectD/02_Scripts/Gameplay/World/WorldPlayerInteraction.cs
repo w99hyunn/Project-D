@@ -26,13 +26,11 @@ namespace DoHwa.World
         private float attackAt;
         private float resultUntil;
         private string result;
-        private WorldEnemy[] enemies;
         private WorldBuilding[] buildings;
         private int respawns;
 
         private void Start()
         {
-            enemies = FindObjectsByType<WorldEnemy>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             ui.BindWorld(world);
             world.Changed += Refresh;
             world.Result += OnResult;
@@ -46,7 +44,7 @@ namespace DoHwa.World
             if (world.LocalPlayer == null) return;
             buildings = FindObjectsByType<WorldBuilding>(FindObjectsSortMode.None);
             ui.ApplyWorldState(world.LocalPlayer);
-            if (respawns != world.LocalPlayer.respawns || travelRevision != world.LocalPlayer.travelRevision)
+            if (WorldMapSession.Instance.LocalMapReady && (respawns != world.LocalPlayer.respawns || travelRevision != world.LocalPlayer.travelRevision))
             {
                 travelRevision = world.LocalPlayer.travelRevision;
                 respawns = world.LocalPlayer.respawns;
@@ -82,6 +80,7 @@ namespace DoHwa.World
         private void Update()
         {
             if (world.LocalPlayer == null) return;
+            if (!WorldMapSession.Instance.LocalMapReady) { interactionLabel.text = ""; return; }
             world.LocalPlayer.position = hero.transform.position;
             if (ui.IsModalOpen || !hero.enabled)
             { interactionLabel.text = ""; placementMarker.gameObject.SetActive(false); return; }
@@ -138,7 +137,7 @@ namespace DoHwa.World
             if (mouse.leftButton.wasPressedThisFrame && Time.time >= attackAt && !EventSystem.current.IsPointerOverGameObject())
             {
                 attackAt = Time.time + .45f;
-                foreach (var enemy in enemies)
+                foreach (var enemy in world.Enemies)
                     if (enemy.isActiveAndEnabled && Vector3.Distance(hero.transform.position, enemy.transform.position) < 2.5f)
                         world.Submit(new WorldCommand { action = WorldAction.Attack, target = enemy.Id });
             }

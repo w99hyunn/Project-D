@@ -35,6 +35,7 @@ namespace DoHwa.World
         public Vector3 position;
         public int respawns;
         public int travelRevision;
+        public string mapScene;
         public string campId;
         public Vector3 campPosition;
         public double lastDamageAt = -100;
@@ -45,6 +46,7 @@ namespace DoHwa.World
 
     [Serializable] public sealed class PlacedBuilding
     {
+        public string mapScene;
         public string id;
         public string definition;
         public string owner;
@@ -83,7 +85,7 @@ namespace DoHwa.World
             var player = Player(id);
             if (player != null) return player;
             player = new SurvivorState { id = id, items = new int[catalog.itemCount],
-                upgrades = new int[catalog.itemCount], position = catalog.spawnPoint };
+                upgrades = new int[catalog.itemCount], position = catalog.spawnPoint, mapScene = "PeachValley" };
             foreach (var amount in catalog.starterItems) player.items[amount.item] += amount.amount;
             players.Add(player);
             return player;

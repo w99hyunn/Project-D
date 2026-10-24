@@ -5,13 +5,14 @@ namespace DoHwa.World
 {
     public sealed class SeededResourceRegion : MonoBehaviour
     {
-        [SerializeField] private WorldRuntime world;
+        private WorldRuntime world;
         [SerializeField] private Collider terrain;
         [SerializeField] private WorldResource[] nodes;
         [SerializeField] private Vector2 size = new(8, 14);
         [SerializeField] private int regionSalt = 173;
         [SerializeField] private float minimumSpacing = 1.8f;
         private int appliedSeed = -1;
+        private void Awake() => world = WorldRuntime.Instance;
         private void Start() { world.Changed += Refresh; Refresh(); }
         private void OnDestroy() { world.Changed -= Refresh; }
         private void Refresh()

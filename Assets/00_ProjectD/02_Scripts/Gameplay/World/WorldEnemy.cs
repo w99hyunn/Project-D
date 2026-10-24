@@ -6,7 +6,7 @@ namespace DoHwa.World
     [RequireComponent(typeof(CharacterController))]
     public sealed class WorldEnemy : MonoBehaviour
     {
-        [SerializeField] private WorldRuntime world;
+        private WorldRuntime world;
         [SerializeField] private string enemyId;
         [SerializeField] private bool boss;
         [SerializeField] private float maximumHealth = 60;
@@ -33,6 +33,7 @@ namespace DoHwa.World
 
         private void Awake()
         {
+            world = WorldRuntime.Instance;
             TryGetComponent<CharacterController>(out controller);
             home = transform.position; health = maximumHealth;
         }
@@ -47,7 +48,7 @@ namespace DoHwa.World
             }
             health = state.health;
             transform.position = state.position;
-            if (boss && world.State.defeatedBosses.Contains(enemyId)) gameObject.SetActive(false);
+            if (health <= 0 || (boss && world.State.defeatedBosses.Contains(enemyId))) gameObject.SetActive(false);
         }
 
         private void LateUpdate()
