@@ -27,6 +27,7 @@ MonoBehaviour:
   shrine: {fileID: 8849842736651532939, guid: 01484f3dde653ca41962feb197a3009c, type: 3}
   regions:
   - title: "\uB3C4\uD654\uB9BC"
+    sceneName: PeachValley
     climate: "\uBD04 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 0, y: 20}
@@ -34,6 +35,8 @@ MonoBehaviour:
     elevation: 3
     relief: 16
     ground: {r: 0.42, g: 0.32, b: 0.34, a: 1}
+    atmosphere: {r: 0.56299996, g: 0.4825, b: 0.53499997, a: 1}
+    sunlight: {r: 0.96503997, g: 0.9126, b: 0.88, a: 1}
     vegetation: {fileID: 4211288851047027727, guid: 92028c1df23454c48a296f70c55d45a1, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 9111988527597826147, guid: a88308e3854d9c945b200be4ff6d164b, type: 3}
@@ -46,6 +49,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uCCAD\uC8FD\uD574"
+    sceneName: JadeBambooSea
     climate: "\uCD08\uC5EC\uB984 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 0, y: 650}
@@ -53,6 +57,8 @@ MonoBehaviour:
     elevation: 14
     relief: 25
     ground: {r: 0.25, g: 0.37, b: 0.29, a: 1}
+    atmosphere: {r: 0.5035, g: 0.5, b: 0.5175, a: 1}
+    sunlight: {r: 0.96028, g: 0.914, b: 0.8786, a: 1}
     vegetation: {fileID: 1437120844296606820, guid: e835a399a7feb6344b4752c66ff921a1, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
@@ -65,6 +71,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uD64D\uC5FD \uACE0\uC6D0"
+    sceneName: CrimsonHighland
     climate: "\uAC00\uC744 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: -1000, y: 800}
@@ -72,6 +79,8 @@ MonoBehaviour:
     elevation: 32
     relief: 45
     ground: {r: 0.49, g: 0.35, b: 0.22, a: 1}
+    atmosphere: {r: 0.5875, g: 0.493, b: 0.493, a: 1}
+    sunlight: {r: 0.967, g: 0.91344, b: 0.87664, a: 1}
     vegetation: {fileID: 7103182549146733139, guid: e82b366fd239ba14a84956311f6f802e, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 2955740003897962505, guid: 37493d5fed859f74a9d33a04d780d99d, type: 3}
@@ -84,6 +93,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uC740\uAC08\uB300 \uC5EC\uC6B8"
+    sceneName: SilverReedMarsh
     climate: "\uCD08\uC5EC\uB984 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 1100, y: 300}
@@ -91,6 +101,8 @@ MonoBehaviour:
     elevation: 1
     relief: 5
     ground: {r: 0.38, g: 0.46, b: 0.34, a: 1}
+    atmosphere: {r: 0.54899997, g: 0.5315, b: 0.53499997, a: 1}
+    sunlight: {r: 0.96392, g: 0.91652, b: 0.88, a: 1}
     vegetation: {fileID: 5695258402173558795, guid: 47aeebe77fe7ce346ba75005bb49e817, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
@@ -103,6 +115,7 @@ MonoBehaviour:
     timber: 0
     lakeRadius: 100
   - title: "\uC6B4\uBB34 \uC11D\uB9BC"
+    sceneName: CloudStoneForest
     climate: "\uBD04 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 200, y: 2400}
@@ -110,6 +123,8 @@ MonoBehaviour:
     elevation: 100
     relief: 140
     ground: {r: 0.38, g: 0.45, b: 0.43, a: 1}
+    atmosphere: {r: 0.54899997, g: 0.528, b: 0.5665, a: 1}
+    sunlight: {r: 0.96392, g: 0.91624, b: 0.88252, a: 1}
     vegetation: {fileID: 7338701638100167140, guid: 6faf588cac52c8f48a9345abbce46e19, type: 3}
     scenery: {fileID: 453493820414645927, guid: 3e111def1f2424f41b7961b90855b261, type: 3}
     landmark: {fileID: 8432621190586081844, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
@@ -122,6 +137,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uBC31\uB839 \uC124\uC0B0"
+    sceneName: WhiteSpiritMountain
     climate: "\uACA8\uC6B8 / \uB9D1\uC74C"
     groundCover: 0
     center: {x: -2000, y: 4500}
@@ -129,6 +145,8 @@ MonoBehaviour:
     elevation: 240
     relief: 210
     ground: {r: 0.78, g: 0.83, b: 0.84, a: 1}
+    atmosphere: {r: 0.68899995, g: 0.661, b: 0.71, a: 1}
+    sunlight: {r: 0.97512, g: 0.92688, b: 0.894, a: 1}
     vegetation: {fileID: 9157087418271958444, guid: d5a54a68f29be574d9e010dd8b5a0709, type: 3}
     scenery: {fileID: 453493820414645927, guid: 3e111def1f2424f41b7961b90855b261, type: 3}
     landmark: {fileID: 414805580648087525, guid: 76896c7a3fee99145b0d4f267b1d2f83, type: 3}
@@ -141,6 +159,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uD669\uD63C \uB2E8\uD48D\uB9BC"
+    sceneName: TwilightMapleForest
     climate: "\uAC00\uC744 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: -3400, y: -2200}
@@ -148,6 +167,8 @@ MonoBehaviour:
     elevation: 45
     relief: 70
     ground: {r: 0.43, g: 0.3, b: 0.25, a: 1}
+    atmosphere: {r: 0.5665, g: 0.4755, b: 0.5035, a: 1}
+    sunlight: {r: 0.96532, g: 0.91204, b: 0.87748003, a: 1}
     vegetation: {fileID: 7103182549146733139, guid: e82b366fd239ba14a84956311f6f802e, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 9111988527597826147, guid: a88308e3854d9c945b200be4ff6d164b, type: 3}
@@ -160,6 +181,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uC625\uBE5B \uB300\uC232"
+    sceneName: EmeraldBambooWilds
     climate: "\uCD08\uC5EC\uB984 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 3700, y: -2400}
@@ -167,6 +189,8 @@ MonoBehaviour:
     elevation: 25
     relief: 45
     ground: {r: 0.22, g: 0.36, b: 0.33, a: 1}
+    atmosphere: {r: 0.493, g: 0.49650002, b: 0.5315, a: 1}
+    sunlight: {r: 0.95944, g: 0.91372, b: 0.87972003, a: 1}
     vegetation: {fileID: 1437120844296606820, guid: e835a399a7feb6344b4752c66ff921a1, type: 3}
     scenery: {fileID: 0}
     landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
@@ -179,6 +203,7 @@ MonoBehaviour:
     timber: 1
     lakeRadius: 0
   - title: "\uBE44\uCDE8 \uCC9C\uBD09"
+    sceneName: JadePeaks
     climate: "\uBD04 / \uB9D1\uC74C"
     groundCover: 1
     center: {x: 3900, y: 3300}
@@ -186,6 +211,8 @@ MonoBehaviour:
     elevation: 140
     relief: 180
     ground: {r: 0.32, g: 0.43, b: 0.4, a: 1}
+    atmosphere: {r: 0.528, g: 0.521, b: 0.556, a: 1}
+    sunlight: {r: 0.96224, g: 0.91568, b: 0.88168, a: 1}
     vegetation: {fileID: 7338701638100167140, guid: 6faf588cac52c8f48a9345abbce46e19, type: 3}
     scenery: {fileID: 453493820414645927, guid: 3e111def1f2424f41b7961b90855b261, type: 3}
     landmark: {fileID: 2955740003897962505, guid: 37493d5fed859f74a9d33a04d780d99d, type: 3}
@@ -7051,3 +7078,259 @@ MonoBehaviour:
   - {x: -3400, y: -2200}
   - {x: 3700, y: -2400}
   - {x: 3900, y: 3300}
+  places:
+  - id: district-0-0
+    title: "\uB3C4\uD654\uB9BC \uB0A8\uCABD \uC27C\uD130"
+    center: {x: -150, y: -80}
+    radius: 32
+    elevation: 3
+    roadEntry: {x: 0, y: 20}
+    entryElevation: 3
+  - id: district-0-1
+    title: "\uBCF5\uC22D\uC544 \uB18D\uC6D0 \uC61B\uD130"
+    center: {x: 170, y: -70}
+    radius: 32
+    elevation: 3
+    roadEntry: {x: 0, y: 20}
+    entryElevation: 3
+  - id: district-0-2
+    title: "\uC0B0\uAE38 \uCD08\uC18C"
+    center: {x: -150, y: 200}
+    radius: 32
+    elevation: 3
+    roadEntry: {x: 0, y: 20}
+    entryElevation: 3
+  - id: district-0-3
+    title: "\uB3C4\uD654\uB9BC \uC228\uC740 \uB730"
+    center: {x: 160, y: 210}
+    radius: 32
+    elevation: 3
+    roadEntry: {x: 0, y: 20}
+    entryElevation: 3
+  - id: district-1-0
+    title: "\uCCAD\uC8FD \uB2E4\uC815"
+    center: {x: -130, y: 540}
+    radius: 32
+    elevation: 14
+    roadEntry: {x: 0, y: 620}
+    entryElevation: 14
+  - id: district-1-1
+    title: "\uBC14\uB78C \uB300\uC232"
+    center: {x: 145, y: 570}
+    radius: 32
+    elevation: 14
+    roadEntry: {x: 0, y: 620}
+    entryElevation: 14
+  - id: district-1-2
+    title: "\uC8FD\uB9BC \uACBD\uACC4\uCD08\uC18C"
+    center: {x: -135, y: 795}
+    radius: 32
+    elevation: 14
+    roadEntry: {x: 0, y: 620}
+    entryElevation: 14
+  - id: district-1-3
+    title: "\uCCAD\uC8FD \uBE44\uBC00 \uB730"
+    center: {x: 140, y: 800}
+    radius: 32
+    elevation: 14
+    roadEntry: {x: 0, y: 620}
+    entryElevation: 14
+  - id: district-2-0
+    title: "\uD64D\uC5FD \uC27C\uD130"
+    center: {x: -1130, y: 690}
+    radius: 32
+    elevation: 32
+    roadEntry: {x: -1000, y: 770}
+    entryElevation: 32
+  - id: district-2-1
+    title: "\uBD89\uC740 \uACE0\uAC2F\uBB38"
+    center: {x: -855, y: 720}
+    radius: 32
+    elevation: 32
+    roadEntry: {x: -1000, y: 770}
+    entryElevation: 32
+  - id: district-2-2
+    title: "\uACE0\uC6D0 \uC218\uBE44\uB300"
+    center: {x: -1135, y: 945}
+    radius: 32
+    elevation: 32
+    roadEntry: {x: -1000, y: 770}
+    entryElevation: 32
+  - id: district-2-3
+    title: "\uB099\uC5FD\uC758 \uB3CC\uBB34\uB364"
+    center: {x: -860, y: 950}
+    radius: 32
+    elevation: 32
+    roadEntry: {x: -1000, y: 770}
+    entryElevation: 32
+  - id: district-3-0
+    title: "\uAC08\uB300 \uB098\uB8E8 \uC27C\uD130"
+    center: {x: 970, y: 190}
+    radius: 32
+    elevation: 1
+    roadEntry: {x: 1100, y: 270}
+    entryElevation: 1
+  - id: district-3-1
+    title: "\uC61B \uC5B4\uCD0C \uB9C8\uB2F9"
+    center: {x: 1245, y: 220}
+    radius: 32
+    elevation: 1
+    roadEntry: {x: 1100, y: 270}
+    entryElevation: 1
+  - id: district-3-2
+    title: "\uBB3C\uC548\uAC1C \uCD08\uC18C"
+    center: {x: 965, y: 445}
+    radius: 32
+    elevation: 1
+    roadEntry: {x: 1100, y: 270}
+    entryElevation: 1
+  - id: district-3-3
+    title: "\uC5EC\uC6B8\uC758 \uBCF4\uBB3C\uD130"
+    center: {x: 1240, y: 450}
+    radius: 32
+    elevation: 1
+    roadEntry: {x: 1100, y: 270}
+    entryElevation: 1
+  - id: district-4-0
+    title: "\uC6B4\uBB34 \uC0B0\uAC1D \uC27C\uD130"
+    center: {x: 70, y: 2290}
+    radius: 32
+    elevation: 100
+    roadEntry: {x: 200, y: 2370}
+    entryElevation: 100
+  - id: district-4-1
+    title: "\uC11D\uB9BC \uACE0\uC0AC\uB2F9"
+    center: {x: 345, y: 2320}
+    radius: 32
+    elevation: 100
+    roadEntry: {x: 200, y: 2370}
+    entryElevation: 100
+  - id: district-4-2
+    title: "\uB3CC\uAE30\uB465 \uD30C\uC218\uB300"
+    center: {x: 65, y: 2545}
+    radius: 32
+    elevation: 100
+    roadEntry: {x: 200, y: 2370}
+    entryElevation: 100
+  - id: district-4-3
+    title: "\uC6B4\uBB34 \uBD09\uC778\uD130"
+    center: {x: 340, y: 2550}
+    radius: 32
+    elevation: 100
+    roadEntry: {x: 200, y: 2370}
+    entryElevation: 100
+  - id: district-5-0
+    title: "\uBC31\uB839 \uC0B0\uC7A5"
+    center: {x: -2130, y: 4390}
+    radius: 32
+    elevation: 240
+    roadEntry: {x: -2000, y: 4470}
+    entryElevation: 240
+  - id: district-5-1
+    title: "\uB208\uAE38 \uC774\uC815\uD45C"
+    center: {x: -1855, y: 4420}
+    radius: 32
+    elevation: 240
+    roadEntry: {x: -2000, y: 4470}
+    entryElevation: 240
+  - id: district-5-2
+    title: "\uC124\uC0B0 \uC218\uBB38\uC7A5"
+    center: {x: -2135, y: 4645}
+    radius: 32
+    elevation: 240
+    roadEntry: {x: -2000, y: 4470}
+    entryElevation: 240
+  - id: district-5-3
+    title: "\uBC31\uB839 \uAE30\uC6D0\uD130"
+    center: {x: -1860, y: 4650}
+    radius: 32
+    elevation: 240
+    roadEntry: {x: -2000, y: 4470}
+    entryElevation: 240
+  - id: district-6-0
+    title: "\uD669\uD63C \uD589\uC0C1\uD130"
+    center: {x: -3530, y: -2310}
+    radius: 32
+    elevation: 45
+    roadEntry: {x: -3400, y: -2230}
+    entryElevation: 45
+  - id: district-6-1
+    title: "\uB2E8\uD48D \uD3D0\uCD0C"
+    center: {x: -3255, y: -2280}
+    radius: 32
+    elevation: 45
+    roadEntry: {x: -3400, y: -2230}
+    entryElevation: 45
+  - id: district-6-2
+    title: "\uC800\uB141\uC232 \uCD08\uC18C"
+    center: {x: -3535, y: -2055}
+    radius: 32
+    elevation: 45
+    roadEntry: {x: -3400, y: -2230}
+    entryElevation: 45
+  - id: district-6-3
+    title: "\uBD89\uC740 \uC232\uC758 \uC81C\uB2E8"
+    center: {x: -3260, y: -2050}
+    radius: 32
+    elevation: 45
+    roadEntry: {x: -3400, y: -2230}
+    entryElevation: 45
+  - id: district-7-0
+    title: "\uC625\uBE5B \uAE38\uC190 \uC815\uC790"
+    center: {x: 3570, y: -2510}
+    radius: 32
+    elevation: 25
+    roadEntry: {x: 3700, y: -2430}
+    entryElevation: 25
+  - id: district-7-1
+    title: "\uB300\uC232 \uD3D0\uC6D0"
+    center: {x: 3845, y: -2480}
+    radius: 32
+    elevation: 25
+    roadEntry: {x: 3700, y: -2430}
+    entryElevation: 25
+  - id: district-7-2
+    title: "\uBE44\uCDE8 \uACBD\uACC4\uCD08\uC18C"
+    center: {x: 3565, y: -2255}
+    radius: 32
+    elevation: 25
+    roadEntry: {x: 3700, y: -2430}
+    entryElevation: 25
+  - id: district-7-3
+    title: "\uB300\uC232\uC758 \uC57D\uC18D\uD130"
+    center: {x: 3840, y: -2250}
+    radius: 32
+    elevation: 25
+    roadEntry: {x: 3700, y: -2430}
+    entryElevation: 25
+  - id: district-8-0
+    title: "\uCC9C\uBD09 \uC0B0\uAC1D \uC815\uC790"
+    center: {x: 3770, y: 3190}
+    radius: 32
+    elevation: 140
+    roadEntry: {x: 3900, y: 3270}
+    entryElevation: 140
+  - id: district-8-1
+    title: "\uAD6C\uB984 \uACE0\uAC2F\uBB38"
+    center: {x: 4045, y: 3220}
+    radius: 32
+    elevation: 140
+    roadEntry: {x: 3900, y: 3270}
+    entryElevation: 140
+  - id: district-8-2
+    title: "\uCC9C\uBD09 \uC218\uBB38\uC7A5"
+    center: {x: 3765, y: 3445}
+    radius: 32
+    elevation: 140
+    roadEntry: {x: 3900, y: 3270}
+    entryElevation: 140
+  - id: district-8-3
+    title: "\uBE44\uCDE8 \uBD09\uC778\uD130"
+    center: {x: 4040, y: 3450}
+    radius: 32
+    elevation: 140
+    roadEntry: {x: 3900, y: 3270}
+    entryElevation: 140
+  scenicValley: {fileID: 11400000, guid: cac8cd3808a073547b711a780a745ecf, type: 2}
+  retainStarterTerrain: 0
+  transitionWidth: 220

@@ -7,6 +7,7 @@ namespace DoHwa.World
     public sealed class WorldRegion
     {
         public string title;
+        public string sceneName;
         public string climate="봄 / 맑음";
         public bool groundCover=true;
         public Vector2 center;
@@ -14,6 +15,8 @@ namespace DoHwa.World
         public float elevation;
         public float relief=12;
         public Color ground=Color.gray;
+        public Color atmosphere=new(.7f,.75f,.8f);
+        public Color sunlight=Color.white;
         public GameObject vegetation;
         public GameObject scenery;
         public GameObject landmark;

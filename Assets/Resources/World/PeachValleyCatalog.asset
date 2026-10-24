@@ -159,5 +159,5 @@ MonoBehaviour:
   oreItem: 5
   ingotItem: 11
   upgradeLimit: 5
-  spawnPoint: {x: 1.5, y: 0.5, z: 18}
+  spawnPoint: {x: 24.89241, y: 2.960368, z: 166}
   survival: {fileID: 11400000, guid: 0c128e8ffe30a7145826c72502335bb9, type: 2}

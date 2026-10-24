@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4ce09a4b15b3f44959d789f04d9cfa, type: 3}
+  m_Name: ValleyReworkProfile
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.World.ScenicValley
+  river:
+  - {x: -25, y: -1, z: -150}
+  - {x: 5, y: 0, z: 30}
+  - {x: 38, y: 1, z: 160}
+  - {x: 65, y: 2, z: 260}
+  - {x: 25, y: 4, z: 370}
+  - {x: 50, y: 6, z: 490}
+  - {x: 10, y: 9, z: 620}
+  - {x: 35, y: 12, z: 800}
+  bankWidth: 64
+  riverHalfWidth: 6
+  landings:
+  - {x: 26.560383, y: 168, z: 2.618176, w: 2.4}
+  - {x: 54.560383, y: 168, z: 2.618176, w: 2.4}
+  - {x: 29.999687, y: 184, z: 2.795152, w: 4.1}
+  - {x: 63.585735, y: 178, z: 2.735536, w: 5}
+  - {x: -8.200796, y: 95, z: 2.15, w: 5}
+  - {x: 11.402739, y: 330, z: 5.0489483, w: 5}
+  - {x: -1.8392568, y: 560, z: 9.322736, w: 5}

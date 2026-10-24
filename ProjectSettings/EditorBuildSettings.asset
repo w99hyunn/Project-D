@@ -23,6 +23,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_ProjectD/01_Scenes/Maps/Moonshadow.unity
     guid: f198c61d2e1925a47b110b1e8964ed99
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/JadeBambooSea.unity
+    guid: ae12f78601cc0844395e09a74a8f48fa
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/CrimsonHighland.unity
+    guid: ac3530d188fba094a89bb1e1559b8c03
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/SilverReedMarsh.unity
+    guid: b804c45edabbd6e4abf62c8525e09391
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/CloudStoneForest.unity
+    guid: af6e323efc359c342ad61b6ee64f0636
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/WhiteSpiritMountain.unity
+    guid: a450c7e1f7fd01e4c9af8583137da23a
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/TwilightMapleForest.unity
+    guid: fc8036ab7ac251d4da1a1e7e785f5b6e
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/EmeraldBambooWilds.unity
+    guid: 29b26c44067583d4ea35a4f9dd783cec
+  - enabled: 1
+    path: Assets/00_ProjectD/01_Scenes/Maps/JadePeaks.unity
+    guid: 1441192178163b1488c0a2431a28c85f
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

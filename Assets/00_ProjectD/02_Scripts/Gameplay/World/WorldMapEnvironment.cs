@@ -5,6 +5,6 @@ namespace DoHwa.World
     public sealed class WorldMapEnvironment : MonoBehaviour
     {
         [SerializeField] private GameObject blossomWeather;
-        public void SetBlossoms(bool visible) => blossomWeather.SetActive(visible);
+        public void SetBlossoms(bool visible) { if(blossomWeather) blossomWeather.SetActive(visible); }
     }
 }

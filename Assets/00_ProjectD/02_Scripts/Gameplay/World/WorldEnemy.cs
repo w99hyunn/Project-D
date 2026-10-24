@@ -7,6 +7,8 @@ namespace DoHwa.World
     public sealed class WorldEnemy : MonoBehaviour
     {
         private WorldRuntime world;
+        private System.Threading.CancellationTokenRegistration worldLifetime;
+        private System.Threading.CancellationTokenRegistration heroLifetime;
         [SerializeField] private string enemyId;
         [SerializeField] private bool boss;
         [SerializeField] private float maximumHealth = 60;
@@ -34,9 +36,15 @@ namespace DoHwa.World
         private void Awake()
         {
             world = WorldRuntime.Instance;
+            if (!world || !world.Hero) { enabled=false; return; }
+            worldLifetime=world.destroyCancellationToken.Register(StopSimulation);
+            heroLifetime=world.Hero.destroyCancellationToken.Register(StopSimulation);
             TryGetComponent<CharacterController>(out controller);
             home = transform.position; health = maximumHealth;
         }
+
+        private void StopSimulation() => enabled=false;
+        private void OnDestroy() { worldLifetime.Dispose(); heroLifetime.Dispose(); }
 
         private void Start()
         {

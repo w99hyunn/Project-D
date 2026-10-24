@@ -197,6 +197,7 @@ namespace DoHwa.UI
 
         private void Update()
         {
+            if(WorldDebugPanel.CapturingInput)return;
             if(preparingMenus)return;
             if(craftResult.IsOpen)
             {

@@ -36,7 +36,7 @@ Shader "DoHwa/Peach Blossom"
             {
                 float4 positionCS : SV_POSITION;
                 float3 positionWS : TEXCOORD0;
-                half3 normalWS : TEXCOORD1;
+                float3 normalWS : TEXCOORD1;
                 float2 uv : TEXCOORD2;
                 half fog : TEXCOORD3;
                 float3 positionOS : TEXCOORD4;
@@ -58,7 +58,7 @@ Shader "DoHwa/Peach Blossom"
             half4 Frag(Varyings input, FRONT_FACE_TYPE facing : FRONT_FACE_SEMANTIC) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(input);
-                half3 normal=normalize(input.normalWS)*IS_FRONT_VFACE(facing,1,-1);
+                float3 normal=SafeNormalize(input.normalWS)*IS_FRONT_VFACE(facing,1,-1);
                 Light light=GetMainLight(TransformWorldToShadowCoord(input.positionWS));
                 half wrap=saturate((dot(normal,light.direction)+.45)/1.45);
                 half shade=smoothstep(.1,.85,wrap);
@@ -71,7 +71,7 @@ Shader "DoHwa/Peach Blossom"
                 half3 indirect=SampleSH(normal)*.70;
                 half3 direct=light.color*(.18+.75*shade)*shadow;
                 color*=(indirect+direct)*canopyDepth;
-                return half4(MixFog(color,input.fog),1);
+                return half4(MixFog(clamp(color,0.0,2.0),input.fog),1);
             }
             ENDHLSL
         }
@@ -80,4 +80,5 @@ Shader "DoHwa/Peach Blossom"
         UsePass "Universal Render Pipeline/Lit/DepthNormals"
     }
 }
+
 

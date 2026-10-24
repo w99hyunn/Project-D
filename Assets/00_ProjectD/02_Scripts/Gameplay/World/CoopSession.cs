@@ -21,6 +21,9 @@ namespace DoHwa.World
         private float connectionDeadline;
         private async void Start()
         {
+            // NGO moves its root to DDOL in OnEnable. This manager belongs to one
+            // gameplay session; map changes retain Ingame, menu return must dispose it.
+            UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(network.gameObject, world.gameObject.scene);
             transport.AcceptPeer = IsMember;
             SteamRuntime.JoinRequested += InviteAccepted;
             network.OnClientDisconnectCallback += Disconnected;

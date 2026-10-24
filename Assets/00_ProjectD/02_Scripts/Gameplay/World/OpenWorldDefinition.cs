@@ -19,6 +19,22 @@ namespace DoHwa.World
         public float[] starterHeights;
         public Vector2[] landmarks;
         public WorldPlace[] places=System.Array.Empty<WorldPlace>();
+        public ScenicValley scenicValley;
+        public bool retainStarterTerrain = true;
+        [Min(1)] public float transitionWidth=220;
+
+        public float RegionWeight(float x,float z,int index)
+        {
+            var point=new Vector2(x,z);
+            float nearest=float.MaxValue;
+            foreach(var region in regions)nearest=Mathf.Min(nearest,Vector2.Distance(point,region.center));
+            float sum=0,selected=0;
+            for(int i=0;i<regions.Length;i++){
+                float weight=Mathf.Exp(-(Vector2.Distance(point,regions[i].center)-nearest)/transitionWidth);
+                sum+=weight;if(i==index)selected=weight;
+            }
+            return selected/sum;
+        }
 
         public bool IsAuthoredPlace(float x,float z,float margin=0)
         {
@@ -59,7 +75,7 @@ namespace DoHwa.World
             var p=new Vector2(x,z);float minimum=Vector2.Distance(p,regions[nearest].center);
             float total=0;elevation=0;relief=0;color=Color.clear;
             foreach(var region in regions){
-                float weight=Mathf.Exp(-(Vector2.Distance(p,region.center)-minimum)/150);
+                float weight=Mathf.Exp(-(Vector2.Distance(p,region.center)-minimum)/transitionWidth);
                 total+=weight;elevation+=region.elevation*weight;relief+=region.relief*weight;color+=region.ground*weight;
             }
             elevation/=total;relief/=total;color/=total;
@@ -116,8 +132,13 @@ namespace DoHwa.World
                 if(distance<place.radius+18)
                     h=Mathf.Lerp(place.elevation,h,Mathf.SmoothStep(0,1,Mathf.Clamp01((distance-place.radius)/18)));
             }
-            float dx=Mathf.Max(starter.xMin-x,0,x-starter.xMax),dz=Mathf.Max(starter.yMin-z,0,z-starter.yMax);
-            return Mathf.Lerp(StarterHeight(x,z),h,Mathf.SmoothStep(0,1,Mathf.Clamp01(Mathf.Sqrt(dx*dx+dz*dz)/65)));
+
+            if(scenicValley)h=scenicValley.Shape(x,z,h);
+            if(retainStarterTerrain){
+                float dx=Mathf.Max(starter.xMin-x,0,x-starter.xMax),dz=Mathf.Max(starter.yMin-z,0,z-starter.yMax);
+                return Mathf.Lerp(StarterHeight(x,z),h,Mathf.SmoothStep(0,1,Mathf.Clamp01(Mathf.Sqrt(dx*dx+dz*dz)/65)));
+            }
+            return h;
         }
         public Color GroundColor(float x,float z,int seed)
         {
@@ -125,10 +146,18 @@ namespace DoHwa.World
             float road=RoadDistance(x,z,out _);
             color=Color.Lerp(color*.75f+new Color(.12f,.10f,.07f,0),color,Mathf.SmoothStep(0,1,Mathf.Clamp01((road-3)/4)));
             color*=.94f+.08f*Mathf.PerlinNoise(x*.065f,z*.065f);
+            if(scenicValley && scenicValley.Weight(x,z)>0){
+                var c=scenicValley.Center(z);float d=Mathf.Abs(x-c.x);
+                float path=Mathf.Abs(x-(c.x-scenicValley.Width(z)-9));
+                var bank=Color.Lerp(new Color(.39f,.36f,.31f),color,Mathf.SmoothStep(0,1,Mathf.InverseLerp(scenicValley.Width(z),18,d)));
+                bank=Color.Lerp(new Color(.46f,.38f,.32f),bank,Mathf.SmoothStep(0,1,Mathf.InverseLerp(2,4,path)));
+                color=Color.Lerp(color,bank,scenicValley.Weight(x,z));
+            }
             return color.linear;
         }
     }
 }
+
 
 
 

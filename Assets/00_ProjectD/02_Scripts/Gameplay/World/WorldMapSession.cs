@@ -10,17 +10,66 @@ namespace DoHwa.World
     {
         [SerializeField] private WorldRuntime world;
         [SerializeField] private HeroMotor hero;
+        [SerializeField] private OpenWorldDefinition surface;
         [SerializeField] private string[] mapScenes = { "PeachValley", "Moonshadow" };
         private readonly HashSet<string> loaded = new();
         private readonly Dictionary<string, WorldMapEnvironment> environments = new();
         public WorldMapEnvironment CurrentEnvironment => environments.GetValueOrDefault(world.LocalPlayer.mapScene);
         private bool changing;
         private bool shuttingDown;
+        private bool debugTravelling;
         private float refreshAt;
         private string visibleMap;
         public static WorldMapSession Instance { get; private set; }
-        public bool LocalMapReady => !shuttingDown && world.LocalPlayer != null && loaded.Contains(world.LocalPlayer.mapScene);
-        public static string LegacyMap(Vector3 position) => position.y > 50 ? "Moonshadow" : "PeachValley";
+        public bool LocalMapReady => !shuttingDown && !debugTravelling && world.LocalPlayer != null && loaded.Contains(world.LocalPlayer.mapScene);
+        public async Awaitable DebugTravelAsync(string map, Vector3 position)
+        {
+            if (!world.IsAuthority || debugTravelling) return;
+            var token = destroyCancellationToken;
+            while (changing) await Awaitable.NextFrameAsync(token);
+            var previousMap = world.LocalPlayer.mapScene;
+            var previousPosition = hero.transform.position;
+            bool wasEnabled = hero.enabled;
+            debugTravelling = true;
+            hero.enabled = false;
+            try
+            {
+                world.LocalPlayer.mapScene = map;
+                world.LocalPlayer.position = position;
+                world.Commit();
+                float deadline = Time.realtimeSinceStartup + 45;
+                while (true)
+                {
+                    token.ThrowIfCancellationRequested();
+                    if (Time.realtimeSinceStartup > deadline) throw new TimeoutException("지형 로딩 시간이 초과되었습니다.");
+                    if (!changing && loaded.Contains(map) && Physics.Raycast(position + Vector3.up * 15, Vector3.down, out var hit, 40, ~0, QueryTriggerInteraction.Ignore) && hit.collider.gameObject.scene.name == map)
+                    {
+                        position.y = hit.point.y + .3f;
+                        break;
+                    }
+                    await Awaitable.NextFrameAsync(token);
+                }
+                hero.TryGetComponent<CharacterController>(out var body);
+                body.enabled = false;
+                hero.transform.position = position;
+                body.enabled = true;
+                world.LocalPlayer.position = position;
+                world.LocalPlayer.travelRevision++;
+            }
+            catch
+            {
+                world.LocalPlayer.mapScene = previousMap;
+                world.LocalPlayer.position = previousPosition;
+                throw;
+            }
+            finally
+            {
+                debugTravelling = false;
+                if (!token.IsCancellationRequested) { hero.enabled = wasEnabled; world.Commit(); Refresh(); }
+            }
+        }
+        public static string LegacyMap(Vector3 position) => position.y > 70 && position.y < 95 && Mathf.Abs(position.x)<15 && Mathf.Abs(position.z-10)<15 ? "Moonshadow" : "PeachValley";
+        public string SurfaceScene(Vector3 position) => surface.regions[surface.Biome(position.x,position.z,world.State.seed)].sceneName;
 
         private void Awake()
         {
@@ -30,9 +79,12 @@ namespace DoHwa.World
         }
         private void Start()
         {
+            foreach(var building in world.State.buildings)
+                if(building.mapScene!="Moonshadow")building.mapScene=SurfaceScene(building.position);
             foreach (string name in loaded) RegisterEnvironment(name);
             world.RefreshMapObjects();
             world.Changed += Refresh; Refresh();
+            if (LocalMapReady) hero.enabled = true;
         }
         private void RegisterEnvironment(string name)
         {
@@ -48,10 +100,21 @@ namespace DoHwa.World
         }
         private HashSet<string> RequiredMaps()
         {
-            var maps = new HashSet<string> { world.LocalPlayer.mapScene };
+            var maps = new HashSet<string>();
+            void Include(SurvivorState player)
+            {
+                if(player.mapScene=="Moonshadow"){maps.Add("Moonshadow");return;}
+                player.mapScene=SurfaceScene(player.position);
+                maps.Add(player.mapScene);
+                int cx=Mathf.FloorToInt(player.position.x/surface.chunkSize),cz=Mathf.FloorToInt(player.position.z/surface.chunkSize);
+                int radius=surface.viewRadius+1;
+                for(int z=-radius;z<=radius;z++)for(int x=-radius;x<=radius;x++)
+                    maps.Add(SurfaceScene(new Vector3((cx+x+.5f)*surface.chunkSize,0,(cz+z+.5f)*surface.chunkSize)));
+            }
+            Include(world.LocalPlayer);
             if (world.IsAuthority)
                 foreach (var player in world.State.players)
-                    if (world.ActivePlayers.Contains(player.id)) maps.Add(player.mapScene);
+                    if (world.ActivePlayers.Contains(player.id)) Include(player);
             return maps;
         }
         private async void Refresh()
@@ -88,9 +151,13 @@ namespace DoHwa.World
                     foreach (var root in SceneManager.GetSceneByName(name).GetRootGameObjects())
                     {
                         bool visible = name == world.LocalPlayer.mapScene;
-                        foreach (var renderer in root.GetComponentsInChildren<Renderer>(true)) renderer.forceRenderingOff = !visible;
-                        foreach (var light in root.GetComponentsInChildren<Light>(true)) light.enabled = visible;
-                        foreach (var volume in root.GetComponentsInChildren<UnityEngine.Rendering.Volume>(true)) volume.enabled = visible;
+                        bool surfaceVisible = name!="Moonshadow" && world.LocalPlayer.mapScene!="Moonshadow";
+                        foreach (var renderer in root.GetComponentsInChildren<Renderer>(true)) renderer.forceRenderingOff = !(visible || (surfaceVisible && renderer is not ParticleSystemRenderer));
+                        foreach (var light in root.GetComponentsInChildren<Light>(true)) {
+                            light.enabled = visible && name=="Moonshadow";
+                            if(light.enabled && light.type==LightType.Directional)RenderSettings.sun=light;
+                        }
+                        foreach (var volume in root.GetComponentsInChildren<UnityEngine.Rendering.Volume>(true)) volume.enabled = visible && name=="Moonshadow";
                     }
                 visibleMap = world.LocalPlayer.mapScene;
                 if (paused && LocalMapReady)

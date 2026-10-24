@@ -102,6 +102,7 @@ namespace DoHwa.World
         }
 
         private void OnApplicationQuit() { if (IsAuthority) Save(); }
+        private void OnDestroy() { if (Instance == this) Instance = null; }
         public void Save() { WorldSave.Write(State, saveSlot); saveAt = Time.unscaledTime + 20; }
 
         public void Submit(WorldCommand command)

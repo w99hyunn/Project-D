@@ -5,6 +5,8 @@ namespace DoHwa.World
     public sealed class DokkaebiGate : MonoBehaviour
     {
         private WorldRuntime world;
+        private bool subscribed;
+        private System.Threading.CancellationTokenRegistration worldLifetime;
         [SerializeField] private DokkaebiPactDefinition pact;
         [SerializeField] private string gateId;
         [SerializeField] private bool returnGate;
@@ -16,9 +18,21 @@ namespace DoHwa.World
         public string Hint => returnGate ? "[E] 도화림으로 돌아가기" : Open
             ? "[E] 달그늘 길로 들어가기" : "[E] " + pact.offeringHint;
 
-        private void Awake() => world = WorldRuntime.Instance;
-        private void Start() { world.Changed += Refresh; Refresh(); }
-        private void OnDestroy() { world.Changed -= Refresh; }
+        private void Awake()
+        {
+            world = WorldRuntime.Instance;
+            if (!world) { enabled = false; return; }
+            worldLifetime = world.destroyCancellationToken.Register(StopSession);
+        }
+        private void StopSession()
+        {
+            enabled = false;
+            if (!subscribed) return;
+            world.Changed -= Refresh;
+            subscribed = false;
+        }
+        private void Start() { world.Changed += Refresh; subscribed = true; Refresh(); }
+        private void OnDestroy() { worldLifetime.Dispose(); StopSession(); }
         private void Refresh()
         {
             var emission = flames.emission;
@@ -43,3 +57,5 @@ namespace DoHwa.World
         }
     }
 }
+
+

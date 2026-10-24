@@ -49,6 +49,9 @@ namespace DoHwa.UI
             var curtain=instance;
             curtain.gameObject.SetActive(true);
             var previous=SceneManager.GetActiveScene();
+            if(DoHwa.World.WorldMapSession.Instance)
+                previous=DoHwa.World.WorldMapSession.Instance.gameObject.scene;
+            var suspended=new System.Collections.Generic.List<Behaviour>();
             try
             {
                 curtain.SetProgress(0);
@@ -61,6 +64,14 @@ namespace DoHwa.UI
                     await Awaitable.NextFrameAsync(curtain.destroyCancellationToken);
                 }
                 curtain.SetProgress(1);
+                // Additive activation overlaps both screens for a frame; hand input/audio over first.
+                foreach(var root in previous.GetRootGameObjects())
+                {
+                    foreach(var input in root.GetComponentsInChildren<UnityEngine.EventSystems.EventSystem>())
+                        if(input.enabled){suspended.Add(input);input.enabled=false;}
+                    foreach(var listener in root.GetComponentsInChildren<AudioListener>())
+                        if(listener.enabled){suspended.Add(listener);listener.enabled=false;}
+                }
                 operation.allowSceneActivation=true;
                 await Awaitable.FromAsyncOperation(operation,curtain.destroyCancellationToken);
                 for(int i=0;i<SceneManager.sceneCount;i++)
@@ -79,7 +90,10 @@ namespace DoHwa.UI
                 await Awaitable.NextFrameAsync(curtain.destroyCancellationToken);
                 await curtain.PlayAsync("Reveal");
             }
-            finally {loading=false;curtain.gameObject.SetActive(false);}
+            finally {
+                foreach(var component in suspended)if(component)component.enabled=true;
+                loading=false;curtain.gameObject.SetActive(false);
+            }
         }
     }
 }
