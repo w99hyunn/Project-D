@@ -8,14 +8,14 @@ namespace DoHwa
     {
         [SerializeField] private Transform target;
         [SerializeField] private Transform spriteVisual;
-        [SerializeField] private float distance = 28f;
-        [SerializeField] private float pitch = 48f;
+        [SerializeField] private float distance = 24.5f;
+        [SerializeField] private float pitch = 50f;
         [SerializeField] private float yaw;
         [SerializeField] private float followSharpness = 12f;
         [SerializeField] private float nearDistance = 8f;
-        [SerializeField] private float farDistance = 26f;
+        [SerializeField] private float farDistance = 24.5f;
         [SerializeField] private float nearPitch = 36f;
-        [SerializeField] private float farPitch = 52f;
+        [SerializeField] private float farPitch = 50f;
         [SerializeField] private float zoomStep = 0.14f;
         [SerializeField] private float rotationSensitivity = 0.18f;
         [SerializeField] private float zoomSharpness = 10f;
@@ -139,3 +139,4 @@ namespace DoHwa
         }
     }
 }
+

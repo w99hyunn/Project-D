@@ -68634,14 +68634,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.HeroCamera
   target: {fileID: 391530746}
   spriteVisual: {fileID: 929825996}
-  distance: 23
-  pitch: 52
+  distance: 24.5
+  pitch: 50
   yaw: 32
   followSharpness: 12
   nearDistance: 8
-  farDistance: 26
+  farDistance: 24.5
   nearPitch: 36
-  farPitch: 52
+  farPitch: 50
   zoomStep: 0.14
   rotationSensitivity: 0.18
   zoomSharpness: 10

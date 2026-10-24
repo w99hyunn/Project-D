@@ -67,7 +67,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 150
-  field of view: 32
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -107,9 +107,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.HeroCamera
   target: {fileID: 3734465301418910037}
   spriteVisual: {fileID: 7466332842816404992}
-  distance: 28
-  pitch: 48
+  distance: 24.5
+  pitch: 50
+  yaw: 0
   followSharpness: 12
+  nearDistance: 8
+  farDistance: 24.5
+  nearPitch: 36
+  farPitch: 50
+  zoomStep: 0.14
+  rotationSensitivity: 0.18
+  zoomSharpness: 10
+  footHeight: 0.02
+  orbitSharpness: 18
+  heightSharpness: 6
+  teleportDistance: 8
 --- !u!1 &1791059308846972979
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,12 +436,16 @@ MonoBehaviour:
   cameraTransform: {fileID: 4152626051511885961}
   animator: {fileID: 767313708845917162}
   modularCharacter: {fileID: 4018457539764181910}
+  layeredCharacter: {fileID: 0}
   spriteRenderer: {fileID: 5984267889463558423}
   useOriginalFrontArt: 1
   useEightWayAnimations: 1
   walkSpeed: 2.3
   runSpeed: 4.8
   acceleration: 24
+  braking: 40
+  turnAcceleration: 48
+  dashInputBuffer: 0.1
   dashSpeed: 12
   dashDuration: 0.28
   dashCooldown: 0.65
