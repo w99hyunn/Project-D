@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    7.200000286102295,
+    6.020471096038818,
+    4.658766746520996
+  ],
+  "vertices": 40914,
+  "triangles": 22168,
+  "textures": [
+    {
+      "material": "MountainShrineV2_0",
+      "file": "MountainShrineV2_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

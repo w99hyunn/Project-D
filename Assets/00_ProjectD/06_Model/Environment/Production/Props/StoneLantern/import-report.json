@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.9685449600219727,
+    0.8233879804611206,
+    1.6500000953674316
+  ],
+  "vertices": 6378,
+  "triangles": 5335,
+  "textures": [
+    {
+      "material": "StoneLantern_0",
+      "file": "StoneLantern_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

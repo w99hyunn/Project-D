@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    7.000000476837158,
+    2.2778053283691406,
+    1.6930140256881714
+  ],
+  "vertices": 24098,
+  "triangles": 17865,
+  "textures": [
+    {
+      "material": "VillageFootbridge_0",
+      "file": "VillageFootbridge_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
