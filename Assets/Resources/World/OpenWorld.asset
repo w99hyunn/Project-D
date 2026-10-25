@@ -61,7 +61,7 @@ MonoBehaviour:
     sunlight: {r: 0.96028, g: 0.914, b: 0.8786, a: 1}
     vegetation: {fileID: 1437120844296606820, guid: e835a399a7feb6344b4752c66ff921a1, type: 3}
     scenery: {fileID: 0}
-    landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
+    landmark: {fileID: 4786634732688747106, guid: 5e9a0d2d886c35249a807ef6d857adb1, type: 3}
     pier: {fileID: 0}
     roadsideProps:
     - {fileID: 1725815603005730715, guid: ec1ac56c02c02674ea3176d1afffa27b, type: 3}
@@ -83,7 +83,7 @@ MonoBehaviour:
     sunlight: {r: 0.967, g: 0.91344, b: 0.87664, a: 1}
     vegetation: {fileID: 7103182549146733139, guid: e82b366fd239ba14a84956311f6f802e, type: 3}
     scenery: {fileID: 0}
-    landmark: {fileID: 2955740003897962505, guid: 37493d5fed859f74a9d33a04d780d99d, type: 3}
+    landmark: {fileID: 4430509392002888093, guid: 080a48186e629f64c91d90eefa148202, type: 3}
     pier: {fileID: 0}
     roadsideProps:
     - {fileID: 1725815603005730715, guid: ec1ac56c02c02674ea3176d1afffa27b, type: 3}
@@ -105,7 +105,7 @@ MonoBehaviour:
     sunlight: {r: 0.96392, g: 0.91652, b: 0.88, a: 1}
     vegetation: {fileID: 5695258402173558795, guid: 47aeebe77fe7ce346ba75005bb49e817, type: 3}
     scenery: {fileID: 0}
-    landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
+    landmark: {fileID: 4786634732688747106, guid: 5e9a0d2d886c35249a807ef6d857adb1, type: 3}
     pier: {fileID: 2672595212376963033, guid: 3e3303af9496efe48b4cfff68af26c64, type: 3}
     roadsideProps:
     - {fileID: 1725815603005730715, guid: ec1ac56c02c02674ea3176d1afffa27b, type: 3}
@@ -193,7 +193,7 @@ MonoBehaviour:
     sunlight: {r: 0.95944, g: 0.91372, b: 0.87972003, a: 1}
     vegetation: {fileID: 1437120844296606820, guid: e835a399a7feb6344b4752c66ff921a1, type: 3}
     scenery: {fileID: 0}
-    landmark: {fileID: 765231626583590708, guid: eddbad01ae62d6f4cb3c3b3f6fdca8ba, type: 3}
+    landmark: {fileID: 4786634732688747106, guid: 5e9a0d2d886c35249a807ef6d857adb1, type: 3}
     pier: {fileID: 0}
     roadsideProps:
     - {fileID: 1725815603005730715, guid: ec1ac56c02c02674ea3176d1afffa27b, type: 3}
@@ -215,7 +215,7 @@ MonoBehaviour:
     sunlight: {r: 0.96224, g: 0.91568, b: 0.88168, a: 1}
     vegetation: {fileID: 7338701638100167140, guid: 6faf588cac52c8f48a9345abbce46e19, type: 3}
     scenery: {fileID: 453493820414645927, guid: 3e111def1f2424f41b7961b90855b261, type: 3}
-    landmark: {fileID: 2955740003897962505, guid: 37493d5fed859f74a9d33a04d780d99d, type: 3}
+    landmark: {fileID: 4430509392002888093, guid: 080a48186e629f64c91d90eefa148202, type: 3}
     pier: {fileID: 0}
     roadsideProps:
     - {fileID: 1725815603005730715, guid: ec1ac56c02c02674ea3176d1afffa27b, type: 3}
