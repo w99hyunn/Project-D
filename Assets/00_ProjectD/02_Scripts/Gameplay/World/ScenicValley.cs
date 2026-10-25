@@ -9,6 +9,42 @@ namespace DoHwa.World
         public float bankWidth = 48;
         public float riverHalfWidth = 5;
         public Vector4[] landings = System.Array.Empty<Vector4>();
+        [Tooltip("Authored path points: X, Z, elevation, half width.")]
+        public Vector4[] restAreaPath = System.Array.Empty<Vector4>();
+        [Tooltip("Clearing surface: X, Z, radius, edge feather.")]
+        public Vector4 restAreaClearing;
+
+        public float RestPathWeight(float x, float z, out float elevation)
+        {
+            float weight = 0;
+            elevation = 0;
+            var position = new Vector2(x, z);
+            for (int i = 0; i + 1 < restAreaPath.Length; i++)
+            {
+                var a = restAreaPath[i];
+                var b = restAreaPath[i + 1];
+                var start = new Vector2(a.x, a.y);
+                var segment = new Vector2(b.x - a.x, b.y - a.y);
+                if (segment.sqrMagnitude < .001f) continue;
+                float t = Mathf.Clamp01(Vector2.Dot(position - start, segment) / segment.sqrMagnitude);
+                float distance = Vector2.Distance(position, start + segment * t);
+                float width = Mathf.Lerp(a.w, b.w, t);
+                float influence = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(width, width + 3, distance));
+                if (influence <= weight) continue;
+                weight = influence;
+                elevation = Mathf.Lerp(a.z, b.z, t);
+            }
+            return weight;
+        }
+
+        public float RestAreaSurface(float x, float z)
+        {
+            float path = RestPathWeight(x, z, out _);
+            if (restAreaClearing.z <= 0) return path;
+            float distance = Vector2.Distance(new Vector2(x, z), new Vector2(restAreaClearing.x, restAreaClearing.y));
+            float clearing = 1 - Mathf.SmoothStep(0, 1, Mathf.InverseLerp(restAreaClearing.z, restAreaClearing.z + restAreaClearing.w, distance));
+            return Mathf.Max(path, clearing);
+        }
 
         public Vector3 Center(float z)
         {
@@ -49,7 +85,8 @@ namespace DoHwa.World
                 float blend=1-Mathf.SmoothStep(0,1,Mathf.InverseLerp(landing.w,landing.w+4,landingDistance));
                 height=Mathf.Lerp(height,landing.z,blend);
             }
-            return height;
+            float pathWeight = RestPathWeight(x, z, out float pathElevation);
+            return Mathf.Lerp(height, pathElevation, pathWeight);
         }
     }
 }

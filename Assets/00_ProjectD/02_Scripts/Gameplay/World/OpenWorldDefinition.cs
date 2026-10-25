@@ -152,6 +152,9 @@ namespace DoHwa.World
                 var bank=Color.Lerp(new Color(.39f,.36f,.31f),color,Mathf.SmoothStep(0,1,Mathf.InverseLerp(scenicValley.Width(z),18,d)));
                 bank=Color.Lerp(new Color(.46f,.38f,.32f),bank,Mathf.SmoothStep(0,1,Mathf.InverseLerp(2,4,path)));
                 color=Color.Lerp(color,bank,scenicValley.Weight(x,z));
+                float restSurface=scenicValley.RestAreaSurface(x,z);
+                var restSoil=new Color(.48f,.405f,.34f)*(.97f+.03f*Mathf.PerlinNoise(x*.13f,z*.13f));
+                color=Color.Lerp(color,restSoil,restSurface*.85f);
             }
             return color.linear;
         }
