@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    7.800000190734863,
+    5.233497619628906,
+    5.872974872589111
+  ],
+  "vertices": 39531,
+  "triangles": 21636,
+  "textures": [
+    {
+      "material": "RestPavilion_0",
+      "file": "RestPavilion_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
