@@ -37075,6 +37075,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174205307}
   m_Mesh: {fileID: 4300000, guid: cbc0a6770e0d5e978fcb612e2417a014, type: 2}
+--- !u!1001 &174782760
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099072985}
+    m_Modifications:
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.873827
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9848078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.1736482
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8432621190586081844, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+      propertyPath: m_Name
+      value: MountainPrayerCairn
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+--- !u!4 &174782761 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
+  m_PrefabInstance: {fileID: 174782760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &176284596
 GameObject:
   m_ObjectHideFlags: 0
@@ -276986,13 +277048,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 903295611370626557, guid: febe9679d022c564b8d6b7e44198b668, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1367495016}
   m_SourcePrefab: {fileID: 100100000, guid: febe9679d022c564b8d6b7e44198b668, type: 3}
 --- !u!4 &1367495014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3442117468647402259, guid: febe9679d022c564b8d6b7e44198b668, type: 3}
   m_PrefabInstance: {fileID: 1367495013}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1367495015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903295611370626557, guid: febe9679d022c564b8d6b7e44198b668, type: 3}
+  m_PrefabInstance: {fileID: 1367495013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1367495016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367495015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1367935445
 GameObject:
   m_ObjectHideFlags: 0
@@ -422232,6 +422331,7 @@ Transform:
   - {fileID: 443736431}
   - {fileID: 2093132364}
   - {fileID: 1367495014}
+  - {fileID: 174782761}
   m_Father: {fileID: 1006709031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2099345741

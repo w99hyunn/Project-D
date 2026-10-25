@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.2864129543304443,
+    1.1610714197158813,
+    1.350000023841858
+  ],
+  "vertices": 15067,
+  "triangles": 12232,
+  "textures": [
+    {
+      "material": "MountainPrayerCairn_0",
+      "file": "MountainPrayerCairn_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
