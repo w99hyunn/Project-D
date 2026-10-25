@@ -98,7 +98,7 @@ MonoBehaviour:
   buildings:
   - id: workbench
     title: "\uBAA9\uACF5 \uC791\uC5C5\uB300"
-    prefab: {fileID: 351959824254979104, guid: 5823e054678a07e45a9cac8a45711220, type: 3}
+    prefab: {fileID: 6674775252680477550, guid: e3f1ec408f81efe4da3829c1caf01ed4, type: 3}
     footprint: {x: 2, y: 1}
     station: 1
     cost:
