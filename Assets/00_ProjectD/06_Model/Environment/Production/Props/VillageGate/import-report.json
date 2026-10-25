@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    7.199999809265137,
+    4.2995991706848145,
+    5.560542106628418
+  ],
+  "vertices": 36495,
+  "triangles": 17927,
+  "textures": [
+    {
+      "material": "VillageGate_0",
+      "file": "VillageGate_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
