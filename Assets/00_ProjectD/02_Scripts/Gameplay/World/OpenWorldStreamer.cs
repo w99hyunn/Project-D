@@ -23,6 +23,23 @@ namespace DoHwa.World
         private CancellationTokenRegistration heroLifetime;
         private CancellationTokenRegistration worldLifetime;
         private bool bound;
+#if UNITY_EDITOR
+        private bool editorPreview;
+        public void PrepareEditorPreview(OpenWorldDefinition source,int seed,int region)
+        {
+            editorPreview=true;definition=source;activeSeed=seed;regionIndex=region;landmarksAuthoredInScene=true;
+        }
+        public void BuildEditorPreview(Vector2Int cell)
+        {
+            if(!Application.isPlaying && editorPreview && !chunks.ContainsKey(cell))Build(cell);
+        }
+        public void ReleaseEditorPreview()
+        {
+            foreach(var mesh in meshes.Values)DestroyImmediate(mesh);
+            foreach(var list in detailMeshes.Values)foreach(var mesh in list)DestroyImmediate(mesh);
+            meshes.Clear();detailMeshes.Clear();chunks.Clear();
+        }
+#endif
         public int LoadedChunks=>chunks.Count;
         public OpenWorldDefinition Definition=>definition;
         private void Awake()
@@ -108,6 +125,9 @@ namespace DoHwa.World
                 bool reserved=false;foreach(var p in definition.landmarks)if(Vector2.Distance(new Vector2(x,z),p)<14){reserved=true;break;}if(reserved)continue;
                 int biome=definition.VegetationBiome(x,z,activeSeed);var region=definition.regions[biome];if(i>=region.vegetationCount)continue;bool ore=i%7==0;var prefab=ore?definition.boulder:region.vegetation;
                 var art=Instantiate(prefab,new Vector3(x,definition.Height(x,z,activeSeed),z),Quaternion.Euler(0,random.Next(360),0),go.transform);art.transform.localScale*=.8f+(float)random.NextDouble()*.6f;
+#if UNITY_EDITOR
+                if(editorPreview)continue;
+#endif
                 if((region.timber&&i%3==0)||ore){var node=new GameObject("Gatherable");node.transform.SetParent(go.transform,false);node.transform.position=art.transform.position;art.transform.SetParent(node.transform,true);var resource=node.AddComponent<WorldResource>();resource.Configure($"chunk:{cell.x}:{cell.y}:{i}",ore?"철광석":"목재",new ItemAmount(ore?5:4,ore?2:3),art);world.RegisterResource(resource);}
             }
             detailMeshes[cell]=new List<Mesh>();
@@ -124,6 +144,9 @@ namespace DoHwa.World
             AddGroundCover(cell,go,random,definition.grass,240,false);
             AddGroundCover(cell,go,random,definition.petals,60,true);
             if(!landmarksAuthoredInScene)for(int i=0;i<definition.landmarks.Length;i++){var p=definition.landmarks[i];if(Cell(new Vector3(p.x,0,p.y))!=cell)continue;var region=definition.regions[definition.Biome(p.x,p.y,activeSeed)];Instantiate(region.landmark?region.landmark:definition.shrine,new Vector3(p.x,definition.Height(p.x,p.y,activeSeed),p.y),Quaternion.identity,go.transform);}
+#if UNITY_EDITOR
+            if(editorPreview)return;
+#endif
             foreach(var draw in go.GetComponentsInChildren<Renderer>())draw.forceRenderingOff=world.LocalPlayer.mapScene=="Moonshadow";
         }
         private void AddRoadsideProps(GameObject chunk,System.Random random)
