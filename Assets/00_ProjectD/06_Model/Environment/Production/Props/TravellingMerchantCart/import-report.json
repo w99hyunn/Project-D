@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.9000000953674316,
+    2.2647972106933594,
+    1.618829369544983
+  ],
+  "vertices": 27088,
+  "triangles": 16873,
+  "textures": [
+    {
+      "material": "TravellingMerchantCart_0",
+      "file": "TravellingMerchantCart_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
