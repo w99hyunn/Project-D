@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.1890677213668823,
+    1.2000000476837158,
+    0.25872525572776794
+  ],
+  "vertices": 18325,
+  "triangles": 12423,
+  "textures": [
+    {
+      "material": "RiverStoneHearth_0",
+      "file": "RiverStoneHearth_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
