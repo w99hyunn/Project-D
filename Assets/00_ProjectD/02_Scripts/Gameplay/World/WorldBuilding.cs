@@ -10,6 +10,8 @@ namespace DoHwa.World
         {
             InstanceId = state.id;
             Spec = spec;
+            if (TryGetComponent<GardenPresentation>(out var garden))
+                garden.Bind(WorldRuntime.Instance, this);
         }
     }
 }

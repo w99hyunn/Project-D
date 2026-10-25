@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.880000114440918,
+    1.8795720338821411,
+    0.4001016318798065
+  ],
+  "vertices": 13236,
+  "triangles": 7668,
+  "textures": [
+    {
+      "material": "HerbGardenBed_0",
+      "file": "HerbGardenBed_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

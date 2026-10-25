@@ -255,6 +255,23 @@ namespace DoHwa.World
 
         private void Reconcile()
         {
+            foreach (var site in FindObjectsByType<WorldGardenSite>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                var state = State.buildings.Find(b => b.id == site.PersistentId);
+                if (state == null)
+                {
+                    if (!IsAuthority) continue;
+                    state = new PlacedBuilding { id = site.PersistentId, definition = "herb-garden", owner = "",
+                        position = site.transform.position, mapScene = site.gameObject.scene.name,
+                        quarterTurns = Mathf.RoundToInt(site.transform.eulerAngles.y / 90) % 4 };
+                    State.buildings.Add(state);
+                    State.revision++;
+                }
+                if (buildingViews.TryGetValue(state.id, out var existing) && existing) continue;
+                if (!site.TryGetComponent<WorldBuilding>(out var view)) view = site.gameObject.AddComponent<WorldBuilding>();
+                view.Bind(state, catalog.Building(state.definition));
+                buildingViews[state.id] = site.gameObject;
+            }
             foreach (var node in resources)
                 if (node) node.SetAvailable(!State.resources.Exists(r => r.id == node.Id));
             var removed = new List<string>();

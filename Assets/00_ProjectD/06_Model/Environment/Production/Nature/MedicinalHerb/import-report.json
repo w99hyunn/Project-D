@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.3717227578163147,
+    0.4000000059604645,
+    0.2767828702926636
+  ],
+  "vertices": 7707,
+  "triangles": 3986,
+  "textures": [
+    {
+      "material": "MedicinalHerb_0",
+      "file": "MedicinalHerb_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

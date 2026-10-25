@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.0664191246032715,
+    0.8942343592643738,
+    2.4499998092651367
+  ],
+  "vertices": 10085,
+  "triangles": 12272,
+  "textures": [
+    {
+      "material": "SnowPassMarker_0",
+      "file": "SnowPassMarker_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

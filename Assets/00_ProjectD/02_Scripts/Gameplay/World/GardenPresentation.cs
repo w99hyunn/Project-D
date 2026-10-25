@@ -8,18 +8,32 @@ namespace DoHwa.World
         private WorldRuntime world;
         private WorldBuilding building;
         private Animator animator;
-        private void Start()
+        private bool bound;
+        private bool wasPlanted;
+        public void Bind(WorldRuntime runtime, WorldBuilding view)
         {
-            world = FindFirstObjectByType<WorldRuntime>();
-            TryGetComponent<WorldBuilding>(out building);
             TryGetComponent<Animator>(out animator);
+            world = runtime;
+            building = view;
+            bound = true;
+            var state = world.State.buildings.Find(b => b.id == building.InstanceId);
+            wasPlanted = state.plantedAt >= 0;
+            animator.SetFloat("Growth", wasPlanted ? .08f + SettlementRules.Growth(world.State, state, building.Spec.crop) * .92f : 0);
         }
         private void Update()
         {
+            if (!bound) return;
             var state = world.State.buildings.Find(b => b.id == building.InstanceId);
             // A removed building is destroyed at the end of the frame.
             if (state == null) return;
-            animator.SetFloat("Growth", state.plantedAt < 0 ? 0 : .08f + SettlementRules.Growth(world.State, state, building.Spec.crop) * .92f);
+            bool planted = state.plantedAt >= 0;
+            if (planted != wasPlanted)
+            {
+                animator.ResetTrigger(planted ? "Harvest" : "Plant");
+                animator.SetTrigger(planted ? "Plant" : "Harvest");
+                wasPlanted = planted;
+            }
+            animator.SetFloat("Growth", planted ? .08f + SettlementRules.Growth(world.State, state, building.Spec.crop) * .92f : 0);
         }
     }
 }
