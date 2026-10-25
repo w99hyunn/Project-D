@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6546182396107393802}
   - component: {fileID: 5789575191425747867}
   - component: {fileID: 5921948816952365446}
-  - component: {fileID: 3003693127117701121}
+  - component: {fileID: 2280883642749703780}
   m_Layer: 0
   m_Name: ReedFishingPier
   m_TagString: Untagged
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2672595212376963033}
-  m_Mesh: {fileID: 4300000, guid: f060c4c4b1e8013469d221e3296b8761, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a32bfbee132c2bc469f289dde04a7545, type: 2}
 --- !u!23 &5921948816952365446
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67,8 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7500c7fd47863f840b6336a806d972a0, type: 2}
-  - {fileID: 2100000, guid: 9f9ad02c5611ad14b9dae5ca50dae0b9, type: 2}
+  - {fileID: 2100000, guid: 1d16c7e8fee68af4885e19b648b3f21f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +91,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3003693127117701121
-BoxCollider:
+--- !u!64 &2280883642749703780
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,6 +109,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2, y: 0.13, z: 5.8}
-  m_Center: {x: 0.0001718998, y: 0, z: -2.7562766}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a32bfbee132c2bc469f289dde04a7545, type: 2}

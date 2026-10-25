@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    4.5,
+    3.1034398078918457,
+    1.2455836534500122
+  ],
+  "vertices": 20771,
+  "triangles": 12866,
+  "textures": [
+    {
+      "material": "ReedFishingPier_0",
+      "file": "ReedFishingPier_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
