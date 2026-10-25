@@ -92609,6 +92609,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443543874}
   m_Mesh: {fileID: 4300000, guid: fbe27ad2b2385d42aca7fcc6cc7778e1, type: 2}
+--- !u!1001 &443736430
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099072985}
+    m_Modifications:
+    - target: {fileID: 1526489081826330313, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_Name
+      value: CedarFence_GranaryLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 177.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+--- !u!4 &443736431 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+  m_PrefabInstance: {fileID: 443736430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &444644134
 GameObject:
   m_ObjectHideFlags: 0
@@ -421463,6 +421525,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092786922}
   m_Mesh: {fileID: 4300000, guid: e67bf42ebfcfe644dbef5085a2a0cfeb, type: 2}
+--- !u!1001 &2093132363
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099072985}
+    m_Modifications:
+    - target: {fileID: 1526489081826330313, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_Name
+      value: CedarFence_GranaryRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 176.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+--- !u!4 &2093132364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2190153597951745139, guid: 0ac40252c7bf3bd4998522fb91e378f6, type: 3}
+  m_PrefabInstance: {fileID: 2093132363}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2093367967
 GameObject:
   m_ObjectHideFlags: 0
@@ -422043,6 +422167,8 @@ Transform:
   - {fileID: 2078031849}
   - {fileID: 1222679584}
   - {fileID: 454328992}
+  - {fileID: 443736431}
+  - {fileID: 2093132364}
   m_Father: {fileID: 1006709031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2099345741

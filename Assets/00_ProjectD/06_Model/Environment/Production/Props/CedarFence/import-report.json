@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.4000000953674316,
+    0.2669975757598877,
+    0.8493388891220093
+  ],
+  "vertices": 10501,
+  "triangles": 7038,
+  "textures": [
+    {
+      "material": "CedarFence_0.010",
+      "file": "CedarFence_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
