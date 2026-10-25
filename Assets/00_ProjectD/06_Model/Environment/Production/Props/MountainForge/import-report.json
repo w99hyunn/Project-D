@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.799999713897705,
+    0.8869478106498718,
+    1.3793872594833374
+  ],
+  "vertices": 25032,
+  "triangles": 18305,
+  "textures": [
+    {
+      "material": "MountainForge_0",
+      "file": "MountainForge_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
