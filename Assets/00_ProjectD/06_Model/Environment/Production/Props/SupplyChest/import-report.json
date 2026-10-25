@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.399999976158142,
+    0.8977852463722229,
+    0.6500553488731384
+  ],
+  "vertices": 14222,
+  "triangles": 9067,
+  "textures": [
+    {
+      "material": "SupplyChest_0",
+      "file": "SupplyChest_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
