@@ -1,0 +1,20 @@
+{
+  "parts": [
+    {
+      "name": "JangseungTall",
+      "height": 3.5995506048202515,
+      "vertices": 8821,
+      "triangles": 8289
+    },
+    {
+      "name": "JangseungShort",
+      "height": 3.2920422554016113,
+      "vertices": 8410,
+      "triangles": 7986
+    }
+  ],
+  "separationGap": 0.8200254738330841,
+  "textures": [
+    "Jangseung_BaseColor.png"
+  ]
+}
