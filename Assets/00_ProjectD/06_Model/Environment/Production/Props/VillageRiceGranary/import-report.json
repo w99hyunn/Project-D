@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.5999999046325684,
+    2.3025152683258057,
+    2.842426061630249
+  ],
+  "vertices": 25871,
+  "triangles": 18066,
+  "textures": [
+    {
+      "material": "VillageRiceGranary_0",
+      "file": "VillageRiceGranary_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
