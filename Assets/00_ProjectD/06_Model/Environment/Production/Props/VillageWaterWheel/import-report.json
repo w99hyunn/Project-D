@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.609915018081665,
+    3.163071632385254,
+    3.6000001430511475
+  ],
+  "vertices": 24289,
+  "triangles": 13656,
+  "textures": [
+    {
+      "material": "VillageWaterWheel_0",
+      "file": "VillageWaterWheel_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

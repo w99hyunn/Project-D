@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.999999761581421,
+    1.1102203130722046,
+    1.1163731813430786
+  ],
+  "vertices": 10256,
+  "triangles": 6478,
+  "textures": [
+    {
+      "material": "VillageMillrace_0",
+      "file": "VillageMillrace_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
