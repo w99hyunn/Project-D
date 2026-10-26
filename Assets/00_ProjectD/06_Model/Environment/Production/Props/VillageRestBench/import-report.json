@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.3999998569488525,
+    0.6265347599983215,
+    0.5766270756721497
+  ],
+  "vertices": 7924,
+  "triangles": 5572,
+  "textures": [
+    {
+      "material": "VillageRestBench_0",
+      "file": "VillageRestBench_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

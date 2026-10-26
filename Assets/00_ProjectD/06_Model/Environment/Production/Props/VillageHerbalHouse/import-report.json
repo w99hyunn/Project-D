@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    8.000000953674316,
+    5.4590864181518555,
+    3.788233757019043
+  ],
+  "vertices": 34075,
+  "triangles": 18170,
+  "textures": [
+    {
+      "material": "VillageHerbalHouse_0",
+      "file": "VillageHerbalHouse_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
