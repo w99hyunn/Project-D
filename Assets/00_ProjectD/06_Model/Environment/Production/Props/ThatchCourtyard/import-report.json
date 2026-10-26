@@ -1,0 +1,29 @@
+[
+  {
+    "name": "ThatchCourtyardWall",
+    "dimensions": [
+      3.5141711235046387,
+      0.6056333780288696,
+      1.2000000476837158
+    ],
+    "triangles": 12210
+  },
+  {
+    "name": "ThatchCourtyardGate",
+    "dimensions": [
+      3.4976348876953125,
+      0.609031617641449,
+      1.399999976158142
+    ],
+    "triangles": 11921
+  },
+  {
+    "name": "ThatchCourtyardCorner",
+    "dimensions": [
+      2.0599021911621094,
+      2.0599021911621094,
+      1.1982808113098145
+    ],
+    "triangles": 12594
+  }
+]

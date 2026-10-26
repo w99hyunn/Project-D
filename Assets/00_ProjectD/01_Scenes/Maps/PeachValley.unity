@@ -33258,6 +33258,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153262341}
   m_Mesh: {fileID: -6851015729757205809, guid: 1d10db108566bef4cab27793a8c5271a, type: 3}
+--- !u!1001 &153448126
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 799035318}
+    m_Modifications:
+    - target: {fileID: 673706964026635895, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_Name
+      value: ThatchCourtyardGate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+--- !u!4 &153448127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2019944786925253474, guid: 44bd20d702abb5442ad808f821af4a8a, type: 3}
+  m_PrefabInstance: {fileID: 153448126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &154409098
 GameObject:
   m_ObjectHideFlags: 0
@@ -37209,11 +37271,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.873827
+      value: 2.87
       objectReference: {fileID: 0}
     - target: {fileID: 4072384267908138756, guid: e9709ac143875f64e8e4822782b46e17, type: 3}
       propertyPath: m_LocalPosition.z
@@ -79775,6 +79837,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372547370}
   m_Mesh: {fileID: 4300000, guid: acaa3f6f690fbba4d8566a65c9fcc03c, type: 2}
+--- !u!1001 &372679354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 799035318}
+    m_Modifications:
+    - target: {fileID: 1804138996121082011, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_Name
+      value: ThatchCourtyardCorner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+--- !u!4 &372679355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2464442201546613719, guid: b050ce9eff401614e80c222c8b1bb5d0, type: 3}
+  m_PrefabInstance: {fileID: 372679354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &373000438
 GameObject:
   m_ObjectHideFlags: 0
@@ -164573,6 +164697,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797243703}
   m_Mesh: {fileID: 4300000, guid: 971d77194af95077ae3cfe9c7d00b605, type: 2}
+--- !u!1 &799035317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799035318}
+  m_Layer: 0
+  m_Name: ThatchCourtyard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799035318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799035317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 372679355}
+  - {fileID: 1582195060}
+  - {fileID: 153448127}
+  - {fileID: 1701550234}
+  m_Father: {fileID: 2099072985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801323670
 GameObject:
   m_ObjectHideFlags: 0
@@ -322316,6 +322475,68 @@ Transform:
   - {fileID: 1982136003}
   m_Father: {fileID: 1559150227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1582195059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 799035318}
+    m_Modifications:
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375425434293126499, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_Name
+      value: ThatchCourtyardWall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+--- !u!4 &1582195060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+  m_PrefabInstance: {fileID: 1582195059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1582771909
 GameObject:
   m_ObjectHideFlags: 0
@@ -344345,6 +344566,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700870842}
   m_Mesh: {fileID: -4011110081180142536, guid: 1d10db108566bef4cab27793a8c5271a, type: 3}
+--- !u!1001 &1701550233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 799035318}
+    m_Modifications:
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 186.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375425434293126499, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+      propertyPath: m_Name
+      value: ThatchCourtyardWall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+--- !u!4 &1701550234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1302923406084403145, guid: 0965a3f42dbf0f4439d577b3e8d2e961, type: 3}
+  m_PrefabInstance: {fileID: 1701550233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702106462
 GameObject:
   m_ObjectHideFlags: 0
@@ -422242,6 +422525,7 @@ Transform:
   - {fileID: 2042690942}
   - {fileID: 1301006035}
   - {fileID: 671827893}
+  - {fileID: 799035318}
   m_Father: {fileID: 1006709031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2099345741
