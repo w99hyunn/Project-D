@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.4997345209121704,
+    1.3686203956604004,
+    1.7999999523162842
+  ],
+  "vertices": 16277,
+  "triangles": 11823,
+  "textures": [
+    {
+      "material": "VillageGatheringDrum_0",
+      "file": "VillageGatheringDrum_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

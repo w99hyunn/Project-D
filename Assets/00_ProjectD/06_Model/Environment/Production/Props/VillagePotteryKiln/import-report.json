@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.5587358474731445,
+    3.5,
+    1.3967806100845337
+  ],
+  "vertices": 15795,
+  "triangles": 12269,
+  "textures": [
+    {
+      "material": "VillagePotteryKiln_0",
+      "file": "VillagePotteryKiln_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.0863614082336426,
+    3.0811822414398193,
+    3.5
+  ],
+  "vertices": 13756,
+  "triangles": 12263,
+  "textures": [
+    {
+      "material": "DokkaebiOfferingGuardian_0",
+      "file": "DokkaebiOfferingGuardian_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
