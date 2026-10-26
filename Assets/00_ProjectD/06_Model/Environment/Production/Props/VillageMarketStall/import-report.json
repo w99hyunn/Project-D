@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    3.0,
+    2.118473529815674,
+    3.002290725708008
+  ],
+  "vertices": 29631,
+  "triangles": 18385,
+  "textures": [
+    {
+      "material": "VillageMarketStall_0",
+      "file": "VillageMarketStall_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
