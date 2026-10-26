@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.6948781609535217,
+    0.8500000238418579,
+    0.3337905704975128
+  ],
+  "vertices": 2979,
+  "triangles": 2530,
+  "textures": [
+    {
+      "material": "ValleyFlatStone_0",
+      "file": "ValleyFlatStone_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

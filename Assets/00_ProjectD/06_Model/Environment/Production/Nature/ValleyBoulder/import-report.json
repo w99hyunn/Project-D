@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.6000001430511475,
+    2.556872606277466,
+    1.2594654560089111
+  ],
+  "vertices": 5713,
+  "triangles": 6192,
+  "textures": [
+    {
+      "material": "ValleyBoulder_0",
+      "file": "ValleyBoulder_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

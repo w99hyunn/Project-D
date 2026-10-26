@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.20613078773021698,
+    0.2199999988079071,
+    0.1128259003162384
+  ],
+  "vertices": 1274,
+  "triangles": 1045,
+  "textures": [
+    {
+      "material": "RiverPebble_0",
+      "file": "RiverPebble_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
