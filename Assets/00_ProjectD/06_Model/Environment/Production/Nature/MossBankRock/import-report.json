@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    1.4394197463989258,
+    1.9999998807907104,
+    0.853783369064331
+  ],
+  "vertices": 5070,
+  "triangles": 5181,
+  "textures": [
+    {
+      "material": "MossBankRock_0",
+      "file": "MossBankRock_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

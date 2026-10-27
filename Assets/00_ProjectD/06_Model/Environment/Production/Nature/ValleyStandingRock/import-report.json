@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.327458143234253,
+    1.8040509223937988,
+    2.799999952316284
+  ],
+  "vertices": 5409,
+  "triangles": 6218,
+  "textures": [
+    {
+      "material": "ValleyStandingRock_0",
+      "file": "ValleyStandingRock_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

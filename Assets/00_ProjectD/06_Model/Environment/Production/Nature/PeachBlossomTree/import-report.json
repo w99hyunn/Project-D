@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    4.749693393707275,
+    3.622699737548828,
+    4.0
+  ],
+  "vertices": 41874,
+  "triangles": 20663,
+  "textures": [
+    {
+      "material": "PeachBlossomTree_0",
+      "file": "PeachBlossomTree_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
