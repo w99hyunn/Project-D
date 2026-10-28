@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    2.200000047683716,
+    0.5696418881416321,
+    0.5825503468513489
+  ],
+  "vertices": 8748,
+  "triangles": 5161,
+  "textures": [
+    {
+      "material": "FallenForestLog_0",
+      "file": "FallenForestLog_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
