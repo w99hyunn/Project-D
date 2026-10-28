@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.830871045589447,
+    0.8482763767242432,
+    0.8500000238418579
+  ],
+  "vertices": 9000,
+  "triangles": 4834,
+  "textures": [
+    {
+      "material": "PondCattail_0",
+      "file": "PondCattail_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}

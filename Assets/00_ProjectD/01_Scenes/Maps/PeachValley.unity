@@ -145936,6 +145936,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703289472}
   m_Mesh: {fileID: 2762154213953368748, guid: 1d10db108566bef4cab27793a8c5271a, type: 3}
+--- !u!1001 &704105755
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099072985}
+    m_Modifications:
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1740599
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 181
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294131524041802747, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+      propertyPath: m_Name
+      value: WoodlandFern
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+--- !u!4 &704105756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 398753378881352080, guid: 77bfad83e8f435544b14cba2ce67c67a, type: 3}
+  m_PrefabInstance: {fileID: 704105755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704400773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185550,6 +185612,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904439507}
   m_Mesh: {fileID: 4300000, guid: 34d3b4319b7770a40a99fd7e99424f5b, type: 2}
+--- !u!1001 &904669464
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2099072985}
+    m_Modifications:
+    - target: {fileID: 1449613690633166262, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_Name
+      value: PondCattail
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.199506
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 179
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+--- !u!4 &904669465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2402810053701335258, guid: b9065e61582666a4ba096803e1462c38, type: 3}
+  m_PrefabInstance: {fileID: 904669464}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &905018121
 GameObject:
   m_ObjectHideFlags: 0
@@ -423524,6 +423648,8 @@ Transform:
   - {fileID: 2098600509}
   - {fileID: 138126876}
   - {fileID: 1582994378}
+  - {fileID: 704105756}
+  - {fileID: 904669465}
   m_Father: {fileID: 1006709031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2099345741

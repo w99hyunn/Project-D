@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.8086715340614319,
+    0.8499999642372131,
+    0.41174331307411194
+  ],
+  "vertices": 17796,
+  "triangles": 9735,
+  "textures": [
+    {
+      "material": "WoodlandFern_0",
+      "file": "WoodlandFern_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
