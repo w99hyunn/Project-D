@@ -1,0 +1,19 @@
+{
+  "dimensions": [
+    0.9,
+    0.853343,
+    0.131651
+  ],
+  "vertices": 8454,
+  "triangles": 5159,
+  "textures": [
+    {
+      "material": "PondLotus_0",
+      "file": "PondLotus_0_0.png",
+      "role": "BASE COLOR",
+      "outputs": [
+        "Base Color"
+      ]
+    }
+  ]
+}
