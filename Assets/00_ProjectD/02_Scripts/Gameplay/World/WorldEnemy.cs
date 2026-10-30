@@ -18,6 +18,7 @@ namespace DoHwa.World
         [SerializeField] private ItemAmount reward = new(5, 2);
         [SerializeField] private Transform visual;
         [SerializeField] private Animator animator;
+        [SerializeField] private bool useEightWayAnimations;
         [SerializeField] private Transform telegraph;
         private CharacterController controller;
         private Vector3 home;
@@ -27,6 +28,10 @@ namespace DoHwa.World
         private float strikeAt;
         private Vector3 strikePoint;
         private bool windingUp;
+        private int facingIndex = -1;
+        private bool wasMoving;
+        private Vector3 moveVelocity;
+        private float recoverUntil;
         private EnemyState state;
         public string Id => enemyId;
         public float Health => health;
@@ -41,6 +46,13 @@ namespace DoHwa.World
             heroLifetime=world.Hero.destroyCancellationToken.Register(StopSimulation);
             TryGetComponent<CharacterController>(out controller);
             home = transform.position; health = maximumHealth;
+            foreach (var parameter in animator.parameters)
+                if (parameter.name == "DirectionMode")
+                {
+                    useEightWayAnimations = true;
+                    animator.SetFloat("DirectionMode", 1f);
+                    break;
+                }
         }
 
         private void StopSimulation() => enabled=false;
@@ -79,7 +91,7 @@ namespace DoHwa.World
                 telegraph.position = replicated.strikePoint + Vector3.up * .04f;
                 return;
             }
-            if (health <= 0) return;
+            if (health <= 0 || (useEightWayAnimations && Time.time < recoverUntil)) return;
             var current = world.State.enemies.Find(e => e.id == enemyId);
             if (current != state && current != null) { state = current; health = state.health; }
             state.position = transform.position; state.health = health;
@@ -101,21 +113,38 @@ namespace DoHwa.World
                     {
                         SettlementRules.Damage(world.State, player, world.Catalog, damage);
                     }
+                if (useEightWayAnimations) recoverUntil = Time.time + .36f;
                 animator.SetTrigger("Attack"); world.Commit(); return;
             }
             if (Vector3.Distance(transform.position, home) >= 18) target = null;
             Vector3 destination = target == null ? home : target.position;
             Vector3 direction = Vector3.ProjectOnPlane(destination - transform.position, Vector3.up);
             Face(direction);
-            bool moving = direction.magnitude > (target == null ? .2f : 1.7f);
-            if (moving)
-                controller.Move(direction.normalized * (speed * Time.deltaTime) + Vector3.down * (8 * Time.deltaTime));
-            animator.SetBool("Moving", moving);
+            float stopDistance = target == null ? .2f : 1.7f;
+            float startDistance = useEightWayAnimations ? stopDistance + .3f : stopDistance;
+            bool moving = direction.magnitude > (wasMoving ? stopDistance : startDistance);
+            if (useEightWayAnimations)
+            {
+                moveVelocity = Vector3.MoveTowards(moveVelocity, moving ? direction.normalized * speed : Vector3.zero, 6f * Time.deltaTime);
+                var before = transform.position;
+                controller.Move((moveVelocity + Vector3.down * 8f) * Time.deltaTime);
+                float travelled = Vector3.ProjectOnPlane(transform.position - before, Vector3.up).magnitude;
+                bool walking = travelled > .0001f && moveVelocity.sqrMagnitude > .01f;
+                animator.SetBool("Moving", walking);
+                animator.speed = walking ? Mathf.Clamp(travelled / Mathf.Max(speed * Time.deltaTime, .0001f), .1f, 1f) : 1f;
+            }
+            else
+            {
+                if (moving) controller.Move(direction.normalized * (speed * Time.deltaTime) + Vector3.down * (8 * Time.deltaTime));
+                animator.SetBool("Moving", moving);
+            }
+            wasMoving = moving;
             if (target != null && !moving && Time.time >= attackAt)
             {
                 strikePoint = target.position; strikeAt = Time.time + (boss ? 1.05f : .65f);
                 attackAt = strikeAt + (boss ? 1.8f : 1.2f); windingUp = true;
                 telegraph.position = strikePoint + Vector3.up * .04f;
+                if (useEightWayAnimations) { moveVelocity = Vector3.zero; wasMoving = false; animator.SetBool("Moving", false); animator.speed = 1f; }
                 telegraph.gameObject.SetActive(true); animator.SetTrigger("Windup");
             }
         }
@@ -126,7 +155,15 @@ namespace DoHwa.World
             var camera = Camera.main.transform;
             float x = Vector3.Dot(direction, Vector3.ProjectOnPlane(camera.right, Vector3.up).normalized);
             float y = Vector3.Dot(direction, Vector3.ProjectOnPlane(camera.forward, Vector3.up).normalized);
-            animator.SetFloat("Facing", Mathf.Abs(x) > Mathf.Abs(y) ? x > 0 ? 1 : 3 : y > 0 ? 2 : 0);
+            if (useEightWayAnimations)
+            {
+                float angle = Mathf.Atan2(x, -y) * Mathf.Rad2Deg;
+                // Keep the current view near sector borders rather than flickering between drawings.
+                if (facingIndex >= 0 && Mathf.Abs(Mathf.DeltaAngle(facingIndex * 45f, angle)) < 30f) return;
+                facingIndex = (Mathf.RoundToInt(angle / 45f) + 8) % 8;
+                animator.SetFloat("Facing", facingIndex);
+            }
+            else animator.SetFloat("Facing", Mathf.Abs(x) > Mathf.Abs(y) ? x > 0 ? 1 : 3 : y > 0 ? 2 : 0);
         }
 
         public bool TryHit(string playerId)

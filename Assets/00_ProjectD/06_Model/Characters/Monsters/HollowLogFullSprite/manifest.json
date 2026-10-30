@@ -1,0 +1,3468 @@
+{
+  "source": "PixelLab whole-frame animation API only",
+  "body_segmentation": false,
+  "body_rotation_by_code": false,
+  "local_redraw": false,
+  "local_resampling": false,
+  "canvas": [
+    128,
+    128
+  ],
+  "root": [
+    64,
+    112
+  ],
+  "ppu": 50,
+  "directions": {
+    "south": {
+      "walk_job": "a5c6a219-1083-4393-9ffc-df4960f28ad8",
+      "attack_job": "e232582f-f933-464f-9b8d-a4da868ab3c2",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 4,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "south-east": {
+      "walk_job": "f2f368ba-989f-4c70-b172-6e50b822c514",
+      "attack_job": "c767ff4c-d231-4d00-98ac-f256addefa1c",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 4,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "east": {
+      "walk_job": "eab55457-7bf5-4028-8afe-b28dbf40e9b2",
+      "attack_job": "300c4dfb-e086-4093-ac8e-fbcd830e683f",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 4,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "north-east": {
+      "walk_job": "94f2f5d5-df41-4e77-a05d-39c8b642971f",
+      "attack_job": "1f67fadc-cb78-4e1c-93ac-f391c988a201",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 6,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "north": {
+      "walk_job": "0ad56c0c-7272-41cd-9f9a-0369e73a72d9",
+      "attack_job": "34eb9935-6490-4ef7-bcb0-0da748b6480c",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 7,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "north-west": {
+      "walk_job": "f7d3cd35-1cc6-4d84-b6ae-685282b73598",
+      "attack_job": "05ed94da-3e4e-4a3e-a662-35ef11bcd832",
+      "walk_frames": 6,
+      "attack_frames": 12,
+      "impact_frame": 4,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "west": {
+      "walk_job": "d882e647-ea0f-4909-ac66-a631df8190ec",
+      "attack_job": "aa9721f9-1a84-48be-81d6-c55a2a651c8d",
+      "walk_frames": 6,
+      "attack_frames": 11,
+      "impact_frame": 4,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    },
+    "south-west": {
+      "walk_job": "f8ea27f0-2d59-4860-8300-aed5243934f7",
+      "attack_job": "018d665d-65cc-4a2b-b854-ec5472fe84a7",
+      "walk_frames": 6,
+      "attack_frames": 14,
+      "impact_frame": 6,
+      "selected_api_attack_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "exact_neutral_entry": true,
+      "exact_neutral_return": true
+    }
+  },
+  "frames": [
+    {
+      "direction": "south",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/south/00.png",
+      "rgba_unchanged": true,
+      "sha256": "41e88df723c8c1426fff4c43a5123bd37bb6eca1c6c5b33d80b4952116869ab9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/00.png",
+      "rgba_unchanged": true,
+      "sha256": "41e88df723c8c1426fff4c43a5123bd37bb6eca1c6c5b33d80b4952116869ab9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/01.png",
+      "rgba_unchanged": true,
+      "sha256": "bf462824364b605c579d85e94d1a6b451e2e2fd3b3db3d2116f2a5af823fcec0",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/02.png",
+      "rgba_unchanged": true,
+      "sha256": "f6ccb2ee1212798ca4540d542033f4dc7bc5fe68958c1b43e5711acf4d57b548",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/03.png",
+      "rgba_unchanged": true,
+      "sha256": "320c7918b30c5e9f13f381a37cf028ff4a0f1bcf1f85e160245b2a9ccb420598",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/04.png",
+      "rgba_unchanged": true,
+      "sha256": "b395158853243193af7b1e56e618e5b97d38f71ddc4ca3dd5d523a22d02caa9f",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south/05.png",
+      "rgba_unchanged": true,
+      "sha256": "7108d005e3a2c3071e828ea144f5f3c54a589d5bc480da937bc43166aa7fafef",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/00.png",
+      "rgba_unchanged": true,
+      "sha256": "41e88df723c8c1426fff4c43a5123bd37bb6eca1c6c5b33d80b4952116869ab9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/01.png",
+      "rgba_unchanged": true,
+      "sha256": "df0d9d0da93ac06d218898da5ffab49b4b74328d9f0228c3dbf6ea2dad8d6890",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/02.png",
+      "rgba_unchanged": true,
+      "sha256": "58071d2bd40417dc7eb6e5a355d9a5d47043f42e0539559b2cffb8f1097c0a67",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/03.png",
+      "rgba_unchanged": true,
+      "sha256": "cf69e379af2c81de30fdb12d453f8132017f316bf2cd8c3d08edfde1fba06267",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/04.png",
+      "rgba_unchanged": true,
+      "sha256": "a44e79cb0c62f5dc7e8cb8b93356fe87bd8ca37ef04c96477631742312b9a36a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/05.png",
+      "rgba_unchanged": true,
+      "sha256": "8b2c2e23089f7837298986cc7a452a09e330fd8f458d42b216077bba126afd18",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/06.png",
+      "rgba_unchanged": true,
+      "sha256": "854e56e3a2ceb6f4fdb3f36a2dccff7157a2868366b0184b368e6c53ac9a2f59",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/07.png",
+      "rgba_unchanged": true,
+      "sha256": "524069523586a1bb2e446dd2071312f5a5e130c823d5595424223a9aed87b8b2",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/08.png",
+      "rgba_unchanged": true,
+      "sha256": "f6e6973e7e696364c35725c65dce8661e7fc54203f18b104d22045a9f9b8d06b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/09.png",
+      "rgba_unchanged": true,
+      "sha256": "e6eb1f0c56a5c714a36d918a3f83c8323e5efbc0a7a5a5b9c7c5b2db71f2baa1",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/10.png",
+      "rgba_unchanged": true,
+      "sha256": "f065e904474656c21a6b86cdbe85dc96482fddd6f3efaa529d6602d48f845434",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/11.png",
+      "rgba_unchanged": true,
+      "sha256": "b814f87070c5fc515322ea083e6e4d450236c1c702cac5673f6ea2b868aff1f0",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/12.png",
+      "rgba_unchanged": true,
+      "sha256": "5932e82863a8a82c6d698c58c5fd3f40e5341c7a872cc96cacacf1c6056b54bb",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south/13.png",
+      "rgba_unchanged": true,
+      "sha256": "41e88df723c8c1426fff4c43a5123bd37bb6eca1c6c5b33d80b4952116869ab9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/south-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "a4f9f450840f266511cbd7ce43cee8ce84b2248fb655bd8e15db683381726a68",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "a4f9f450840f266511cbd7ce43cee8ce84b2248fb655bd8e15db683381726a68",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "1306525bcc8884fbe98ed8ac31bace304a62cd6817ad4b9a8bad8a7a541c8540",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "6f85a85932cff050e5bf67fa35f78a716e49124d7b2964c89cf0bfe4c23f99ab",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "6901c92f763e1e463292d1ef078ed3aa1c15d86575b883ff546bd3c1c68d5890",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "801c68241904506fb3128f98c91c1990fed6d065f4dc15c165fc07b367b7f1f5",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "0203cf72137052bfcb860298aef39d3129509e68e0b528529b33b48338b02435",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "a4f9f450840f266511cbd7ce43cee8ce84b2248fb655bd8e15db683381726a68",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "e98990233342032c6cdf914510c9bd300f939b402f111a04c4e4f69ad7fae8a4",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "bc85fdd27b2eaecda3b5958e1e8996286893881ef6b97a1b9b16987a319cb754",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "1ccae193c03e30b8d7c2e9abf45eeaa3cd4000805b2ec776ac87ecc74d89dafb",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "fde2b9a69e54429a0701400d9f9af8d32e6362cfb93493603d84dad4f5a9e372",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "9f14c8711d9590296739c664b63efa4cd2061a34b801fa871142358838ef18c1",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/06.png",
+      "rgba_unchanged": true,
+      "sha256": "5763d689fcadc3a19f1299c240c6e84a6e603d5d455058d21e234a46c453748f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/07.png",
+      "rgba_unchanged": true,
+      "sha256": "ea71f545fc1d481634a89fe634899e9de07a9070c1b9ace136a67645e315a944",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/08.png",
+      "rgba_unchanged": true,
+      "sha256": "98def0740815102c970b23e0dc8e5e4541ea585e03b9004071e196c84f0807a1",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/09.png",
+      "rgba_unchanged": true,
+      "sha256": "dd3e333b852cf514b733906e010a0e09d645ea85d1516b21367f98abd8dbe924",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/10.png",
+      "rgba_unchanged": true,
+      "sha256": "b8d7095d272eec2e43bf7b967478a7f8fa6941c3885da45b1a71993a5808ed0c",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/11.png",
+      "rgba_unchanged": true,
+      "sha256": "a4f05cde8a80fd7db7f96a5dd95b7cf9c146a26edbcb0836e8c4bc199365f941",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/12.png",
+      "rgba_unchanged": true,
+      "sha256": "4f90913b19c4e3221c6d1279a4734dea983b17839991b85acf166d3c7613d38e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-east",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-east/13.png",
+      "rgba_unchanged": true,
+      "sha256": "a4f9f450840f266511cbd7ce43cee8ce84b2248fb655bd8e15db683381726a68",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "87f59beffeba47eca2c24fa03c28dfdcc0e9d66014862b43936376a49ad4f22f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "87f59beffeba47eca2c24fa03c28dfdcc0e9d66014862b43936376a49ad4f22f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "99293d3eacac39432e0b71f5b5094ab176b745aa58f304d719cfc0b8721b29f9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "0555a467a4bcd8f6f301ca7a19035951338688221d361a375fba3089646298a4",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "cb6101edf311e488548646e639aef85f214ef399a45bece85aea2c502eb1ebd4",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "f08eb57b0120511a6e0314bd1f6aa93ee99bf18db3171f9382eb0d98d03e75e5",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "bf4c8ac4eb65996ee5028e0062476b72b0763ed0e2bd6fdeae3e73fa3c9471a4",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "87f59beffeba47eca2c24fa03c28dfdcc0e9d66014862b43936376a49ad4f22f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "126d1ca27ca657ba8eabcb6eacda5c038d49932bfc83d5932914bec2c4a14c20",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "4f49f085ddf57d5e90c98efccd18a2aec4a024314e3c7a9ad93dbe2d7d8b1381",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "c6bb65d8bb740d81bbf0b88c6bdf482b92d4f2e08458f7674d8456f853c3d2b7",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "f547f98f9a0155c3f6f7ffab4990a426c700a65aae1a182fd4ef61780781585d",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "59999f9c7c0a73a6545864a42d7dde4c5215e364246660d9742231384ac0c99e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/06.png",
+      "rgba_unchanged": true,
+      "sha256": "88287bf4abc59be76900b88fa796143ffd7e4ccf37365e52ef2cc87de4c84694",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/07.png",
+      "rgba_unchanged": true,
+      "sha256": "b2e71f066fdb32f873c518d965099aabe895a2d44f3d74dbf91f6d8907a6fadd",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/08.png",
+      "rgba_unchanged": true,
+      "sha256": "2ce81de491af49adaf5efb060765886138b3412994117cd3c1b0132a2b723148",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/09.png",
+      "rgba_unchanged": true,
+      "sha256": "94960ea8ca1428595d4d5aee66f948309dbcd42d83054c74193aae7912645adc",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/10.png",
+      "rgba_unchanged": true,
+      "sha256": "434531c23199cd5f08b6efa03fb1863fc55bb215d04feeef8cd311b253022165",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/11.png",
+      "rgba_unchanged": true,
+      "sha256": "47ae582649d79e4c7666b5bf1b4f471618c65f7b96135e75d81a5ee75c097f99",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/12.png",
+      "rgba_unchanged": true,
+      "sha256": "621c335f0737a797a30cec11493bbc44d7150aa7447525bb49f85a03d9bae974",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "east",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/east/13.png",
+      "rgba_unchanged": true,
+      "sha256": "87f59beffeba47eca2c24fa03c28dfdcc0e9d66014862b43936376a49ad4f22f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/north-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "5182fb5790d72dbb9a8fc16f0f7240bf31a24dab85671cbb5978abfaa216469b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "5182fb5790d72dbb9a8fc16f0f7240bf31a24dab85671cbb5978abfaa216469b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "925578c8154fa63c1ae1001cff03c136aed213690fb2966ef9c1d55bce508283",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "6fad8462456f98a47605ed324de15377d20c49d815e0d67991046d7b85320754",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "1579be68aec59ae02fe9c21b265635bd03c59c2eafde0cfec2350e9513443cb9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "713ec6287a102c3657cf564d61eaab118d2b1c12f5c2f447444033f079f0d939",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "82f06ae0482d4997e0f8ee4387342b2b7272bf542f3564cf2b6189c4f1bb0182",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/00.png",
+      "rgba_unchanged": true,
+      "sha256": "5182fb5790d72dbb9a8fc16f0f7240bf31a24dab85671cbb5978abfaa216469b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/01.png",
+      "rgba_unchanged": true,
+      "sha256": "7b80339cb4315d73578568da5e3d12c2ae7c67767fe6f143196be5ab7363828a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/02.png",
+      "rgba_unchanged": true,
+      "sha256": "d8c01eb127974e14e5ea4b263630779c057ef20a13c9395cd4530df6ded99a28",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/03.png",
+      "rgba_unchanged": true,
+      "sha256": "4c42591579cc0bdeee4fc4f136e172348bf3b24d6d27140d91083bf549c6421e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/04.png",
+      "rgba_unchanged": true,
+      "sha256": "d635d00b2dad267ba62e713128a892a580765a0c42643183f248dea727f1698e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/05.png",
+      "rgba_unchanged": true,
+      "sha256": "7b321bc8036d5c0b297e6c0a0429bacaff59eb4f6e11bca84262584242d99754",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/06.png",
+      "rgba_unchanged": true,
+      "sha256": "5a20deea3e0a069724d0f7d9f9a6b26373e1822cf87099c8db236f9327a80667",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/07.png",
+      "rgba_unchanged": true,
+      "sha256": "0aa6f8ac0325d3e6ed8463b03d953fea3f5aba41eab46ddd998c5395c787d090",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/08.png",
+      "rgba_unchanged": true,
+      "sha256": "3ada905076c1ba6cd4525aae90801501eeb9a03b10c2f39d1ac491b1b31ad221",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/09.png",
+      "rgba_unchanged": true,
+      "sha256": "23c036078978e07abd2be5f22802e6f677fd264dce8a4850ca0926f5f585e73c",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/10.png",
+      "rgba_unchanged": true,
+      "sha256": "4cae142a88e071253cfed151a7cfe3a1a652750371812928906212ab57e42db8",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/11.png",
+      "rgba_unchanged": true,
+      "sha256": "22831c6a3441b71372d73a82f57250e75cdfa61c3c376900b52a1c7b7bfa236a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/12.png",
+      "rgba_unchanged": true,
+      "sha256": "d468587c974d1c1b2d1183bd4d69c2706fb61f073415773c554cdb08a585be6e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-east",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-east/13.png",
+      "rgba_unchanged": true,
+      "sha256": "5182fb5790d72dbb9a8fc16f0f7240bf31a24dab85671cbb5978abfaa216469b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/north/00.png",
+      "rgba_unchanged": true,
+      "sha256": "353e14200af31e467ddbd83d097a3aa622f0cffb64457b88bd5c93288b64512a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/00.png",
+      "rgba_unchanged": true,
+      "sha256": "353e14200af31e467ddbd83d097a3aa622f0cffb64457b88bd5c93288b64512a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/01.png",
+      "rgba_unchanged": true,
+      "sha256": "be71b7ede0c917278c3b5f926cecdb815ab50c5533c0c60d17126b3e57117ef0",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/02.png",
+      "rgba_unchanged": true,
+      "sha256": "85c7dc08ef3dc0b43f4e9d3e02cf79a9c49e36461a581072303fefe65aba8da2",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/03.png",
+      "rgba_unchanged": true,
+      "sha256": "b6507c5101c0d12394877ee00b421767708d536fa803e52889bd7f836ff8095e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/04.png",
+      "rgba_unchanged": true,
+      "sha256": "0a1eac4c68916cd2a8c5f737aac8189d9a67dfd28d0869d2d5dcb4c372bf4718",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north/05.png",
+      "rgba_unchanged": true,
+      "sha256": "523d2cf667247fc4775d758cca4eba9851e24416f45bc1964690ca811335019d",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/00.png",
+      "rgba_unchanged": true,
+      "sha256": "353e14200af31e467ddbd83d097a3aa622f0cffb64457b88bd5c93288b64512a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/01.png",
+      "rgba_unchanged": true,
+      "sha256": "cd0a48189d1fcc92aaaab033f9ec2e1a9b82b473f6a145d0d3628e8b6b796d30",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/02.png",
+      "rgba_unchanged": true,
+      "sha256": "065205627bf5645b32a649a2101b2c4bf1a8871e397227571349d249a42ee912",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/03.png",
+      "rgba_unchanged": true,
+      "sha256": "b609c12b5c0cd678e9f24443fb77cd099c33302fb520e813675106cacf3bba84",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/04.png",
+      "rgba_unchanged": true,
+      "sha256": "0ebc2e4bdf2c991fec6cebcc66e5d09a0b6ae4aaf0860ce686b92f2c6714e6a3",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/05.png",
+      "rgba_unchanged": true,
+      "sha256": "7b811d8840f3dd8c71705fb7c0815dacae3515e3ccd130510a5ca0d5c3d88f8a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/06.png",
+      "rgba_unchanged": true,
+      "sha256": "d2d6dd2b2da9812e88c59bff34b99ce16c9fd7253ee1b5b905924fe28041dcda",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/07.png",
+      "rgba_unchanged": true,
+      "sha256": "94e4e9a7b9e10fc14acabba71e5b7ffb6b7ecac6eb2b28e417d17134758f400b",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/08.png",
+      "rgba_unchanged": true,
+      "sha256": "1208a9da1edc8be948cffb9e7b8a96ebe0663d6b52d2cebcbcb7a30f21e1f0d7",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/09.png",
+      "rgba_unchanged": true,
+      "sha256": "93f9d3f48da0b11031b777ced7ee3505a57e8e7ac8fb2de9c37de29c4ba68857",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/10.png",
+      "rgba_unchanged": true,
+      "sha256": "8b0c49bcca66aa47d228cd2c23fe0a3028db247b4b2c4f19fe65f1a0e6818079",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/11.png",
+      "rgba_unchanged": true,
+      "sha256": "26f60c2d7147fb84503c38ea1e683d1752e2767efcf390511c96db007bdf8f46",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/12.png",
+      "rgba_unchanged": true,
+      "sha256": "03a7a14d1438c87775c78a7099422adbe24ccd024c508eab4f2275aa85a865d2",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north/13.png",
+      "rgba_unchanged": true,
+      "sha256": "353e14200af31e467ddbd83d097a3aa622f0cffb64457b88bd5c93288b64512a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/north-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "7cac10e314afabc601cc4dc4d03a24b3078c81dbb7d5174610122bed892d0e41",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "7cac10e314afabc601cc4dc4d03a24b3078c81dbb7d5174610122bed892d0e41",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "1413f74f23919abdde994bc1d0ce48c4eff56f5b71463e5d9b5ec000f50b79d7",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "a737b60c7b8dde2ef3e6c2e1cf91d9a7035a03f098396d1ac453f2e51f3d4343",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "396a7850573d8d5077bbed888a8c3a00966cc857ff04984d0836c675bb9c9291",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "e2bc8989b806592ea824cad947c2e8d743eb0f45e46ae597c0ba8a2e6955447f",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/north-west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "b8dd8dfdfbae882132ff1726220deff3218d0e2e71ebfd3dcbb03285e322b63b",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "7cac10e314afabc601cc4dc4d03a24b3078c81dbb7d5174610122bed892d0e41",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "ccea5175f9ea524b4a7c7fa76f43db7b551b655d2873cfe3222bc19b1a0082a7",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "79caba8159de3254ee99545eef01a878760cc541de830a469a09798027600618",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "b02f14fd08173d1cea19dda488f38c598e4137ac7cc02666ce9d8aaed07d4825",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "45c0f487a817843e74af00fbaeaf50b109fd18f1aff303772a0f20cf28e5c4ef",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "6738c6f18ceed6e8c6f43b0582d4c8783ce105fc05b1b7393d7d18cab335182e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/06.png",
+      "rgba_unchanged": true,
+      "sha256": "654363bf12b8204e29f5cfb3a9239cddcf6c8f0923d0d4e4971b6a6ea68f2431",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/07.png",
+      "rgba_unchanged": true,
+      "sha256": "9507af05f3505aa59761ddf405204a9f9408f48c53fd2aa34b8c19b4fbc9663f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/08.png",
+      "rgba_unchanged": true,
+      "sha256": "4fabe3dfb59305574d95319dd4a3b347d5a180d358402e4561529c387349c5c3",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/09.png",
+      "rgba_unchanged": true,
+      "sha256": "1321b282fc5dbbff77607f73107a89ad2f86e9ef51e675d68264f9c34dc35d48",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/10.png",
+      "rgba_unchanged": true,
+      "sha256": "7ef0223371722f099a4c53c5e08b4a7ba9f15b895e67e1ed6cab235813bc1b77",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "north-west",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        22
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/north-west/11.png",
+      "rgba_unchanged": true,
+      "sha256": "7cac10e314afabc601cc4dc4d03a24b3078c81dbb7d5174610122bed892d0e41",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "1b005b3411f893052772d349492610d1568db5f4d91bea91312e392795f02c82",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "1b005b3411f893052772d349492610d1568db5f4d91bea91312e392795f02c82",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "596566fd52a37b6719d3571a765a32ffcd3e391501349c2989829a4011980e16",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "5648d71fbcd9653a7257c6c790d12a37076c10460c91e1ab2b4ce6cfda3e4004",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "c8d3696cc18ddf71129cf0ed4dc69d0f98c3fbbd2ca33d29171e65b326d66f23",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "17c5d3cd2c1ddbd79c3f82c50d43fd687186969e088b3249acf3b6bf87120608",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "2e2c439aa304bec5e1b3d7c7e8e09d769f64793b4f26225d2ddc080285706fc7",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "1b005b3411f893052772d349492610d1568db5f4d91bea91312e392795f02c82",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "3664a28c7b296b6f6a3a61e1bcd04f8169285cd83b2b4aaf1309d69e70faa72e",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "fbe71b9cc5c738abad38bddf6565bb05e1d4f6e55ebb417b82e9536aba00bfae",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "89c83dff9797a80c7f322656d1d9256d1715a063125f0ee1a057a47065c93782",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "1f75170ec77e37164369009227bb9d8a7dfc577008994c3f08c810e94ee85f12",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "1752446f43eff74301ef29cd079cfc4b9b09868f885632de8f40ccd272431c84",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/06.png",
+      "rgba_unchanged": true,
+      "sha256": "f8e1b8b14a8c7578bd6006d334a80074ff3766cecebb10028db14dcd22fac196",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/07.png",
+      "rgba_unchanged": true,
+      "sha256": "5cfa62af1f179a2df1db9a48eb406452719524597f685388dedeb28a077f1564",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/08.png",
+      "rgba_unchanged": true,
+      "sha256": "cb031ddb575728c4397198fdfe99cc2708f1d349be3087ba47efa4405919ae8f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/09.png",
+      "rgba_unchanged": true,
+      "sha256": "849b594a70334c839907c0b48394066097b2870eec0c37f5310884b7dc7db209",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "west",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        20
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/west/10.png",
+      "rgba_unchanged": true,
+      "sha256": "1b005b3411f893052772d349492610d1568db5f4d91bea91312e392795f02c82",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Idle",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Idle/south-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "57014fe9df6c3a11bd6bd1622d2531df4e61516e77107f6ed8921a97832bdb85",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "57014fe9df6c3a11bd6bd1622d2531df4e61516e77107f6ed8921a97832bdb85",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "14418a11a100a1e0e2876d11d534b0fb5afd302b6e624ae8b0130a9d98d80f87",
+      "foot_pivot": [
+        64,
+        14
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "14b0fefc15f75e560194ab198fbc5b6dbf1d3a38ccfae70c876cd25293691823",
+      "foot_pivot": [
+        64,
+        15
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "5c05b6178be1aeb0791db1bf97bfb3cb64c1661cfaada7f0815370d18af2d66a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "ac5daf5ee395fed6bea34926d8c7c694600c12fe47760b3217d8c57cb56c27b1",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Walk",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Walk/south-west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "a7c7ce773ad7c79421ad80d9337e4263331852920d9b5375a6cb3f5b58829853",
+      "foot_pivot": [
+        64,
+        17
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 0,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/00.png",
+      "rgba_unchanged": true,
+      "sha256": "57014fe9df6c3a11bd6bd1622d2531df4e61516e77107f6ed8921a97832bdb85",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 1,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/01.png",
+      "rgba_unchanged": true,
+      "sha256": "b87ad4e0028e16668b4d468f3cb3dfd4e2b47b48732a36d47e215505c71bbd94",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 2,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/02.png",
+      "rgba_unchanged": true,
+      "sha256": "cbdc66d7050f455cd1757fed365c9904db1ebf2c353f2f99cdf810cca3ba8d70",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 3,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/03.png",
+      "rgba_unchanged": true,
+      "sha256": "080c57787d793a262806e2454618b1d001f6f8ca92a95cac65a9e8871adc6423",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 4,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/04.png",
+      "rgba_unchanged": true,
+      "sha256": "e60108efcb194ee44c12d698b570d42798e5a2274625226e78490a39f39bb0a9",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 5,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/05.png",
+      "rgba_unchanged": true,
+      "sha256": "7079c22c36ce16a030fc4338a85e101117d74cf3dc02403d9645493eccb5b26a",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 6,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/06.png",
+      "rgba_unchanged": true,
+      "sha256": "8e35cac11f6b9fa0f8bf4dc16d2697304ac11e98e6d21295b4fbfeea2b7ea45d",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 7,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/07.png",
+      "rgba_unchanged": true,
+      "sha256": "9a3c612bc6e0ac13de3748c4cc584661adf9ec7ab78ae31330ccf823f9a98afa",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 8,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/08.png",
+      "rgba_unchanged": true,
+      "sha256": "6664c6d1684693f8f139285aeb991401743f038e9806a34e74902deb82e5ba83",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 9,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/09.png",
+      "rgba_unchanged": true,
+      "sha256": "8fe43b641e2e91bbce1f25c2ee1fa3c18bb4d2d5522c6596def3b9bc8f1aa6aa",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 10,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/10.png",
+      "rgba_unchanged": true,
+      "sha256": "4efba8b32dd287f3a9b791d0d5f512030e0e8109d6e93fa40c87ca4fb9c1c648",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 11,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/11.png",
+      "rgba_unchanged": true,
+      "sha256": "e0da586bcf8ac1a512092117d97b85665633475508e0a15a34f89e522734002f",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 12,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/12.png",
+      "rgba_unchanged": true,
+      "sha256": "5cc9f33b40e82bb3d71c2109eefbb1f7f13f3c3d66acd2c679c4e0fb8b038180",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    },
+    {
+      "direction": "south-west",
+      "motion": "Attack",
+      "frame": 13,
+      "raw_size": [
+        112,
+        112
+      ],
+      "offset": [
+        8,
+        21
+      ],
+      "path": "Assets/00_ProjectD/06_Model/Characters/Monsters/HollowLogFullSprite/Attack/south-west/13.png",
+      "rgba_unchanged": true,
+      "sha256": "57014fe9df6c3a11bd6bd1622d2531df4e61516e77107f6ed8921a97832bdb85",
+      "foot_pivot": [
+        64,
+        16
+      ]
+    }
+  ],
+  "pivot_alignment": "Per-frame lowest opaque foot edge; original whole-frame RGBA unchanged"
+}

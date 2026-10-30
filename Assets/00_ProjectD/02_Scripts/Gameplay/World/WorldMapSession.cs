@@ -21,7 +21,8 @@ namespace DoHwa.World
         private float refreshAt;
         private string visibleMap;
         public static WorldMapSession Instance { get; private set; }
-        public bool LocalMapReady => !shuttingDown && !debugTravelling && world.LocalPlayer != null && loaded.Contains(world.LocalPlayer.mapScene);
+        public bool LocalMapReady => !shuttingDown && !debugTravelling && world.LocalPlayer != null
+            && visibleMap == world.LocalPlayer.mapScene && loaded.Contains(world.LocalPlayer.mapScene);
         public async Awaitable DebugTravelAsync(string map, Vector3 position)
         {
             if (!world.IsAuthority || debugTravelling) return;
@@ -121,9 +122,9 @@ namespace DoHwa.World
         {
             if (changing || shuttingDown || world.LocalPlayer == null) return;
             var wanted = RequiredMaps();
-            if (wanted.SetEquals(loaded) && visibleMap == world.LocalPlayer.mapScene) return;
+            if (wanted.SetEquals(loaded) && visibleMap == world.LocalPlayer.mapScene && hero.enabled) return;
             changing = true;
-            bool paused = !LocalMapReady;
+            bool paused = !hero.enabled || !LocalMapReady;
             if (paused) hero.enabled = false;
             try
             {
@@ -159,13 +160,38 @@ namespace DoHwa.World
                         }
                         foreach (var volume in root.GetComponentsInChildren<UnityEngine.Rendering.Volume>(true)) volume.enabled = visible && name=="Moonshadow";
                     }
-                visibleMap = world.LocalPlayer.mapScene;
-                if (paused && LocalMapReady)
+                if (paused && loaded.Contains(world.LocalPlayer.mapScene))
                 {
+                    // Map activation completes before its streamers build their initial colliders in Start.
+                    await Awaitable.NextFrameAsync(destroyCancellationToken);
+                    Physics.SyncTransforms();
+                    var position = world.LocalPlayer.position;
+                    float groundHeight = world.LocalPlayer.mapScene == "Moonshadow"
+                        ? 83f : surface.Height(position.x, position.z, world.State.seed);
+                    var hits = Physics.RaycastAll(new Vector3(position.x, groundHeight + 15f, position.z),
+                        Vector3.down, 40f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                    float nearest = float.PositiveInfinity;
+                    bool found = false;
+                    foreach (var hit in hits)
+                    {
+                        if (hit.collider.transform.IsChildOf(hero.transform) || hit.normal.y < .5f
+                            || hit.collider.gameObject.scene.name != world.LocalPlayer.mapScene
+                            || hit.distance >= nearest) continue;
+                        nearest = hit.distance;
+                        groundHeight = hit.point.y;
+                        found = true;
+                    }
+                    // Keep movement paused and retry loading readiness instead of falling through empty ground.
+                    if (!found) return;
                     hero.TryGetComponent<CharacterController>(out var body);
-                    body.enabled = false; hero.transform.position = world.LocalPlayer.position; body.enabled = true;
+                    position.y = groundHeight + body.height * .5f - body.center.y + body.skinWidth;
+                    body.enabled = false;
+                    hero.transform.position = position;
+                    body.enabled = true;
+                    world.LocalPlayer.position = position;
                     hero.enabled = true;
                 }
+                visibleMap = world.LocalPlayer.mapScene;
             }
             catch (OperationCanceledException) { }
             catch (Exception e) { Debug.LogException(e); }

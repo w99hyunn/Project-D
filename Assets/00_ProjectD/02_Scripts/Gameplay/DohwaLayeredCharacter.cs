@@ -60,8 +60,7 @@ namespace DoHwa
         public void Animate(AvatarFacing direction, AvatarMotion nextMotion, float deltaTime, float playbackRate)
         {
             bool changed = facing != direction || motion != nextMotion;
-            if (nextMotion == AvatarMotion.Idle) phase = 0f;
-            else phase = Mathf.Repeat(phase + deltaTime * walkFramesPerSecond * playbackRate
+            if (nextMotion != AvatarMotion.Idle) phase = Mathf.Repeat(phase + deltaTime * walkFramesPerSecond * playbackRate
                 * (nextMotion == AvatarMotion.Run ? 1.5f : 1f), 8f);
             facing = direction;
             motion = nextMotion;

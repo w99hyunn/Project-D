@@ -8,6 +8,7 @@ namespace DoHwa
         [SerializeField] private SpriteRenderer[] sources;
         [SerializeField] private SpriteRenderer[] shadows;
         private MaterialPropertyBlock properties;
+        private readonly RaycastHit[] groundHits = new RaycastHit[16];
         [SerializeField] private HeroCamera heroCamera;
         private static readonly int GroundPlane = Shader.PropertyToID("_GroundPlane");
 
@@ -24,18 +25,44 @@ namespace DoHwa
 
         private void LateUpdate()
         {
-            Vector3 groundNormal = heroCamera.GroundNormal;
-            Vector3 groundOrigin = heroCamera.GroundPoint + groundNormal * .008f;
+            var visualRoot = sources[0].transform;
+            Vector3 groundPoint;
+            Vector3 groundNormal;
+            float footHeight;
+            if (heroCamera)
+            {
+                groundPoint = heroCamera.GroundPoint;
+                groundNormal = heroCamera.GroundNormal;
+                footHeight = heroCamera.FootHeight;
+            }
+            else
+            {
+                // Grounded sprite actors use the same receiver-plane calculation as the player.
+                groundPoint = visualRoot.position - Vector3.up * .003f;
+                groundNormal = Vector3.up;
+                footHeight = 0f;
+                float nearest = float.PositiveInfinity;
+                int count = Physics.RaycastNonAlloc(transform.position + Vector3.up * .25f,
+                    Vector3.down, groundHits, .75f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                for (int i = 0; i < count; i++)
+                {
+                    var hit = groundHits[i];
+                    if (hit.collider.transform.IsChildOf(transform) || hit.distance >= nearest) continue;
+                    nearest = hit.distance;
+                    groundPoint = hit.point;
+                    groundNormal = hit.normal;
+                }
+            }
+            Vector3 groundOrigin = groundPoint + groundNormal * .008f;
             Vector4 groundPlane = new Vector4(groundNormal.x, groundNormal.y, groundNormal.z,
                 -Vector3.Dot(groundNormal, groundOrigin));
             properties.SetVector(GroundPlane, groundPlane);
-            var visualRoot = sources[0].transform;
             Vector3 lightDirection = -RenderSettings.sun.transform.forward;
             Quaternion casterRotation = Quaternion.LookRotation(
                 Vector3.ProjectOnPlane(lightDirection, Vector3.up), Vector3.up);
             // Remove the camera-facing rotation before casting the animated silhouette.
             Quaternion rotationDelta = casterRotation * Quaternion.Inverse(visualRoot.rotation);
-            Vector3 casterOrigin = heroCamera.GroundPoint + Vector3.up * (.003f - heroCamera.FootHeight);
+            Vector3 casterOrigin = groundPoint + Vector3.up * (.003f - footHeight);
             for (int i = 0; i < sources.Length; i++)
             {
                 var source = sources[i];
