@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace DoHwa
@@ -116,6 +116,18 @@ namespace DoHwa
         private void Render()
         {
             frameIndex = motion == AvatarMotion.Idle ? 0 : Mathf.FloorToInt(phase);
+            RenderLayers(layers, facing, bodyProperties, skinProperties);
+        }
+
+        public void RenderShadow(SpriteRenderer[] targetLayers, AvatarFacing lightFacing,
+            MaterialPropertyBlock bodyMasks, MaterialPropertyBlock skinMasks)
+        {
+            RenderLayers(targetLayers, lightFacing, bodyMasks, skinMasks);
+        }
+
+        private void RenderLayers(SpriteRenderer[] layers, AvatarFacing facing,
+            MaterialPropertyBlock bodyProperties, MaterialPropertyBlock skinProperties)
+        {
             var direction = directions[(int)facing];
             var frame = motion == AvatarMotion.Idle ? direction.idle : direction.walk[frameIndex];
             bool coveredClothing = hair && equipment[0].coversBackClothing;

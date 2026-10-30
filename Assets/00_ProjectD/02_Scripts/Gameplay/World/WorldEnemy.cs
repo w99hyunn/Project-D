@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace DoHwa.World
@@ -33,6 +33,8 @@ namespace DoHwa.World
         private Vector3 moveVelocity;
         private float recoverUntil;
         private EnemyState state;
+        private Vector3 worldFacing = Vector3.back;
+        public Vector3 WorldFacing => worldFacing;
         public string Id => enemyId;
         public float Health => health;
         public bool IsBoss => boss;
@@ -152,6 +154,7 @@ namespace DoHwa.World
         private void Face(Vector3 direction)
         {
             if (direction.sqrMagnitude < .001f) return;
+            worldFacing = direction.normalized;
             var camera = Camera.main.transform;
             float x = Vector3.Dot(direction, Vector3.ProjectOnPlane(camera.right, Vector3.up).normalized);
             float y = Vector3.Dot(direction, Vector3.ProjectOnPlane(camera.forward, Vector3.up).normalized);

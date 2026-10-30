@@ -29,9 +29,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GroundHeight: 0
+    - _Cutoff: 0.5
+    - _UseMask: 0
+    - _ShowCovered: 0
     m_Colors:
-    - _Color: {r: 0.1, g: 0.08, b: 0.12, a: 0.3}
-    - _GroundPlane: {r: 0, g: 1, b: 0, a: -2.8079998}
+    - _Equipped: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
