@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: BlossomHair
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.DohwaEquipmentSet
   slot: 0
+  inventoryIcon: {fileID: 21300000, guid: e36ac39052e6d854891a2ad57f433193, type: 3}
+  bodyProfile: 
+  completeArtwork: 0
+  renderLayers: 
+  coversBackClothing: 1
   frames:
   - parts:
     - {fileID: 21300000, guid: 4d2d8b402cef57eeb8aa296f76e0e179, type: 3}
@@ -734,4 +739,3 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bac5ef09017e50128187523973dbb083, type: 3}
     bodyMaskWithoutHair: {fileID: 2800000, guid: b756bf95327353f2a29f94ad8217611e, type: 3}
     skinMaskWithoutHair: {fileID: 2800000, guid: 3ed936a93bcb5c2fb805a8637d206381, type: 3}
-  coversBackClothing: 1

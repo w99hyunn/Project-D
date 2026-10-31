@@ -173,7 +173,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 41c79f4bc7e058fd9c6fef323dee87cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8704c9ad620e5693985699116802829e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -265,7 +265,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: fea5d84a621b5375af8667dc4b9f0d62, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f22303e50a5458a4848d3185dee0ff72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -334,7 +334,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5af4548443bbba4dad1d477a01e2f8d, type: 2}
+  - {fileID: 2100000, guid: bb8b19129f1eafb42be12e83c8a5399e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 4d306ab826ba5fa78f6d7e32cf615339, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e7ff449ef3e59868f26df36f4ccfe8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -408,7 +408,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -518,7 +518,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5af4548443bbba4dad1d477a01e2f8d, type: 2}
+  - {fileID: 2100000, guid: bb8b19129f1eafb42be12e83c8a5399e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -541,7 +541,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 1e975f4213215db8a746228ac682b750, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c59937ca05cb581bbaeca60233b1bb44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -592,7 +592,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -684,7 +684,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -909,7 +909,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 9
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 365994e38eab5c9f9e1ded1a38e9ac66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95d1add3da305b40aa61e14938e9bc47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -960,7 +960,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3133,12 +3133,13 @@ MonoBehaviour:
   bottom: 1
   boots: 1
   ornament: 1
+  completeBody: {fileID: 11400000, guid: 2cca008cf4e5af74bab27a3f765088b6, type: 2}
   equipment:
-  - {fileID: 11400000, guid: ed7c2bdf7b3553d889bcd9065a6ebd19, type: 2}
-  - {fileID: 11400000, guid: 81ac6ea629f85de4965f1f7392bb0c54, type: 2}
-  - {fileID: 11400000, guid: 44955628b2085cc685e484142b265fb3, type: 2}
-  - {fileID: 11400000, guid: 5441bb62738c5bf4a47d1a96344c7be2, type: 2}
-  - {fileID: 11400000, guid: a178533075ad5e01994720dff0bb68d1, type: 2}
+  - {fileID: 11400000, guid: 992c7111dac23dc4387dba30764bac5c, type: 2}
+  - {fileID: 11400000, guid: 06142a64739966e41a48a096d32dc410, type: 2}
+  - {fileID: 11400000, guid: be1061ca6297e5048a8667fa32f594ef, type: 2}
+  - {fileID: 11400000, guid: f35ae660b01602743a6362ce2db77a61, type: 2}
+  - {fileID: 11400000, guid: c5b7297e4c810764399404646c0e8ee2, type: 2}
 --- !u!114 &7066942600580175651
 MonoBehaviour:
   m_ObjectHideFlags: 0

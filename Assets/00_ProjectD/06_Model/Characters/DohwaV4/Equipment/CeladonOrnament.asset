@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: CeladonOrnament
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.DohwaEquipmentSet
   slot: 4
+  inventoryIcon: {fileID: 21300000, guid: b7059159c35718e4eab75d59ffdde34a, type: 3}
+  bodyProfile: 
+  completeArtwork: 0
+  renderLayers: 
+  coversBackClothing: 1
   frames:
   - parts:
     - {fileID: 21300000, guid: 9835a93f632d4ebf9e640be670ce93fc, type: 3}
@@ -590,4 +595,3 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 377e52c6906d42248f3419de72f624ef, type: 3}
     bodyMaskWithoutHair: {fileID: 2800000, guid: b756bf95327353f2a29f94ad8217611e, type: 3}
     skinMaskWithoutHair: {fileID: 2800000, guid: 3ed936a93bcb5c2fb805a8637d206381, type: 3}
-  coversBackClothing: 1

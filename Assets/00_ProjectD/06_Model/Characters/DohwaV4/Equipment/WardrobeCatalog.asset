@@ -16,58 +16,58 @@ MonoBehaviour:
   - id: blossom-hair
     title: "\uC740\uBE5B \uAF43\uBA38\uB9AC"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 93d8b9cd9bee77e44b714e0842457bfc, type: 3}
-    equipment: {fileID: 11400000, guid: ed7c2bdf7b3553d889bcd9065a6ebd19, type: 2}
+    icon: {fileID: 21300000, guid: e36ac39052e6d854891a2ad57f433193, type: 3}
+    equipment: {fileID: 11400000, guid: 992c7111dac23dc4387dba30764bac5c, type: 2}
   - id: ivory-jacket
     title: "\uBC31\uB828 \uC800\uACE0\uB9AC"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: ef955436870976049b32206aec0ca6bd, type: 3}
-    equipment: {fileID: 11400000, guid: 81ac6ea629f85de4965f1f7392bb0c54, type: 2}
+    icon: {fileID: 21300000, guid: 94d90444e0db7644aa77a4e0d4e5bafe, type: 3}
+    equipment: {fileID: 11400000, guid: 06142a64739966e41a48a096d32dc410, type: 2}
   - id: charcoal-skirt
     title: "\uBA39\uBE5B \uCE58\uB9C8"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: ec64936140bc03b468a3d2e4f7d408fb, type: 3}
-    equipment: {fileID: 11400000, guid: 44955628b2085cc685e484142b265fb3, type: 2}
+    icon: {fileID: 21300000, guid: 92419acd6ed1a4444bf9f2707fe4176a, type: 3}
+    equipment: {fileID: 11400000, guid: be1061ca6297e5048a8667fa32f594ef, type: 2}
   - id: black-boots
     title: "\uAC80\uC740 \uAF43\uC2E0"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 1ad20ce20d6df7d4ca9951b514deb00f, type: 3}
-    equipment: {fileID: 11400000, guid: 5441bb62738c5bf4a47d1a96344c7be2, type: 2}
+    icon: {fileID: 21300000, guid: 08627af5cb9a454459e8c3ede35f8113, type: 3}
+    equipment: {fileID: 11400000, guid: f35ae660b01602743a6362ce2db77a61, type: 2}
   - id: blossom-ornament
     title: "\uBCF5\uC0AC\uAF43 \uC7A5\uC2DD"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 9fa8c7686e74ef54f8419306309f6a7e, type: 3}
-    equipment: {fileID: 11400000, guid: a178533075ad5e01994720dff0bb68d1, type: 2}
+    icon: {fileID: 21300000, guid: c1e8293a7ca032f4291ea851dd2954ef, type: 3}
+    equipment: {fileID: 11400000, guid: c5b7297e4c810764399404646c0e8ee2, type: 2}
   - id: rose-jacket
     title: "\uB3C4\uD654 \uC800\uACE0\uB9AC"
     description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 3d338ee12d4a97849b6fa87168396d07, type: 3}
-    equipment: {fileID: 11400000, guid: c699267e8ed8577990cdfbeaa1ae9386, type: 2}
+    icon: {fileID: 21300000, guid: 5af8af81c22777f43afec051e464a81b, type: 3}
+    equipment: {fileID: 11400000, guid: e4bdc9915b6ec024ea3e32e7093cb65f, type: 2}
   - id: celadon-hair
     title: "\uCCAD\uC5F0 \uC740\uBE5B\uBA38\uB9AC"
     description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 73f0d3657c8ed434e81a994d1a0ca596, type: 3}
-    equipment: {fileID: 11400000, guid: d2605ef9a7474b70ad87fd8ac4c0e2ae, type: 2}
+    icon: {fileID: 21300000, guid: e07729e29aa24f04e91aa35ad2974a1b, type: 3}
+    equipment: {fileID: 11400000, guid: 3eaaab23c442e144293a76a664cde1ba, type: 2}
   - id: celadon-jacket
     title: "\uCCAD\uC5F0 \uC800\uACE0\uB9AC"
     description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 8b408ff9af5b82e479a576ed4e91405d, type: 3}
-    equipment: {fileID: 11400000, guid: f93709dabf4b4eb3974b8cadf4d0c4a2, type: 2}
+    icon: {fileID: 21300000, guid: a965361ffe36a5847af8d85997b41418, type: 3}
+    equipment: {fileID: 11400000, guid: 458745e9d84e1af49ba7f674bfecb4d1, type: 2}
   - id: celadon-skirt
     title: "\uCCAD\uC5F0 \uCE58\uB9C8"
     description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: fdd52a1683c61514ca96a6af1b562ae7, type: 3}
-    equipment: {fileID: 11400000, guid: eb1349ce5c9240c4a29c48f2b1846e96, type: 2}
+    icon: {fileID: 21300000, guid: 66153979ee6b3b64a891ef00a7e2e7eb, type: 3}
+    equipment: {fileID: 11400000, guid: 7f7a9f0c17dd2084f8d54ffd39c7b01e, type: 2}
   - id: celadon-boots
     title: "\uCCAD\uC5F0 \uAF43\uC2E0"
     description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 1bc0b3cf5713e6b40b99702169a8dd3a, type: 3}
-    equipment: {fileID: 11400000, guid: 10596759d5dc4296801589fdb97da24c, type: 2}
+    icon: {fileID: 21300000, guid: b2d2077ae7931a3409f25a529fb91983, type: 3}
+    equipment: {fileID: 11400000, guid: bedd0d74382a38f4fb8f44ed2010cf76, type: 2}
   - id: celadon-ornament
     title: "\uCCAD\uC5F0 \uAE08\uC7A5\uC2DD"
     description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
-    icon: {fileID: 21300000, guid: 70fdb2a95ce08a74a91e5af2d4836cfd, type: 3}
-    equipment: {fileID: 11400000, guid: e18ddd9ebdf84e07bf14722565399336, type: 2}
+    icon: {fileID: 21300000, guid: b7059159c35718e4eab75d59ffdde34a, type: 3}
+    equipment: {fileID: 11400000, guid: 635177d58b2e19640943257c044c9c63, type: 2}
   defaults:
   - blossom-hair
   - ivory-jacket

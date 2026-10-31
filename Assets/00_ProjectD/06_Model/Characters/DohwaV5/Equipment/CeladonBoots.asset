@@ -1,0 +1,597 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f004e24a594e5b6f90ca4122c2938fab, type: 3}
+  m_Name: CeladonBoots
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.DohwaEquipmentSet
+  slot: 3
+  inventoryIcon: {fileID: 21300000, guid: b2d2077ae7931a3409f25a529fb91983, type: 3}
+  bodyProfile: dohwa-complete-v5
+  completeArtwork: 1
+  renderLayers: 02000000i
+  coversBackClothing: 0
+  frames:
+  - parts:
+    - {fileID: 21300000, guid: 19352428fad0564eb2ca3620a5a7f54d, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 7eeb820b0450576fbe68bd4d8fe6b6bb, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 0039373f98e45029a9d55c9a9694ad14, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: c98b671709335ed7acc88a20093aa629, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 7b0d19c1f6855c599dfeb1d16be25b52, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 2aec0ff935cc5627918ba4516e1a57ad, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 5187af47bfb15829820a6f6dd6b07c53, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: fc159c6380745b338d23f4e6f7596771, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: fba7722570de5ae09c5510ce5a79c417, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: ea33ee51c9665484a49397a59cdade76, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: c829af7dd523546f819d0dd864d7127a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 4f8a0f72c236552c92dde99353144e6a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 6fd037651f1e5625ac82aaba109fa7b6, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 3acd9850b4ab51ddacb337d58ea6049c, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: f0921f1268385a749e7eecb3c9b49756, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 75a2784d53ef5f9c85748e0738fdbb58, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: ebb1864e7bdd50c89d863fcf49240386, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 27f01c3109e05fb79246dc80b755190f, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: e233b440d63e52c0b1064cab17e58ca5, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 8627578d09f954e6a8d85cbcaa382b2b, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: a5f5ddee3a135ff99c0d9676a53f4775, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: f17c34f91dbe562b83323bc26e29c02a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 7ee8337a3fa55c6fb0fc69fe18097e75, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: c8a5131c180650cb87156776a1d207ac, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: a781324752ec536b8df9739f5b2c280d, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 9e6410b7f8c55c9ca62a6d3b8ede47a8, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: d81f6ae9de895686a480846aa1f64ba9, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 9578b912129459fd82a6c88e8237144c, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 5b075084f6ff523593b83ea17513d680, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 0d30fa576a6e52408e73d9eb3effbfc4, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 77e99689aba150909bf6a6cc1afcbfe5, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: fe44d2ff59e959fa8559b045e0d408cb, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: d3ceae677d7c56249c2a4d643583b321, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 6b14a7b81e1d56afa13be1f788808222, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 1038ec06bced55e89a01f77772f6fb8e, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: eb3c255dc5885f30b5b16a75a6f5c563, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: bbbba322a3295cc797a3d0f924e40bff, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: a0e20abc773557e587cfee4bd5b50e6b, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: daf21ad55b2052c9884f87c8c782d707, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 639715fdb66d562b8746345ad33575c5, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 420f0da2abbb56a9bc71b7d6088fcb7b, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 52240f9891e65603923f27dc9f07ebed, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 9aa97c34b178536796aaa28d1aedbe95, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 4b2d968c81ca595ab0427598ad610872, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 63eb7bcf9e58557d8022d1fa3f5e4055, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 5dd129ba03235052a0363c9f633db0c1, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: d9fbb7a96ca05bb8986bff44e704c8a5, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 9dd30c9f2006599c93914702ff2c01d5, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 7936cdac73c058ae9ad20724cc3d053e, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 20530ca0f6dc589d9e530be31f0bda4a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 1e8d01160e4d5ca4bb06fe6147806112, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 25d814e6d67050ae90a5c7918b14a391, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 227e4e3b145e5d1ab7728fc472916cc2, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 2ebd6a6786235f63a85d4398ba920723, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 1e935a06c7c75cd7ad3563a289d4c4ff, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 2ac62dda3f325e7f8560823d02d6da99, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: d0bd1f5ddff8588c9e20097b5afd57c3, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 1e5adedfbf3b5bc5816bff18b575930f, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 8b4f093385e85a928ea78ca88b4e82f4, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 348d09287fe258a789eb972ee6fde14b, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 6cf4dcca9ad459759d1fdd910ec27c03, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: abef0b7de00652d58acecb8d7803622a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: a6cc67be0cd55b82a19e801902c4bd53, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 8c34b7b23c565f66b6c3623fb4fc6778, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: a1b449ea198855ab8b34b571733ec1ef, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 5cd6b68abfdd596faf6c30d1f0acd0ec, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: ac8b660cd7f952c9b8cc3bc6eeae42ae, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 8caa1a578c2c518cb87b2ae53e4dd2ae, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 44477815a19052fca05024f11201424a, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 8ce53f50b46f5548a5b1f512301787cf, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 2ba9300f5e855cc7857b97cdb7d9864e, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}
+  - parts:
+    - {fileID: 21300000, guid: 7db4089eb02f59a1bfa66d5f72556077, type: 3}
+    overlapMask: {fileID: 0}
+    bodyMask: {fileID: 0}
+    skinMask: {fileID: 0}
+    partsWithoutHair: []
+    bodyMaskWithoutHair: {fileID: 0}
+    skinMaskWithoutHair: {fileID: 0}

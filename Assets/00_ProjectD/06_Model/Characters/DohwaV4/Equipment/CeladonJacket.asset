@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: CeladonJacket
   m_EditorClassIdentifier: Assembly-CSharp::DoHwa.DohwaEquipmentSet
   slot: 1
+  inventoryIcon: {fileID: 21300000, guid: a965361ffe36a5847af8d85997b41418, type: 3}
+  bodyProfile: 
+  completeArtwork: 0
+  renderLayers: 
+  coversBackClothing: 1
   frames:
   - parts:
     - {fileID: 21300000, guid: cb2cdc360a07490a82a65b1fd428c6e7, type: 3}
@@ -1022,4 +1027,3 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e876430544d64c608537e0fb0db603f6, type: 3}
     bodyMaskWithoutHair: {fileID: 2800000, guid: b756bf95327353f2a29f94ad8217611e, type: 3}
     skinMaskWithoutHair: {fileID: 2800000, guid: 3ed936a93bcb5c2fb805a8637d206381, type: 3}
-  coversBackClothing: 1

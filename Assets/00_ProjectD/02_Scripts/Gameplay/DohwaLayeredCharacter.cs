@@ -31,6 +31,7 @@ namespace DoHwa
         [SerializeField] private bool bottom = true;
         [SerializeField] private bool boots = true;
         [SerializeField] private bool ornament = true;
+        [SerializeField] private DohwaAvatarBodySet completeBody;
         [SerializeField] private DohwaEquipmentSet[] equipment = Array.Empty<DohwaEquipmentSet>();
         private static readonly string[] MaskNames = { "_HairMask", "_JacketMask", "_BottomMask", "_BootsMask" };
         private static readonly int[][] SlotLayers =
@@ -39,6 +40,7 @@ namespace DoHwa
         };
         private MaterialPropertyBlock bodyProperties;
         private MaterialPropertyBlock skinProperties;
+        private MaterialPropertyBlock garmentProperties;
         private float phase;
         private AvatarFacing facing;
         private AvatarMotion motion;
@@ -50,6 +52,7 @@ namespace DoHwa
         {
             bodyProperties = new MaterialPropertyBlock();
             skinProperties = new MaterialPropertyBlock();
+            garmentProperties = new MaterialPropertyBlock();
         }
 
         private void OnEnable()
@@ -85,25 +88,31 @@ namespace DoHwa
         public void SetEquipment(DohwaEquipmentSet item)
         {
             int slot = (int)item.slot;
+            var renderLayers = item.completeArtwork ? item.renderLayers : SlotLayers[slot];
+            if (item.completeArtwork && (!completeBody || completeBody.profile != item.bodyProfile))
+                throw new ArgumentException("코디와 몸체의 제작 규격이 다릅니다.", nameof(item));
+            if (item.completeArtwork && !item.inventoryIcon)
+                throw new ArgumentException("완결형 코디는 별도 제작한 아이콘이 필요합니다.", nameof(item));
             if (item.frames.Length != 72) throw new ArgumentException("코디는 8방향 × (대기1 + 걷기8) 프레임이 필요합니다.", nameof(item));
             for (int frame = 0; frame < item.frames.Length; frame++)
             {
                 var replacement = item.frames[frame];
-                if (replacement.parts.Length != SlotLayers[slot].Length
-                    || replacement.partsWithoutHair.Length != SlotLayers[slot].Length)
+                if (replacement.parts.Length != renderLayers.Length
+                    || !item.completeArtwork && replacement.partsWithoutHair.Length != renderLayers.Length)
                     throw new ArgumentException("코디 슬롯의 파츠 개수가 다릅니다.", nameof(item));
-                for (int variant = 0; variant < 2; variant++)
+                for (int variant = 0; variant < (item.completeArtwork ? 1 : 2); variant++)
                 {
                     var parts = variant == 0 ? replacement.parts : replacement.partsWithoutHair;
                     for (int part = 0; part < parts.Length; part++)
                     {
                         var sprite = parts[part];
-                        var reference = directions[frame / 9].idle.parts[SlotLayers[slot][part]];
-                        if (sprite.rect.size != reference.rect.size || sprite.pivot != reference.pivot
+                        var reference = directions[frame / 9].idle.parts[renderLayers[part]];
+                        if ((!item.completeArtwork && (sprite.rect.size != reference.rect.size || sprite.pivot != reference.pivot))
                             || !Mathf.Approximately(sprite.pixelsPerUnit, reference.pixelsPerUnit))
                             throw new ArgumentException("코디의 캔버스, 피벗, PPU가 기본 몸체와 다릅니다.", nameof(item));
                     }
                 }
+                if (item.completeArtwork) continue;
                 foreach (var mask in new[] { replacement.bodyMask, replacement.skinMask,
                     replacement.bodyMaskWithoutHair, replacement.skinMaskWithoutHair })
                     if (mask.width != 96 || mask.height != 96)
@@ -146,19 +155,41 @@ namespace DoHwa
                 layers[i].color = Color.white;
             }
             int equipmentFrame = (int)facing * 9 + (motion == AvatarMotion.Idle ? 0 : frameIndex + 1);
+            layers[0].sortingOrder = completeBody && (facing is AvatarFacing.NorthEast or AvatarFacing.North or AvatarFacing.NorthWest) ? 8 : 0;
+            if (completeBody)
+            {
+                layers[1].sprite = completeBody.frames[equipmentFrame];
+                layers[10].enabled = false;
+            }
             for (int slot = 0; slot < SlotLayers.Length; slot++)
             {
-                var item = equipment[slot].frames[equipmentFrame];
+                var definition = equipment[slot];
+                var item = definition.frames[equipmentFrame];
+                var renderLayers = definition.completeArtwork ? definition.renderLayers : SlotLayers[slot];
+                bool enabled = slot switch { 0 => hair, 1 => jacket, 2 => bottom, 3 => boots, _ => ornament };
+                if (definition.completeArtwork)
+                    foreach (int layer in SlotLayers[slot]) layers[layer].enabled = false;
                 bool coveredVariant = slot == 0 || coveredClothing;
-                for (int part = 0; part < SlotLayers[slot].Length; part++)
-                    layers[SlotLayers[slot][part]].sprite = coveredVariant ? item.parts[part] : item.partsWithoutHair[part];
-                if (slot < 4)
+                for (int part = 0; part < renderLayers.Length; part++)
+                {
+                    layers[renderLayers[part]].sprite = definition.completeArtwork || coveredVariant ? item.parts[part] : item.partsWithoutHair[part];
+                    layers[renderLayers[part]].enabled = enabled;
+                    if (definition.completeArtwork && item.overlapMask)
+                    {
+                        var renderer = layers[renderLayers[part]];
+                        renderer.GetPropertyBlock(garmentProperties);
+                        foreach (string mask in MaskNames) garmentProperties.SetTexture(mask, item.overlapMask);
+                        garmentProperties.SetVector("_Equipped", new Vector4(hair ? 1 : 0, jacket ? 1 : 0, bottom ? 1 : 0, boots ? 1 : 0));
+                        renderer.SetPropertyBlock(garmentProperties);
+                    }
+                }
+                if (slot < 4 && !completeBody)
                 {
                     bodyProperties.SetTexture(MaskNames[slot], coveredVariant ? item.bodyMask : item.bodyMaskWithoutHair);
                     skinProperties.SetTexture(MaskNames[slot], coveredVariant ? item.skinMask : item.skinMaskWithoutHair);
                 }
             }
-            Vector4 equipped = new(hair ? 1f : 0f, jacket ? 1f : 0f, bottom ? 1f : 0f, boots ? 1f : 0f);
+            Vector4 equipped = completeBody ? Vector4.zero : new(hair ? 1f : 0f, jacket ? 1f : 0f, bottom ? 1f : 0f, boots ? 1f : 0f);
             bodyProperties.SetVector("_Equipped", equipped);
             layers[1].SetPropertyBlock(bodyProperties);
             skinProperties.SetVector("_Equipped", equipped);
