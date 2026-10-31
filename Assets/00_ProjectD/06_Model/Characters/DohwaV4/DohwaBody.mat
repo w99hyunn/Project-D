@@ -27,8 +27,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 41c79f4bc7e058fd9c6fef323dee87cf, type: 3}
+    - _BootsMask:
+        m_Texture: {fileID: 2800000, guid: 11c46372d9a25ff1982dd4cd6602aa6e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BottomMask:
+        m_Texture: {fileID: 2800000, guid: 11c46372d9a25ff1982dd4cd6602aa6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HairMask:
@@ -39,23 +43,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: 11c46372d9a25ff1982dd4cd6602aa6e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _BottomMask:
-        m_Texture: {fileID: 2800000, guid: 11c46372d9a25ff1982dd4cd6602aa6e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BootsMask:
-        m_Texture: {fileID: 2800000, guid: 11c46372d9a25ff1982dd4cd6602aa6e, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 41c79f4bc7e058fd9c6fef323dee87cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ShowCovered: 0
     - PixelSnap: 0
     - _EnableExternalAlpha: 0
+    - _EnvironmentStrength: 0.26
+    - _PaletteStrength: 0.6
+    - _ShadowInfluence: 0.6
+    - _ShowCovered: 0
     - _SourcePixelStep: 3
+    - _UprightDepth: 1
     m_Colors:
-    - _Equipped: {r: 1, g: 1, b: 1, a: 1}
+    - _ActorGround: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Equipped: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
