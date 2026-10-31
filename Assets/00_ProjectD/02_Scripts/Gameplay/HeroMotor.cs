@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace DoHwa
@@ -31,6 +31,7 @@ namespace DoHwa
         private Vector3 velocity;
         private Vector3 facing = Vector3.back;
         public Vector3 Facing => facing;
+        public bool InputBlocked { get; set; }
         private Vector3 dashDirection;
         private float verticalSpeed;
         private float dashRemaining;
@@ -109,6 +110,7 @@ namespace DoHwa
 
         private void Update()
         {
+            if (InputBlocked) return;
             float dt = Time.deltaTime;
             var input = Vector2.ClampMagnitude(move.ReadValue<Vector2>(), 1f);
             var right = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up).normalized;

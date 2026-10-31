@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650eb6364e05d204a966f3157e4ae46e, type: 3}
+  m_Name: WardrobeCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::DoHwa.WardrobeCatalog
+  items:
+  - id: blossom-hair
+    title: "\uC740\uBE5B \uAF43\uBA38\uB9AC"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 93d8b9cd9bee77e44b714e0842457bfc, type: 3}
+    equipment: {fileID: 11400000, guid: ed7c2bdf7b3553d889bcd9065a6ebd19, type: 2}
+  - id: ivory-jacket
+    title: "\uBC31\uB828 \uC800\uACE0\uB9AC"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: ef955436870976049b32206aec0ca6bd, type: 3}
+    equipment: {fileID: 11400000, guid: 81ac6ea629f85de4965f1f7392bb0c54, type: 2}
+  - id: charcoal-skirt
+    title: "\uBA39\uBE5B \uCE58\uB9C8"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: ec64936140bc03b468a3d2e4f7d408fb, type: 3}
+    equipment: {fileID: 11400000, guid: 44955628b2085cc685e484142b265fb3, type: 2}
+  - id: black-boots
+    title: "\uAC80\uC740 \uAF43\uC2E0"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 1ad20ce20d6df7d4ca9951b514deb00f, type: 3}
+    equipment: {fileID: 11400000, guid: 5441bb62738c5bf4a47d1a96344c7be2, type: 2}
+  - id: blossom-ornament
+    title: "\uBCF5\uC0AC\uAF43 \uC7A5\uC2DD"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 9fa8c7686e74ef54f8419306309f6a7e, type: 3}
+    equipment: {fileID: 11400000, guid: a178533075ad5e01994720dff0bb68d1, type: 2}
+  - id: rose-jacket
+    title: "\uB3C4\uD654 \uC800\uACE0\uB9AC"
+    description: "\uB3C4\uD654\uB9BC\uC758 \uAE30\uBCF8 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 3d338ee12d4a97849b6fa87168396d07, type: 3}
+    equipment: {fileID: 11400000, guid: c699267e8ed8577990cdfbeaa1ae9386, type: 2}
+  - id: celadon-hair
+    title: "\uCCAD\uC5F0 \uC740\uBE5B\uBA38\uB9AC"
+    description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 73f0d3657c8ed434e81a994d1a0ca596, type: 3}
+    equipment: {fileID: 11400000, guid: d2605ef9a7474b70ad87fd8ac4c0e2ae, type: 2}
+  - id: celadon-jacket
+    title: "\uCCAD\uC5F0 \uC800\uACE0\uB9AC"
+    description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 8b408ff9af5b82e479a576ed4e91405d, type: 3}
+    equipment: {fileID: 11400000, guid: f93709dabf4b4eb3974b8cadf4d0c4a2, type: 2}
+  - id: celadon-skirt
+    title: "\uCCAD\uC5F0 \uCE58\uB9C8"
+    description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: fdd52a1683c61514ca96a6af1b562ae7, type: 3}
+    equipment: {fileID: 11400000, guid: eb1349ce5c9240c4a29c48f2b1846e96, type: 2}
+  - id: celadon-boots
+    title: "\uCCAD\uC5F0 \uAF43\uC2E0"
+    description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 1bc0b3cf5713e6b40b99702169a8dd3a, type: 3}
+    equipment: {fileID: 11400000, guid: 10596759d5dc4296801589fdb97da24c, type: 2}
+  - id: celadon-ornament
+    title: "\uCCAD\uC5F0 \uAE08\uC7A5\uC2DD"
+    description: "\uCCAD\uB85D\uBE5B\uACFC \uC740\uC740\uD55C \uAE08\uBE5B\uC73C\uB85C \uBB3C\uB4E4\uC778 \uCCAD\uC5F0 \uCF54\uB514."
+    icon: {fileID: 21300000, guid: 70fdb2a95ce08a74a91e5af2d4836cfd, type: 3}
+    equipment: {fileID: 11400000, guid: e18ddd9ebdf84e07bf14722565399336, type: 2}
+  defaults:
+  - blossom-hair
+  - ivory-jacket
+  - charcoal-skirt
+  - black-boots
+  - blossom-ornament

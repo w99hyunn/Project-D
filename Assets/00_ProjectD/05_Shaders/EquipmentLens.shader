@@ -1,20 +1,36 @@
-Shader "DoHwa/UI/EquipmentLens"
+﻿Shader "DoHwa/UI/EquipmentLens"
 {
- Properties { _MainTex("Texture",2D)="white"{} _Shadow("Shadow",Float)=0 _Focus("Focus",Range(0,1))=0 _Selected("Selected",Range(0,1))=0 _Occupied("Occupied",Range(0,1))=0 _Press("Press",Range(0,1))=0 }
+ Properties { _MainTex("Texture",2D)="white"{} _Shadow("Shadow",Float)=0 _Focus("Focus",Range(0,1))=0 _Selected("Selected",Range(0,1))=0 _Occupied("Occupied",Range(0,1))=0 _Press("Press",Range(0,1))=0
+ [HideInInspector] _StencilComp("Stencil Comparison",Float)=8
+ [HideInInspector] _Stencil("Stencil ID",Float)=0
+ [HideInInspector] _StencilOp("Stencil Operation",Float)=0
+ [HideInInspector] _StencilWriteMask("Stencil Write Mask",Float)=255
+ [HideInInspector] _StencilReadMask("Stencil Read Mask",Float)=255
+ [HideInInspector] _ColorMask("Color Mask",Float)=15
+ }
  SubShader {
  Tags {"Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True"}
+ Stencil { Ref [_Stencil] Comp [_StencilComp] Pass [_StencilOp] ReadMask [_StencilReadMask] WriteMask [_StencilWriteMask] }
+ ColorMask [_ColorMask]
  Cull Off ZWrite Off ZTest [unity_GUIZTestMode] Blend SrcAlpha OneMinusSrcAlpha
  Pass {
  CGPROGRAM
  #pragma vertex vert
  #pragma fragment frag
+ #pragma multi_compile_local _ UNITY_UI_CLIP_RECT
  #include "UnityCG.cginc"
+ #include "UnityUI.cginc"
  struct appdata{float4 vertex:POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;};
- struct v2f{float4 vertex:SV_POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;};
+ struct v2f{float4 vertex:SV_POSITION;float2 uv:TEXCOORD0;fixed4 color:COLOR;float2 localPosition:TEXCOORD1;};
+ float4 _ClipRect;
  float _Focus,_Selected,_Occupied,_Press,_Shadow,_EffectTime;
- v2f vert(appdata v){v2f o;o.vertex=UnityObjectToClipPos(v.vertex);o.uv=v.uv;o.color=v.color;return o;}
+ v2f vert(appdata v){v2f o;o.vertex=UnityObjectToClipPos(v.vertex);o.uv=v.uv;o.color=v.color;o.localPosition=v.vertex.xy;return o;}
  fixed4 frag(v2f i):SV_Target{
- float2 p=(i.uv-.5)*2;float r=length(p);if(_Shadow>.5)return fixed4(.22,.27,.34,exp(-r*r*5)*.24*i.color.a);float edge=.79;float aa=max(fwidth(r),.006);
+ float clipAlpha=1;
+ #ifdef UNITY_UI_CLIP_RECT
+ clipAlpha=UnityGet2DClipping(i.localPosition,_ClipRect);
+ #endif
+ float2 p=(i.uv-.5)*2;float r=length(p);if(_Shadow>.5)return fixed4(.22,.27,.34,exp(-r*r*5)*.24*i.color.a*clipAlpha);float edge=.79;float aa=max(fwidth(r),.006);
  float inside=1-smoothstep(edge-aa,edge+aa,r);
  float well=1-smoothstep(.685-aa,.685+aa,r);
  float light=saturate(dot(normalize(p+float2(.0001,0)),normalize(float2(-.6,.8)))*.5+.5);
@@ -60,7 +76,7 @@ Shader "DoHwa/UI/EquipmentLens"
  alpha+=exp(-abs(r-edge)*65)*movingLight*.3;
  rgb*=1-_Press*.12;
  alpha*=1-_Press*.12;
- return fixed4(rgb,saturate(alpha)*i.color.a);
+ return fixed4(rgb,saturate(alpha)*i.color.a*clipAlpha);
  }
  ENDCG
  }

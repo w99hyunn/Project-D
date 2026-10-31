@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -24,6 +24,7 @@ namespace DoHwa.UI
         [SerializeField] private Transform hero;
         [SerializeField] private Camera minimapCamera;
         private GameObject inventory, map, journal, settings, character;
+        [SerializeField] private GameObject wardrobe;
         private RectTransform minimapMarker;
         private TMP_Text title, category, description, count, actionLabel, healthLabel, foodLabel, feedback;
         private UnityEngine.UI.Image detailArt;
@@ -34,7 +35,7 @@ namespace DoHwa.UI
         private bool crafting, wasMotorEnabled, wasViewEnabled, modal;
         private float health = 80, food = 75, feedbackUntil;
         private readonly int[] quickItems = { 0, 1, 2, 3, 4, 6, 7, 9 };
-        private InputAction bagKey, craftKey, mapKey, journalKey, escapeKey, equipmentKey;
+        private InputAction bagKey, craftKey, mapKey, journalKey, escapeKey, equipmentKey, wardrobeKey;
         private InputAction[] quickKeys;
         private int transition;
         private int sortOrder;
@@ -134,13 +135,14 @@ namespace DoHwa.UI
             mapKey=new InputAction("Map",InputActionType.Button,"<Keyboard>/m");
             journalKey=new InputAction("Journal",InputActionType.Button,"<Keyboard>/j");
             escapeKey=new InputAction("Close",InputActionType.Button,"<Keyboard>/escape");
+            wardrobeKey=new InputAction("Wardrobe",InputActionType.Button,"<Keyboard>/v");
             equipmentKey=new InputAction("Equipment",InputActionType.Button,"<Keyboard>/k");
             quickKeys=Enumerable.Range(1,8).Select(i=>new InputAction("Quick"+i,InputActionType.Button,"<Keyboard>/"+i)).ToArray();
         }
 
         private void OnEnable()
         {
-            bagKey.Enable(); craftKey.Enable(); mapKey.Enable(); journalKey.Enable(); escapeKey.Enable(); equipmentKey.Enable();
+            bagKey.Enable(); craftKey.Enable(); mapKey.Enable(); journalKey.Enable(); escapeKey.Enable(); equipmentKey.Enable(); wardrobeKey.Enable();
             foreach(var key in quickKeys) key.Enable();
         }
 
@@ -184,14 +186,14 @@ namespace DoHwa.UI
 
         private void OnDisable()
         {
-            bagKey.Disable(); craftKey.Disable(); mapKey.Disable(); journalKey.Disable(); escapeKey.Disable(); equipmentKey.Disable();
+            bagKey.Disable(); craftKey.Disable(); mapKey.Disable(); journalKey.Disable(); escapeKey.Disable(); equipmentKey.Disable(); wardrobeKey.Disable();
             foreach(var key in quickKeys) key.Disable();
             if(modal) RestoreMovement();
         }
 
         private void OnDestroy()
         {
-            bagKey.Dispose(); craftKey.Dispose(); mapKey.Dispose(); journalKey.Dispose(); escapeKey.Dispose(); equipmentKey.Dispose();
+            bagKey.Dispose(); craftKey.Dispose(); mapKey.Dispose(); journalKey.Dispose(); escapeKey.Dispose(); equipmentKey.Dispose(); wardrobeKey.Dispose();
             foreach(var key in quickKeys) key.Dispose();
         }
 
@@ -204,6 +206,7 @@ namespace DoHwa.UI
                 if(escapeKey.WasPressedThisFrame()) craftResult.Close();
                 return;
             }
+            if(wardrobeKey.WasPressedThisFrame()) { if(wardrobe.activeSelf) Close(); else OpenWardrobe(); }
             if(bagKey.WasPressedThisFrame()) { if(inventory.activeSelf && !crafting) Close(); else OpenInventory(); }
             if(equipmentKey.WasPressedThisFrame()) { if(character.activeSelf) Close(); else OpenEquipment(); }
             if(craftKey.WasPressedThisFrame()) { if(inventory.activeSelf && crafting) Close(); else OpenCrafting(); }
@@ -232,7 +235,7 @@ namespace DoHwa.UI
             if(craftResult.IsOpen) craftResult.Close();
             HideQuickTooltip();
             if(!modal) {
-                wasMotorEnabled=motor.enabled; wasViewEnabled=view.enabled; motor.enabled=false; view.enabled=false; modal=true;
+                wasMotorEnabled=motor.enabled; wasViewEnabled=view.enabled; motor.InputBlocked=true; motor.enabled=false; view.enabled=false; modal=true;
                 transform.Find("HUD").gameObject.SetActive(false);
                 capturingBackdrop=true;
                 await backdropBlur.CaptureAsync();
@@ -242,22 +245,34 @@ namespace DoHwa.UI
             }
             while(capturingBackdrop) await Awaitable.NextFrameAsync(destroyCancellationToken);
             if(!this || current!=transition) return;
-            GameObject outgoing = character.activeSelf ? character : inventory.activeSelf ? inventory : map.activeSelf ? map : journal.activeSelf ? journal : settings.activeSelf ? settings : null;
-            if(outgoing && outgoing != panel && outgoing.TryGetComponent<UiPanelReveal>(out var exitMotion))
+            GameObject outgoing = wardrobe.activeSelf ? wardrobe : character.activeSelf ? character : inventory.activeSelf ? inventory : map.activeSelf ? map : journal.activeSelf ? journal : settings.activeSelf ? settings : null;
+            bool wardrobeSwitch = outgoing != panel &&
+                ((outgoing == character && panel == wardrobe) || (outgoing == wardrobe && panel == character));
+            if (wardrobeSwitch)
+            {
+                panel.SetActive(true);
+                panel.TryGetComponent<UiPanelReveal>(out var incomingMotion);
+                outgoing.TryGetComponent<UiPanelReveal>(out var outgoingMotion);
+                incomingMotion.ReplayState("SwitchIn");
+                await outgoingMotion.HideAsync("SwitchOut");
+                if(!this || current != transition) return;
+            }
+            else if(outgoing && outgoing != panel && outgoing.TryGetComponent<UiPanelReveal>(out var exitMotion))
             {
                 await exitMotion.HideAsync();
                 if(!this || current != transition) return;
             }
             inventory.SetActive(panel==inventory); map.SetActive(panel==map); journal.SetActive(panel==journal); settings.SetActive(panel==settings);
             character.SetActive(panel==character);
+            wardrobe.SetActive(panel==wardrobe);
             transform.Find("HUD").gameObject.SetActive(false);
-            if(alreadyOpen && panel.TryGetComponent<UiPanelReveal>(out var reveal))reveal.Replay();
+            if(alreadyOpen && !wardrobeSwitch && panel.TryGetComponent<UiPanelReveal>(out var reveal))reveal.Replay();
         }
 
         private void RestoreMovement()
         {
             // Scene teardown may destroy the character before the UI is disabled.
-            if(motor) motor.enabled=wasMotorEnabled;
+            if(motor) { motor.InputBlocked=false; motor.enabled=wasMotorEnabled; }
             if(view) view.enabled=wasViewEnabled;
             modal=false;
         }
@@ -271,11 +286,12 @@ namespace DoHwa.UI
                 return;
             }
             int current = ++transition;
-            GameObject panel = character.activeSelf ? character : inventory.activeSelf ? inventory : map.activeSelf ? map : journal.activeSelf ? journal : settings;
+            GameObject panel = wardrobe.activeSelf ? wardrobe : character.activeSelf ? character : inventory.activeSelf ? inventory : map.activeSelf ? map : journal.activeSelf ? journal : settings;
             if(panel.activeSelf && panel.TryGetComponent<UiPanelReveal>(out var reveal)) await reveal.HideAsync();
             if(!this || current != transition) return;
             inventory.SetActive(false); map.SetActive(false); journal.SetActive(false); settings.SetActive(false);
             character.SetActive(false);
+            wardrobe.SetActive(false);
             transform.Find("HUD").gameObject.SetActive(true);
             backdropBlur.Hide();
             if(modal) RestoreMovement();
@@ -285,6 +301,7 @@ namespace DoHwa.UI
         public void OpenCrafting() { equipmentMode=false; crafting=true; filter=0; Show(inventory); Select(3); ResetInventoryScroll(); }
         public void OpenEquipment() { equipmentMode=true;crafting=false;filter=0;selectedPart=0;selected=loadout[0]>=0?loadout[0]:0;Show(character);Refresh(); }
         public void SelectEquipmentPart(int part) { bool changed=selectedPart!=part;selectedPart=part;if(loadout[part]>=0)selected=loadout[part];Refresh();if(changed && character.TryGetComponent<UiPanelReveal>(out var reveal))reveal.RefreshContent(2); }
+        public void OpenWardrobe() => Show(wardrobe);
         public void OpenMap() => Show(map);
         public void OpenJournal() => Show(journal);
         public void OpenSettings()
